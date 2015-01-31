@@ -1,0 +1,7 @@
+# cask
+alias cask='brew cask'
+
+
+# Arremate arte
+alias befrun='bundle exec foreman run'
+alias befstart='bundle exec foreman start'

@@ -1,0 +1,4 @@
+# Add `~/bin` to the `$PATH`
+PATH="$HOME/bin:$PATH";
+
+PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/lib/python2.7/site-packages:/usr/local/opt/ruby/bin:/usr/local/share/npm/bin:$PATH

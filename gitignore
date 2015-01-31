@@ -1,0 +1,58 @@
+# db related fils
+*.sqlite3
+*.sqlite
+db/schema.rb
+database.yml
+
+# common temp and log files
+log/*
+pkg
+tmp
+coverage
+*.log
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+#*.7z
+#*.dmg
+#*.gz
+#*.iso
+#*.jar
+#*.rar
+#*.tar
+#*.zip
+
+# editor generated files
+.*.sw* #vim
+*~
+.project
+build/
+*.sw*
+.settings/
+.pydevproject
+*.sublime-*
+*.codeintel
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+node_modules/

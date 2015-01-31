@@ -1,0 +1,18 @@
+# Set output colors
+export GREP_COLOR="4;33"
+export CLICOLOR="auto"
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Set default text editor
+export EDITOR='subl -w'
+
+# Increase elastic search memory pool
+export ES_MIN_MEM=1024m
+export ES_MAX_MEM=2048m
+
+# http://stackoverflow.com/questions/22697440/cc-failed-with-exit-status-1-error-when-install-python-library
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
+
+# Java 7
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
