@@ -93,3 +93,19 @@ export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=79000000
 
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+export TERM='xterm-256color'
+
+
+# enable programmable completion features (you don't need to enable
+# # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# # sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+   if [ -f /usr/share/bash-completion/bash_completion ]; then
+      . /usr/share/bash-completion/bash_completion
+   elif [ -f /etc/bash_completion ]; then
+      . /etc/bash_completion
+   fi
+fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
