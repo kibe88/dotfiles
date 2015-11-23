@@ -103,6 +103,9 @@ let g:ctrlp_working_path_mode = ''
  Plug 'troydm/easybuffer.vim'
  nmap <leader>be :EasyBufferToggle<cr>
 
+ " sublime text like multiple selection and edition
+ Plug 'terryma/vim-multiple-cursors'
+
 call plug#end()
 
 " command to source vimrc
