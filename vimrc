@@ -99,6 +99,10 @@ endif
 
 let g:ctrlp_working_path_mode = ''
 
+" Easy buffer management through a single list
+ Plug 'troydm/easybuffer.vim'
+ nmap <leader>be :EasyBufferToggle<cr>
+
 call plug#end()
 
 " command to source vimrc
