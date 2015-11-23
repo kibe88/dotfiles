@@ -49,15 +49,50 @@ Plug 'thoughtbot/vim-rspec'
 nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>n :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
+nnoremap <Leader>as :call RunAllSpecs()<CR>
 let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
 Plug 'scrooloose/nerdcommenter'
 
+
+Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
+
+"Rails
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'ecomba/vim-ruby-refactoring'
+
+autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
+autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+"Html
+Plug 'tpope/vim-haml'
+Plug 'juvenn/mustache.vim'
+Plug 'tpope/vim-markdown'
+Plug 'digitaltoad/vim-jade'
+Plug 'slim-template/vim-slim'
+Plug 'mattn/emmet-vim'
+
+au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.md set filetype=markdown
+
+let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+let g:user_emmet_leader_key='<C-x>'
+
 call plug#end()
+
+" command to source vimrc
+nnoremap <Leader>v :source $MYVIMRC<CR>
 
 " colorscheme
 set background=dark
+" set it silently cause the colorscheme may not exist yet
 colorscheme gruvbox
 
 " Make it obvious where 80 characters is
@@ -123,7 +158,41 @@ set splitright
 
 " backspace acting normally
 set nocompatible
-set backspace
+set backspace=2
 
 " turns filetype plugins on
 filetype plugin on
+
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
+" better tab navigation
+nnoremap <Leader>h :tabprevious<CR>
+nnoremap <Leader>l :tabnext<CR>
+
+" whitespace and such
+set autoindent
+set tabstop=2
+set softtabstop=2
+set textwidth=80
+set shiftwidth=2
+set expandtab
+set wrap
+set formatoptions=qrn1
+if exists('+colorcolumn')
+  set colorcolumn=+1
+endif
+set cpo+=J
+
+" general stuff
+
+" Don't redraw while executing macros
+set nolazyredraw
+
+" Disable the macvim toolbar
+set guioptions-=T
+
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
+set showbreak=↪
