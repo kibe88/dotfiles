@@ -4,7 +4,7 @@ export CLICOLOR="auto"
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Set default text editor
-export EDITOR='subl -w'
+export EDITOR='vim'
 
 # Increase elastic search memory pool
 export ES_MIN_MEM=1024m
@@ -14,5 +14,7 @@ export ES_MAX_MEM=2048m
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
-# Java 7
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/
+# boot2docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/kibe/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
