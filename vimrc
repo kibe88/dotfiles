@@ -54,9 +54,6 @@ let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
 Plug 'scrooloose/nerdcommenter'
 
-
-Plug 'kien/ctrlp.vim'
-
 "Rails
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -86,6 +83,21 @@ let g:user_emmet_leader_key='<C-x>'
 
 " Creates non existente dirs automatically
 Plug 'pbrisbin/vim-mkdir'
+
+" fuzzy file search (edited to use ag)
+Plug 'kien/ctrlp.vim'
+if executable('ag')
+  " use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+  " ag is fast enough that ctrlp doesnt need cache
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:ctrlp_working_path_mode = ''
 
 call plug#end()
 
