@@ -56,7 +56,6 @@ Plug 'scrooloose/nerdcommenter'
 
 
 Plug 'kien/ctrlp.vim'
-Plug 'kien/ctrlp.vim'
 
 "Rails
 Plug 'vim-ruby/vim-ruby'
