@@ -1,5 +1,6 @@
 let mapleader = ","
 let maplocalleader = "\\"
+let dotvim=expand('<sfile>:p:h') . "/.vim/"
 
 call plug#begin('~/.vim/plugged')
 
@@ -109,7 +110,25 @@ let g:ctrlp_working_path_mode = ''
  " statusbar
  Plug 'bling/vim-airline'
 
+ " indentation guidelines
+ Plug 'Yggdroot/indentLine'
+ set list lcs=tab:\|\
+ let g:indentLine_color_term = 111
+ let g:indentLine_color_gui = '#DADADA'
+ let g:indentLine_char = 'c'
+ " other useful characters
+ "let g:indentLine_char = '∙▹¦'
+ let g:indentLine_char = '∙'
+
 call plug#end()
+
+" backups
+exec 'set backupdir='.dotvim.'/tmp/backup//'
+
+" swap into its own dir
+exec 'set directory='.dotvim.'/tmp/swap//'
+set backup
+set noswapfile
 
 " command to source vimrc
 nnoremap <Leader>v :source $MYVIMRC<CR>
