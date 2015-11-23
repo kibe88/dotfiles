@@ -84,6 +84,9 @@ au BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 let g:user_emmet_leader_key='<C-x>'
 
+" Creates non existente dirs automatically
+Plug 'pbrisbin/vim-mkdir'
+
 call plug#end()
 
 " command to source vimrc
