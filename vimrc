@@ -106,6 +106,9 @@ let g:ctrlp_working_path_mode = ''
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
 
+ " statusbar
+ Plug 'bling/vim-airline'
+
 call plug#end()
 
 " command to source vimrc
