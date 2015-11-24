@@ -3,15 +3,38 @@ alias ls='ls -GFhla'
 
 # Enable virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV=$(brew --prefix)/bin/virtualenv
-export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-if [[ -r $(brew --prefix)/bin/virtualenvwrapper.sh ]]; then
-    source $(brew --prefix)/bin/virtualenvwrapper.sh
-else
-    echo "WARNING: Can't find virtualenvwrapper.sh"
+# Make sure extglob is enabled: 
+shopt -s extglob
+
+# Loads shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+if commandExists brew; then
+  export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+
+  if [[ -r $(brew --prefix)/bin/virtualenvwrapper.sh ]]; then
+      source $(brew --prefix)/bin/virtualenvwrapper.sh
+  else
+      echo "WARNING: Can't find virtualenvwrapper.sh"
+  fi
+
+  # Enable bash completion
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
+  else
+      echo "WARNING: Can't find bash_completion.sh"
+  fi
+  
+  export VIRTUALENVWRAPPER_VIRTUALENV=$(brew --prefix)/bin/virtualenv
+  export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
 
 # Enable color themes
@@ -23,13 +46,6 @@ source ~/.bash_themes/green
 
 # Explictly setting locale cause sometimes osx doesn't
 export LC_ALL=en_US.UTF-8
-
-# Enable bash completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-else
-    echo "WARNING: Can't find bash_completion.sh"
-fi
 
 # Enable git completion script
 if [ -f ${HOME}/bin/git_completion.sh ]; then
@@ -50,17 +66,6 @@ bind "set completion-ignore-case on"
 
 # This makes it unnecessary to press Tab twice when there is more than one match
 bind "set show-all-if-ambiguous on"
-
-# Enable rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# Loads shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-    [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -91,8 +96,6 @@ export RUBY_HEAP_FREE_MIN=100000
 export RUBY_HEAP_SLOTS_INCREMENT=300000
 export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=79000000
-
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export TERM='xterm-256color'
 
 
