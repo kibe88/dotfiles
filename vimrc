@@ -121,6 +121,9 @@ let g:ctrlp_working_path_mode = ''
  "let g:indentLine_char = '∙▹¦'
  let g:indentLine_char = '∙'
 
+" adds gutter with git diff info
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " backups
