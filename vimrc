@@ -134,18 +134,76 @@ exec 'set directory='.dotvim.'/tmp/swap//'
 set backup
 set noswapfile
 
-" command to source vimrc
+" general settings
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+set encoding=utf-8
+set history=1000
+if exists('+relativenumber')
+  set relativenumber
+endif
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
+set wildmenu
+
+" Show trailing whitespace on insert mode only
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:␣
+    au InsertLeave * :set listchars+=trail:␣
+augroup END
+
+
+" undo files
+exec 'set undodir='.dotvim.'/tmp/undo//'
+set undofile
+set undolevels=3000
+set undoreload=10000
+
+" search config
+noremap <leader><space> :noh<cr>:call clearmatchesr search matching()<cr> "clear search matching
+
+" keybind to source vimrc
 nnoremap <Leader>v :source $MYVIMRC<CR>
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" Highlight word
+nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
 
 " colorscheme
 set background=dark
 " set it silently cause the colorscheme may not exist yet
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
-"
+
+" indentation
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set wrap
+set formatoptions=qrn1
+set cpo+=J
+
 " Numbers
 set number
 set numberwidth=4
@@ -208,7 +266,7 @@ set nocompatible
 set backspace=2
 
 " turns filetype plugins on
-filetype plugin on
+filetype plugin indent on
 
 augroup reload_vimrc
   autocmd!
