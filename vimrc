@@ -42,8 +42,9 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 map <Leader>s :NERDTreeToggle<CR>
 
-"Provides Send_To_Tmux function that vim-rspec will later use
-Plug 'jgdavey/tslime.vim'
+"TMUX integration
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 
 " rspec mappings
 Plug 'thoughtbot/vim-rspec'
@@ -51,7 +52,7 @@ nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>n :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
 nnoremap <Leader>as :call RunAllSpecs()<CR>
-let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+let g:rspec_command = 'call VimuxRunCommand("rspec {spec}\n")'
 
 Plug 'scrooloose/nerdcommenter'
 
