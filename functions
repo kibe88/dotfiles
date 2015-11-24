@@ -43,6 +43,6 @@ getMyIP() {
     printf ${1+-v} $1 "%s${_nl:0:$[${#1}>0?0:1]}" $_myip
 }
 
-command_exists () {
+commandExists () {
     type "$1" &> /dev/null ;
 }
