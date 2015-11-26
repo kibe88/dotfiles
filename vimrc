@@ -326,3 +326,6 @@ set guioptions-=T
 
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
 set showbreak=↪
+
+" Always use vertical diffs
+set diffopt+=vertical
