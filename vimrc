@@ -279,6 +279,8 @@ noremap <silent><Leader>/ :nohls<CR>
 
 " better ESC
 inoremap <C-k> <Esc>
+
+" always reload vimrc after save
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
