@@ -277,6 +277,8 @@ nnoremap <leader>po "*p
 " clear highlight after search
 noremap <silent><Leader>/ :nohls<CR>
 
+" better ESC
+inoremap <C-k> <Esc>
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
