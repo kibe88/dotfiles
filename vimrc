@@ -274,6 +274,9 @@ map Y y$
 vnoremap <leader>yo "*y
 nnoremap <leader>po "*p
 
+" clear highlight after search
+noremap <silent><Leader>/ :nohls<CR>
+
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
