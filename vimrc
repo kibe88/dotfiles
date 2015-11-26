@@ -268,6 +268,12 @@ set backspace=2
 " turns filetype plugins on
 filetype plugin indent on
 
+" Yank from current cursor position to end of line
+map Y y$
+" Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
+vnoremap <leader>yo "*y
+nnoremap <leader>po "*p
+
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
