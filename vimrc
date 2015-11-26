@@ -286,23 +286,6 @@ augroup reload_vimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
-" better tab navigation
-nnoremap <Leader>h :tabprevious<CR>
-nnoremap <Leader>l :tabnext<CR>
-
-" whitespace and such
-set autoindent
-set tabstop=2
-set softtabstop=2
-set textwidth=80
-set shiftwidth=2
-set expandtab
-set wrap
-set formatoptions=qrn1
-if exists('+colorcolumn')
-  set colorcolumn=+1
-endif
-set cpo+=J
 
 " general stuff
 
