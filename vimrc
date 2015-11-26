@@ -298,6 +298,9 @@ noremap <leader>bn :bnext<cr>
 nnoremap <leader>sv <C-w>v<C-w>l
 nnoremap <leader>sh <C-w>s<C-w>j
 
+"folding
+set foldlevelstart=0
+set foldmethod=syntax
 " Don't redraw while executing macros
 set nolazyredraw
 
