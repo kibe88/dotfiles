@@ -286,6 +286,13 @@ augroup reload_vimrc
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
+" easy tab navigation
+nnoremap <Leader>tp :tabprevious<CR>
+nnoremap <Leader>tn :tabnext<CR>
+
+" easy buffer navigation
+noremap <leader>bp :bprevious<cr>
+noremap <leader>bn :bnext<cr>
 
 " general stuff
 
