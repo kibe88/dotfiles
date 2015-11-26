@@ -301,6 +301,14 @@ nnoremap <leader>sh <C-w>s<C-w>j
 "folding
 set foldlevelstart=0
 set foldmethod=syntax
+
+" quickly edit config files
+nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
+exec 'nnoremap <leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
+nnoremap <leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
+nnoremap <leader>ez <C-w>s<C-w>j:e ~/.zshrc<cr>
+nnoremap <leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
+
 " Don't redraw while executing macros
 set nolazyredraw
 
