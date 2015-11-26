@@ -294,7 +294,9 @@ nnoremap <Leader>tn :tabnext<CR>
 noremap <leader>bp :bprevious<cr>
 noremap <leader>bn :bnext<cr>
 
-" general stuff
+" Splits ,sv and ,sh to open new splits (vertical and horizontal)
+nnoremap <leader>sv <C-w>v<C-w>l
+nnoremap <leader>sh <C-w>s<C-w>j
 
 " Don't redraw while executing macros
 set nolazyredraw
