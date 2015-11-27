@@ -333,3 +333,8 @@ set showbreak=↪
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" fixes vim background in tmux
+if &term =~ '256color'
+    set t_ut=
+endif
