@@ -78,6 +78,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-utils/vim-ruby-fold' "only folds methods (on rspec files it folds it blocks as well)
+Plug 'tpope/vim-rbenv'
 
 autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
