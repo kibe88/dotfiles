@@ -149,6 +149,10 @@ augroup END
 " adds gutter with git diff info
 Plug 'airblade/vim-gitgutter'
 
+" adds new text object representing lines of code at the same indent level
+" (python, haml)
+Plug 'michaeljsmith/vim-indent-object'
+
 call plug#end()
 
 " backups
