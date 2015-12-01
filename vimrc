@@ -192,6 +192,10 @@ endif
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
 set wildmenu
 
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
 " Show trailing whitespace on insert mode only
 augroup trailing
     au!
