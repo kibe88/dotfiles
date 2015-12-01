@@ -77,9 +77,9 @@ Plug 'tpope/vim-rails'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'ecomba/vim-ruby-refactoring'
+Plug 'vim-utils/vim-ruby-fold' "only folds methods (on rspec files it folds it blocks as well)
 
 autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
-autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 "Html
@@ -345,3 +345,7 @@ endif
 
 " remove trailing whitespace after save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" folding options
+set foldlevelstart=0
+set foldmethod=syntax
