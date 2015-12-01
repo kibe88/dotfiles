@@ -127,6 +127,15 @@ let g:ctrlp_working_path_mode = ''
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
 
+" Only show cursorline in the current window and in normal mode.
+augroup cline
+    au!
+    au WinLeave * set nocursorline
+    au WinEnter * set cursorline
+    au InsertEnter * set nocursorline
+    au InsertLeave * set cursorline
+augroup END
+
  " statusbar
  Plug 'bling/vim-airline'
 
