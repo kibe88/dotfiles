@@ -163,6 +163,11 @@ Plug 'mtth/scratch.vim'
 " let g:scratch_insert_autohide = 1
 "let g:scratch_autohide = 0
 
+Plug 'rizzatti/dash.vim'
+:nmap <silent> <Leader>dw <Plug>DashSearch
+map <Leader>ds :Dash<Space>
+
+
 call plug#end()
 
 " backups
