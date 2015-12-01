@@ -10,6 +10,9 @@ map <Leader>i :PlugInstall<CR>
 Plug 'rking/ag.vim'
 nnoremap <leader>a :Ag -i<space>
 
+" vim tab completion
+Plug 'ervandew/supertab'
+
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
@@ -243,8 +246,8 @@ function! InsertTabWrapper()
   endif
 endfunction
 
-noremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
+"noremap <Tab> <c-r>=InsertTabWrapper()<cr>
+"inoremap <S-Tab> <c-n>
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
