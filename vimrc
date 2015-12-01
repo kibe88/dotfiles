@@ -380,6 +380,10 @@ autocmd BufWritePre * :%s/\s\+$//e
 " clear search matching shortcut
 noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
+" creates a private gist from the visual selection with the filename as the gist name
+" requires gist cli tool
+noremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
+
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
