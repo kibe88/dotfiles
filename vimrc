@@ -303,7 +303,7 @@ set foldmethod=syntax
 nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
 exec 'nnoremap <leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
 nnoremap <leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
-nnoremap <leader>ez <C-w>s<C-w>j:e ~/.zshrc<cr>
+nnoremap <leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
 nnoremap <leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
 
 " vim config file configuration
