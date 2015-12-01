@@ -42,21 +42,29 @@ let g:syntastic_make_checkers = ['gnumake']
 
 Plug 'morhetz/gruvbox'
 
-
 Plug 'scrooloose/nerdtree'
 map <Leader>s :NERDTreeToggle<CR>
+set guioptions-=r
+set guioptions-=L
 
 "TMUX integration
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
+let g:VimuxHeight = "30"
 
-" rspec mappings
-Plug 'thoughtbot/vim-rspec'
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>n :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>as :call RunAllSpecs()<CR>
-let g:rspec_command = 'call VimuxRunCommand("rspec {spec}\n")'
+" tmux + vim + rspec integration
+Plug 'skalnik/vim-vroom'
+let g:vroom_use_vimux = 1
+" reset vrom mappings
+let g:vroom_map_keys = 0
+" override default vroom mappings
+nnoremap <Leader>rc :VroomRunTestFile<CR>
+nnoremap <Leader>rn :VroomRunNearestTest<CR>
+nnoremap <Leader>rn :VroomRunLastTest<CR>
+
+Plug 'tpope/vim-bundler'
+nnoremap <Leader>b :Bundle<CR>
+nnoremap <Leader>be :Bopen<CR>
 
 Plug 'scrooloose/nerdcommenter'
 
