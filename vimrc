@@ -384,6 +384,9 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " requires gist cli tool
 noremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
 
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
