@@ -153,6 +153,16 @@ Plug 'airblade/vim-gitgutter'
 " (python, haml)
 Plug 'michaeljsmith/vim-indent-object'
 
+" window buffer to take simple notes in the current vim session
+" keybidings:
+" gs in normal mode opens the scratch window and enters insert mode. The scratch
+" window closes when you leave insert mode.
+" gs in visual mode pastes the current selection (character-wise, line-wise or
+" block-wise) into the scratch buffer.
+Plug 'mtth/scratch.vim'
+" let g:scratch_insert_autohide = 1
+"let g:scratch_autohide = 0
+
 call plug#end()
 
 " backups
