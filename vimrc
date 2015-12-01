@@ -377,6 +377,9 @@ endif
 " remove trailing whitespace after save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" clear search matching shortcut
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
