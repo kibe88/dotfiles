@@ -331,3 +331,6 @@ set diffopt+=vertical
 if &term =~ '256color'
     set t_ut=
 endif
+
+" remove trailing whitespace after save
+autocmd BufWritePre * :%s/\s\+$//e
