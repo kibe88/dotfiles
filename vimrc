@@ -387,6 +387,9 @@ noremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
+" maps commom vi typos so we won't go insane
+command! W :w
+
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
