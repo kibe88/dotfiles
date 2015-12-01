@@ -122,7 +122,7 @@ let g:ctrlp_working_path_mode = ''
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
- nmap <leader>be :EasyBufferToggle<cr>
+ nmap <leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
