@@ -19,9 +19,12 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-"Syntastic is a syntax checking plugin for Vim 
+"Syntastic is a syntax checking plugin for Vim
 Plug 'scrooloose/syntastic'
 Plug 'myint/syntastic-extras'
+if !exists("statusline")
+    set statusline = ""
+endif
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
