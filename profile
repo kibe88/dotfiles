@@ -62,10 +62,10 @@ else
 fi
 
 # Ignore case when using auto competion
-bind "set completion-ignore-case on"
+set completion-ignore-case on
 
 # This makes it unnecessary to press Tab twice when there is more than one match
-bind "set show-all-if-ambiguous on"
+set show-all-if-ambiguous on
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
