@@ -6,7 +6,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
-# Make sure extglob is enabled: 
+# Make sure extglob is enabled:
 shopt -s extglob
 
 # Loads shell dotfiles, and then some:
@@ -32,7 +32,7 @@ if commandExists brew; then
   else
       echo "WARNING: Can't find bash_completion.sh"
   fi
-  
+
   export VIRTUALENVWRAPPER_VIRTUALENV=$(brew --prefix)/bin/virtualenv
   export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
