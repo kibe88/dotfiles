@@ -279,7 +279,6 @@ endfunction
 "noremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
 
-
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
 
