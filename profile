@@ -110,8 +110,8 @@ if ! shopt -oq posix; then
    fi
 fi
 
+export PATH="$HOME/.rbenv/bin:$PATH"
 if commandExists rbenv; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 fi
