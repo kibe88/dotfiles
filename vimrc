@@ -169,6 +169,9 @@ map <Leader>ds :Dash<Space>
 
 Plug 'danro/rename.vim'
 
+Plug 'szw/vim-tags'
+map <Leader>ct :TagsGenerate!<CR>
+
 call plug#end()
 
 " backups
@@ -278,9 +281,6 @@ endfunction
 
 "noremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
 
 nnoremap <leader><leader> <c-^>
 
