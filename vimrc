@@ -167,6 +167,7 @@ Plug 'rizzatti/dash.vim'
 :nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
+Plug 'danro/rename.vim'
 
 call plug#end()
 
