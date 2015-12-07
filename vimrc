@@ -70,6 +70,7 @@ Plug 'scrooloose/nerdtree'
 map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
+let NERDTreeWinSize=28
 
 " TMUX integration
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
