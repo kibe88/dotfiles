@@ -1,6 +1,7 @@
 let mapleader = ","
 let maplocalleader = "\\"
 let dotvim=expand('<sfile>:p:h') . "/.vim/"
+set nocompatible " turn off vi compat
 
 call plug#begin('~/.vim/plugged')
 
@@ -301,7 +302,6 @@ set splitbelow
 set splitright
 
 " backspace acting normally
-set nocompatible
 set backspace=2
 
 " turns filetype plugins on
