@@ -8,8 +8,6 @@ alias amsterdam-server="SOLR_URL=http://localhost:8983/ rails s -p 3001"
 alias monaco-server="bin/rails s -p 3000"
 alias library-server="SOLR_URL=http://localhost:8983/solr/library bin/rails s -p 3002"
 
-alias befrun='bundle exec foreman run'
-alias befstart='bundle exec foreman start'
+alias hi="clear"
 
 [ -r "~/.aliases.local" ] && [ -f "~/.aliases.local" ] && source "~/.aliases.local";
-

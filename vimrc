@@ -1,28 +1,45 @@
 let mapleader = ","
 let maplocalleader = "\\"
 let dotvim=expand('<sfile>:p:h') . "/.vim/"
+set nocompatible " turn off vi compat
 
 call plug#begin('~/.vim/plugged')
 
-"map plugin installation
+" easy plugin installation
 map <Leader>i :PlugInstall<CR>
 
+" shows silverlight search results in a split window
 Plug 'rking/ag.vim'
 nnoremap <leader>a :Ag -i<space>
 
-" vim tab completion
-Plug 'ervandew/supertab'
+" Configures all tab related plugins
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " snippets collection
+" Map ultisnips triggers to tab
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+Plug 'mattn/emmet-vim' " zencode html output
+let g:user_emmet_leader_key='<Tab>' "maps emmet trigger to tab
+" Enable emmet just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,erb,css EmmetInstall
+Plug 'ervandew/supertab' " awesome tab
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" git wrapper
 Plug 'tpope/vim-fugitive'
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+
 Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
+nmap <Leader>ea <Plug>(EasyAlign)
+
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-"Syntastic is a syntax checking plugin for Vim
+"syntax checker
 Plug 'scrooloose/syntastic'
 Plug 'myint/syntastic-extras'
 if !exists("statusline")
@@ -46,17 +63,20 @@ let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
 
+" colorscheme
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
 map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
+let NERDTreeWinSize=28
 
-"TMUX integration
+" TMUX integration
+" See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxHeight = "30"
+let g:VimuxHeight = "20"
 
 " tmux + vim + rspec integration
 Plug 'skalnik/vim-vroom'
@@ -92,7 +112,6 @@ Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-markdown'
 Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim'
-Plug 'mattn/emmet-vim'
 
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -100,7 +119,6 @@ au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expan
 au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
-let g:user_emmet_leader_key='<C-x>'
 
 " Creates non existente dirs automatically
 Plug 'pbrisbin/vim-mkdir'
@@ -171,6 +189,14 @@ Plug 'danro/rename.vim'
 
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
+
+" ReactJS syntax highlighting (depends on vim javascript)
+Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
+let javascript_enable_domhtmlcss = 1
+
+" Vim motion plugin that jumps to any location specified by two characters
+Plug 'justinmk/vim-sneak'
+let g:sneak#streak = 1
 
 call plug#end()
 
@@ -282,8 +308,6 @@ endfunction
 "noremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
 
-nnoremap <leader><leader> <c-^>
-
 " force navigation through hjkl
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
@@ -301,7 +325,6 @@ set splitbelow
 set splitright
 
 " backspace acting normally
-set nocompatible
 set backspace=2
 
 " turns filetype plugins on
@@ -336,10 +359,6 @@ noremap <leader>bn :bnext<cr>
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
 nnoremap <leader>sv <C-w>v<C-w>l
 nnoremap <leader>sh <C-w>s<C-w>j
-
-"folding
-set foldlevelstart=0
-set foldmethod=syntax
 
 " quickly edit config files
 nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
@@ -399,3 +418,13 @@ vnoremap zz za
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
+
+" opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
+nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Reload files changed outside vim. This makes vim act like most editors.
+" see: http://items.sjbach.com/319/configuring-vim-right
+set autoread
