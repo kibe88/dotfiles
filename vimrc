@@ -36,7 +36,6 @@ nmap <Leader>ea <Plug>(EasyAlign)
 
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
