@@ -1,8 +1,6 @@
 # cask
 alias cask='brew cask'
 
-
-# Arremate arte
 alias befrun='bundle exec foreman run'
 alias befstart='bundle exec foreman start'
 
@@ -12,4 +10,6 @@ alias library-server="SOLR_URL=http://localhost:8983/solr/library bin/rails s -p
 
 alias befrun='bundle exec foreman run'
 alias befstart='bundle exec foreman start'
-alias solr='sudo /opt/solr-5.3.1/bin/solr restart -Dsolr.solr.home=/home/renatorufino/projects/opsworks-cookbooks/solr-config/files/default'
+
+[ -r "~/.aliases.local" ] && [ -f "~/.aliases.local" ] && source "~/.aliases.local";
+
