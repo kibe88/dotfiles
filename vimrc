@@ -308,8 +308,6 @@ endfunction
 "noremap <Tab> <c-r>=InsertTabWrapper()<cr>
 "inoremap <S-Tab> <c-n>
 
-nnoremap <leader><leader> <c-^>
-
 " force navigation through hjkl
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
