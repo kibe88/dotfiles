@@ -5,9 +5,10 @@ set nocompatible " turn off vi compat
 
 call plug#begin('~/.vim/plugged')
 
-"map plugin installation
+" easy plugin installation
 map <Leader>i :PlugInstall<CR>
 
+" shows silverlight search results in a split window
 Plug 'rking/ag.vim'
 nnoremap <leader>a :Ag -i<space>
 
@@ -15,6 +16,7 @@ nnoremap <leader>a :Ag -i<space>
 Plug 'ervandew/supertab'
 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" git wrapper
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-endwise'
@@ -23,7 +25,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-"Syntastic is a syntax checking plugin for Vim
+"syntax checker
 Plug 'scrooloose/syntastic'
 Plug 'myint/syntastic-extras'
 if !exists("statusline")
@@ -47,6 +49,7 @@ let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
 
+" colorscheme
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
@@ -54,7 +57,8 @@ map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
 
-"TMUX integration
+" TMUX integration
+" See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 let g:VimuxHeight = "30"

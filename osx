@@ -4,7 +4,7 @@ sudo -v
 # proper key repeating
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-
+# remove menubar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 # Always show scrollbars
