@@ -76,7 +76,7 @@ let NERDTreeWinSize=28
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxHeight = "30"
+let g:VimuxHeight = "20"
 
 " tmux + vim + rspec integration
 Plug 'skalnik/vim-vroom'
