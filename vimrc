@@ -418,3 +418,7 @@ vnoremap zz za
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
+
+" opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
+nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
+
