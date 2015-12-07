@@ -422,3 +422,6 @@ nnoremap zO zCzO
 " opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
 nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 
+" Fast saving
+nmap <leader>w :w!<cr>
+
