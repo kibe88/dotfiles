@@ -31,6 +31,9 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 
 Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
+nmap <Leader>ea <Plug>(EasyAlign)
+
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
