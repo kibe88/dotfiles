@@ -12,10 +12,19 @@ map <Leader>i :PlugInstall<CR>
 Plug 'rking/ag.vim'
 nnoremap <leader>a :Ag -i<space>
 
-" vim tab completion
-Plug 'ervandew/supertab'
+" Configures all tab related plugins
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " snippets collection
+" Map ultisnips triggers to tab
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+Plug 'mattn/emmet-vim' " zencode html output
+let g:user_emmet_leader_key='<Tab>' "maps emmet trigger to tab
+" Enable emmet just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,erb,css EmmetInstall
+Plug 'ervandew/supertab' " awesome tab
 
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " git wrapper
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/vim-easy-align'
@@ -97,7 +106,6 @@ Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-markdown'
 Plug 'digitaltoad/vim-jade'
 Plug 'slim-template/vim-slim'
-Plug 'mattn/emmet-vim'
 
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -105,7 +113,6 @@ au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expan
 au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
-let g:user_emmet_leader_key='<C-x>'
 
 " Creates non existente dirs automatically
 Plug 'pbrisbin/vim-mkdir'
