@@ -425,3 +425,6 @@ nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Reload files changed outside vim. This makes vim act like most editors.
+" see: http://items.sjbach.com/319/configuring-vim-right
+set autoread
