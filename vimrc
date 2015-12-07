@@ -360,10 +360,6 @@ noremap <leader>bn :bnext<cr>
 nnoremap <leader>sv <C-w>v<C-w>l
 nnoremap <leader>sh <C-w>s<C-w>j
 
-"folding
-set foldlevelstart=0
-set foldmethod=syntax
-
 " quickly edit config files
 nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
 exec 'nnoremap <leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
