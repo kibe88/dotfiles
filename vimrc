@@ -190,6 +190,10 @@ Plug 'danro/rename.vim'
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
 
+" ReactJS syntax highlighting (depends on vim javascript)
+Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
+let javascript_enable_domhtmlcss = 1
+
 call plug#end()
 
 " backups
