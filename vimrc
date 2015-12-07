@@ -194,6 +194,10 @@ map <Leader>ct :TagsGenerate!<CR>
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
 let javascript_enable_domhtmlcss = 1
 
+" Vim motion plugin that jumps to any location specified by two characters
+Plug 'justinmk/vim-sneak'
+let g:sneak#streak = 1
+
 call plug#end()
 
 " backups
