@@ -27,6 +27,9 @@ Plug 'ervandew/supertab' " awesome tab
 
 " git wrapper
 Plug 'tpope/vim-fugitive'
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
