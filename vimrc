@@ -222,6 +222,10 @@ Plug 'matchit.zip'
 " Better startup screen
 Plug 'mhinz/vim-startify'
 
+" Git repo viewer (like gitk)
+Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+map <Leader>gv :Gitv<CR>
+
 call plug#end()
 
 " backups
