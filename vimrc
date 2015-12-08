@@ -219,6 +219,9 @@ Plug 'thirtythreeforty/lessspace.vim'
 " Installs the most recent version of match it
 Plug 'matchit.zip'
 
+" Better startup screen
+Plug 'mhinz/vim-startify'
+
 call plug#end()
 
 " backups
