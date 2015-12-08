@@ -268,7 +268,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set wrap
-set formatoptions=qrn1
+set formatoptions+=j
 set cpo+=J
 
 " Numbers
