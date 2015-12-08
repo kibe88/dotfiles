@@ -180,7 +180,7 @@ Plug 'mtth/scratch.vim'
 "let g:scratch_autohide = 0
 
 Plug 'rizzatti/dash.vim'
-:nmap <silent> <Leader>dw <Plug>DashSearch
+nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
 Plug 'danro/rename.vim'
