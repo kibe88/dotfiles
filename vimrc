@@ -350,7 +350,6 @@ augroup ft_vim
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
-" general stuff
 " Don't redraw while executing macros
 set nolazyredraw
 
