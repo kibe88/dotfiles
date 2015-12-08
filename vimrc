@@ -216,6 +216,9 @@ augroup END
 " Remove whitespace only from edited lines
 Plug 'thirtythreeforty/lessspace.vim'
 
+" Installs the most recent version of match it
+Plug 'matchit.zip'
+
 call plug#end()
 
 " backups
