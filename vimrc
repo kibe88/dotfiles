@@ -196,6 +196,10 @@ let javascript_enable_domhtmlcss = 1
 Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
 
+" Set number in insert mode and provides a toggler between number/relativenumber
+Plug 'myusuf3/numbers.vim'
+nnoremap <Leader>nt :NumbersToggle<CR>
+
 call plug#end()
 
 " backups
@@ -214,9 +218,6 @@ set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8
 set history=1000
-if exists('+relativenumber')
-  set relativenumber
-endif
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
 set wildmenu
 
