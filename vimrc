@@ -213,7 +213,6 @@ set noswapfile
 " general settings
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8
@@ -238,9 +237,6 @@ exec 'set undodir='.dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
-
-" search config
-noremap <leader><space> :noh<cr>:call clearmatchesr search matching()<cr> "clear search matching
 
 " keybind to source vimrc
 nnoremap <Leader>v :source $MYVIMRC<CR>
@@ -336,7 +332,9 @@ vnoremap <leader>yo "*y
 nnoremap <leader>po "*p
 
 " clear highlight after search
-noremap <silent><Leader>/ :nohls<CR>
+noremap <silent><Leader><space> :nohls<CR>
+set hlsearch " turn on search highlighting
+set incsearch " do incremental searching
 
 " better ESC
 inoremap <C-k> <Esc>
@@ -394,9 +392,6 @@ endif
 
 " remove trailing whitespace after save
 autocmd BufWritePre * :%s/\s\+$//e
-
-" clear search matching shortcut
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " creates a private gist from the visual selection with the filename as the gist name
 " requires gist cli tool
