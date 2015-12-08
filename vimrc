@@ -400,3 +400,6 @@ nmap <leader>w :w!<cr>
 " see: http://items.sjbach.com/319/configuring-vim-right
 set autoread
 set fileformats+=mac
+
+" set ctags filepath
+setglobal tags-=./tags tags-=./tags; tags^=./tags;
