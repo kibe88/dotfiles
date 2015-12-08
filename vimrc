@@ -200,6 +200,9 @@ let g:sneak#streak = 1
 Plug 'myusuf3/numbers.vim'
 nnoremap <Leader>nt :NumbersToggle<CR>
 
+" Automatic closing off quotes, brackets and such
+Plug 'Raimondi/delimitMate'
+
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
 map <silent><Leader>rw :StripWhitespace<CR>
