@@ -200,6 +200,19 @@ let g:sneak#streak = 1
 Plug 'myusuf3/numbers.vim'
 nnoremap <Leader>nt :NumbersToggle<CR>
 
+Plug 'ntpeters/vim-better-whitespace'
+let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
+map <silent><Leader>rw :StripWhitespace<CR>
+" Show trailing whitespace on insert mode only
+let g:better_whitespace_enabled = 0
+augroup trailing
+    au!
+    au InsertEnter * :EnableWhitespace
+    au InsertLeave * :DisableWhitespace
+augroup END
+" Remove whitespace only from edited lines
+Plug 'thirtythreeforty/lessspace.vim'
+
 call plug#end()
 
 " backups
@@ -223,14 +236,6 @@ set wildmenu
 " Reselect visual block after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
-
-" Show trailing whitespace on insert mode only
-augroup trailing
-    au!
-    au InsertEnter * :set listchars-=trail:␣
-    au InsertLeave * :set listchars+=trail:␣
-augroup END
-
 
 " undo files
 exec 'set undodir='.dotvim.'/tmp/undo//'
@@ -367,8 +372,6 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-" remove trailing whitespace after save
-autocmd BufWritePre * :%s/\s\+$//e
 
 " creates a private gist from the visual selection with the filename as the gist name
 " requires gist cli tool
