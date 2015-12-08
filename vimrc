@@ -39,12 +39,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+ " statusbar
+ Plug 'bling/vim-airline'
+ let g:airline_powerline_fonts = 1
+
 "syntax checker
 Plug 'scrooloose/syntastic'
 Plug 'myint/syntastic-extras'
-if !exists("statusline")
-    set statusline = ""
-endif
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -153,9 +154,6 @@ augroup cline
     au InsertEnter * set nocursorline
     au InsertLeave * set cursorline
 augroup END
-
- " statusbar
- Plug 'bling/vim-airline'
 
  " indentation guidelines
  Plug 'Yggdroot/indentLine'
