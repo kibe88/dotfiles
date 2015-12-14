@@ -176,8 +176,8 @@ Plug 'michaeljsmith/vim-indent-object'
 " gs in visual mode pastes the current selection (character-wise, line-wise or
 " block-wise) into the scratch buffer.
 Plug 'mtth/scratch.vim'
-" let g:scratch_insert_autohide = 1
-"let g:scratch_autohide = 0
+"scratch needs it to be set to autohide window when leaving insert mode"
+set hidden 
 
 Plug 'rizzatti/dash.vim'
 nmap <silent> <Leader>dw <Plug>DashSearch
