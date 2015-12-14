@@ -34,7 +34,7 @@
 	df = diff --color --color-words --abbrev
     st = status -s
 [core]
-	excludesfile = /Users/kibe/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 [push]
 	default = simple
