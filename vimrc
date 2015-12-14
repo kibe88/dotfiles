@@ -45,7 +45,6 @@ Plug 'tpope/vim-unimpaired'
 
 "syntax checker
 Plug 'scrooloose/syntastic'
-Plug 'myint/syntastic-extras'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -59,7 +58,8 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
-
+" additional checkers
+Plug 'myint/syntastic-extras'
 let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
@@ -95,7 +95,7 @@ nnoremap <Leader>be :Bopen<CR>
 
 Plug 'scrooloose/nerdcommenter'
 
-"Rails
+" Ruby on Rails integration
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'kana/vim-textobj-user'
@@ -107,7 +107,7 @@ Plug 'tpope/vim-rbenv'
 autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-"Html
+" Html formatting
 Plug 'tpope/vim-haml'
 Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-markdown'
@@ -207,9 +207,10 @@ nnoremap <Leader>nt :NumbersToggle<CR>
 " Automatic closing off quotes, brackets and such
 Plug 'Raimondi/delimitMate'
 
+" Configures whitespace behavior
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
-map <silent><Leader>rw :StripWhitespace<CR>
+map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
 " Show trailing whitespace on insert mode only
 let g:better_whitespace_enabled = 0
 augroup trailing
@@ -389,7 +390,6 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-
 " creates a private gist from the visual selection with the filename as the gist name
 " requires gist cli tool
 noremap <Leader>G :w !gist -p -t %:e \| pbcopy<cr>
@@ -403,9 +403,11 @@ command! W :w
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
+
 " zz to toggle folds.
 nnoremap zz za
 vnoremap zz za
+
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
