@@ -10,7 +10,7 @@ map <Leader>i :PlugInstall<CR>
 
 " shows silverlight search results in a split window
 Plug 'rking/ag.vim'
-nnoremap <leader>a :Ag -i<space>
+nnoremap <Leader>a :Ag -i<space>
 
 " Configures all tab related plugins
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " snippets collection
@@ -141,7 +141,7 @@ let g:ctrlp_working_path_mode = ''
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
- nmap <leader>bt :EasyBufferToggle<cr>
+ nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
@@ -180,10 +180,10 @@ Plug 'mtth/scratch.vim'
 set hidden 
 " sets keys to my liking (<Leader>gs is already used by fugitive)
 let g:scratch_no_mappings = 1
-nmap <leader>n <plug>(scratch-insert-reuse)
-nmap <leader>N <plug>(scratch-insert-clear)
-xmap <leader>n <plug>(scratch-selection-reuse)
-xmap <leader>N <plug>(scratch-selection-clear)
+nmap <Leader>n <plug>(scratch-insert-reuse)
+nmap <Leader>N <plug>(scratch-insert-clear)
+xmap <Leader>n <plug>(scratch-selection-reuse)
+xmap <Leader>N <plug>(scratch-selection-clear)
 
 Plug 'rizzatti/dash.vim'
 nmap <silent> <Leader>dw <Plug>DashSearch
@@ -274,7 +274,7 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 
 " Open a Quickfix window for the last search.
-nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " colorscheme
 set background=dark
@@ -330,8 +330,8 @@ filetype plugin indent on
 " Yank from current cursor position to end of line
 map Y y$
 " Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
-vnoremap <leader>yo "*y
-nnoremap <leader>po "*p
+vnoremap <Leader>yo "*y
+nnoremap <Leader>po "*p
 
 " clear highlight after search
 noremap <silent><Leader><space> :nohls<CR>
@@ -352,19 +352,19 @@ nnoremap <Leader>tp :tabprevious<CR>
 nnoremap <Leader>tn :tabnext<CR>
 
 " easy buffer navigation
-noremap <leader>bp :bprevious<cr>
-noremap <leader>bn :bnext<cr>
+noremap <Leader>bp :bprevious<cr>
+noremap <Leader>bn :bnext<cr>
 
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
-nnoremap <leader>sv <C-w>v<C-w>l
-nnoremap <leader>sh <C-w>s<C-w>j
+nnoremap <Leader>sv <C-w>v<C-w>l
+nnoremap <Leader>sh <C-w>s<C-w>j
 
 " quickly edit config files
-nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
-exec 'nnoremap <leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
-nnoremap <leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
-nnoremap <leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
-nnoremap <leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
+nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
+exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
+nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
+nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
+nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
 
 " vim config file configuration
 augroup ft_vim
@@ -394,7 +394,7 @@ endif
 
 " creates a private gist from the visual selection with the filename as the gist name
 " requires gist cli tool
-noremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
+noremap <Leader>G :w !gist -p -t %:e \| pbcopy<cr>
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -416,7 +416,7 @@ nnoremap zO zCzO
 nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <Leader>w :w!<cr>
 
 " Reload files changed outside vim. This makes vim act like most editors.
 " see: http://items.sjbach.com/319/configuring-vim-right
