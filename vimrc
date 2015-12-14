@@ -171,6 +171,9 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " window buffer to take simple notes in the current vim session
 Plug 'mtth/scratch.vim'
+let g:scratch_horizontal = 0 " set scratch to open vertically
+let g:scratch_top = 0 " when scratch is set to open vertically top means _left
+let g:scratch_height = 40
 "scratch needs it to be set to autohide window when leaving insert mode"
 set hidden 
 " sets keys to my liking (<Leader>gs is already used by fugitive)
