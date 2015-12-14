@@ -47,5 +47,4 @@ unp
 unrar
 vim
 webp
-wellington
 wget
