@@ -87,7 +87,7 @@ let g:vroom_map_keys = 0
 " override default vroom mappings
 nnoremap <Leader>rc :VroomRunTestFile<CR>
 nnoremap <Leader>rn :VroomRunNearestTest<CR>
-nnoremap <Leader>rn :VroomRunLastTest<CR>
+nnoremap <Leader>rl :VroomRunLastTest<CR>
 
 Plug 'tpope/vim-bundler'
 nnoremap <Leader>b :Bundle<CR>
