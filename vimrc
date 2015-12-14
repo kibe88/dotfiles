@@ -178,6 +178,12 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'mtth/scratch.vim'
 "scratch needs it to be set to autohide window when leaving insert mode"
 set hidden 
+" sets keys to my liking (<Leader>gs is already used by fugitive)
+let g:scratch_no_mappings = 1
+nmap <leader>n <plug>(scratch-insert-reuse)
+nmap <leader>N <plug>(scratch-insert-clear)
+xmap <leader>n <plug>(scratch-selection-reuse)
+xmap <leader>N <plug>(scratch-selection-clear)
 
 Plug 'rizzatti/dash.vim'
 nmap <silent> <Leader>dw <Plug>DashSearch
