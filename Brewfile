@@ -1,15 +1,50 @@
-install wget
-install boot2docker
-install tmux
-install bash-completion
-
-install p7zip
-install unrar
-install unp
-
-tap thoughtbot/formulae
-install rcm
-
-install vim
-install macvim
-
+advancecomp
+bash-completion
+caskroom/cask/brew-cask
+cloog
+ctags
+docker
+docker-compose
+ec2-ami-tools
+elasticsearch
+emacs
+ffmpeg
+gcc
+gifsicle
+gist
+gtk+
+htop-osx
+hub
+imagemagick
+jhead
+jpegoptim
+homebrew/dupes/libiconv
+librsvg
+libxml2
+little-cms2
+macvim
+memcached
+mysql
+node
+optipng
+ossp-uuid
+homebrew/php/php56
+pngcrush
+pngquant
+portaudio
+postgresql
+python3
+rbenv
+thoughtbot/formulae/rcm
+reattach-to-user-namespace
+redis
+ruby-build
+solr
+the_silver_searcher
+tmux
+tmux-mem-cpu-load
+unp
+unrar
+vim
+webp
+wget

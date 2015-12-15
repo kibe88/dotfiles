@@ -10,7 +10,7 @@ map <Leader>i :PlugInstall<CR>
 
 " shows silverlight search results in a split window
 Plug 'rking/ag.vim'
-nnoremap <leader>a :Ag -i<space>
+nnoremap <Leader>a :Ag -i<space>
 
 " Configures all tab related plugins
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " snippets collection
@@ -41,12 +41,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
+ " statusbar
+ Plug 'bling/vim-airline'
+ let g:airline_powerline_fonts = 1
+
 "syntax checker
 Plug 'scrooloose/syntastic'
-Plug 'myint/syntastic-extras'
-if !exists("statusline")
-    set statusline = ""
-endif
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -60,7 +60,8 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
-
+" additional checkers
+Plug 'myint/syntastic-extras'
 let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
@@ -78,7 +79,7 @@ let NERDTreeWinSize=28
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxHeight = "20"
+let g:VimuxHeight = "25"
 
 " tmux + vim + rspec integration
 Plug 'skalnik/vim-vroom'
@@ -88,7 +89,7 @@ let g:vroom_map_keys = 0
 " override default vroom mappings
 nnoremap <Leader>rc :VroomRunTestFile<CR>
 nnoremap <Leader>rn :VroomRunNearestTest<CR>
-nnoremap <Leader>rn :VroomRunLastTest<CR>
+nnoremap <Leader>rl :VroomRunLastTest<CR>
 
 Plug 'tpope/vim-bundler'
 nnoremap <Leader>b :Bundle<CR>
@@ -96,7 +97,7 @@ nnoremap <Leader>be :Bopen<CR>
 
 Plug 'scrooloose/nerdcommenter'
 
-"Rails
+" Ruby on Rails integration
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'kana/vim-textobj-user'
@@ -108,7 +109,7 @@ Plug 'tpope/vim-rbenv'
 autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-"Html
+" Html formatting
 Plug 'tpope/vim-haml'
 Plug 'juvenn/mustache.vim'
 Plug 'tpope/vim-markdown'
@@ -142,7 +143,7 @@ let g:ctrlp_working_path_mode = ''
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
- nmap <leader>bt :EasyBufferToggle<cr>
+ nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
@@ -171,17 +172,21 @@ Plug 'airblade/vim-gitgutter'
 Plug 'michaeljsmith/vim-indent-object'
 
 " window buffer to take simple notes in the current vim session
-" keybidings:
-" gs in normal mode opens the scratch window and enters insert mode. The scratch
-" window closes when you leave insert mode.
-" gs in visual mode pastes the current selection (character-wise, line-wise or
-" block-wise) into the scratch buffer.
 Plug 'mtth/scratch.vim'
-" let g:scratch_insert_autohide = 1
-"let g:scratch_autohide = 0
+let g:scratch_horizontal = 0 " set scratch to open vertically
+let g:scratch_top = 0 " when scratch is set to open vertically top means _left
+let g:scratch_height = 40
+"scratch needs it to be set to autohide window when leaving insert mode"
+set hidden 
+" sets keys to my liking (<Leader>gs is already used by fugitive)
+let g:scratch_no_mappings = 1
+nmap <Leader>n <plug>(scratch-insert-reuse)
+nmap <Leader>N <plug>(scratch-insert-clear)
+xmap <Leader>n <plug>(scratch-selection-reuse)
+xmap <Leader>N <plug>(scratch-selection-clear)
 
 Plug 'rizzatti/dash.vim'
-:nmap <silent> <Leader>dw <Plug>DashSearch
+nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
 " Rename the current buffer
@@ -199,9 +204,36 @@ let javascript_enable_domhtmlcss = 1
 Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
 
-" statusbar
-Plug 'bling/vim-airline'
-let g:airline_powerline_fonts=1
+" Set number in insert mode and provides a toggler between number/relativenumber
+Plug 'myusuf3/numbers.vim'
+nnoremap <Leader>nt :NumbersToggle<CR>
+
+" Automatic closing off quotes, brackets and such
+Plug 'Raimondi/delimitMate'
+
+" Configures whitespace behavior
+Plug 'ntpeters/vim-better-whitespace'
+let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
+        map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
+" Show trailing whitespace on insert mode only
+let g:better_whitespace_enabled = 0
+augroup trailing
+    au!
+    au InsertEnter * :EnableWhitespace
+    au InsertLeave * :DisableWhitespace
+augroup END
+" Remove whitespace only from edited lines
+Plug 'thirtythreeforty/lessspace.vim'
+
+" Installs the most recent version of match it
+Plug 'vim-scripts/matchit.zip'
+
+" Better startup screen
+Plug 'mhinz/vim-startify'
+
+" Git repo viewer (like gitk)
+Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+map <Leader>gv :Gitv<CR>
 
 call plug#end()
 
@@ -216,14 +248,10 @@ set noswapfile
 " general settings
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
-set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set encoding=utf-8
 set history=1000
-if exists('+relativenumber')
-  set relativenumber
-endif
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc
 set wildmenu
 
@@ -231,22 +259,11 @@ set wildmenu
 vnoremap < <gv
 vnoremap > >gv
 
-" Show trailing whitespace on insert mode only
-augroup trailing
-    au!
-    au InsertEnter * :set listchars-=trail:␣
-    au InsertLeave * :set listchars+=trail:␣
-augroup END
-
-
 " undo files
 exec 'set undodir='.dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
-
-" search config
-noremap <leader><space> :noh<cr>:call clearmatchesr search matching()<cr> "clear search matching
 
 " keybind to source vimrc
 nnoremap <Leader>v :source $MYVIMRC<CR>
@@ -260,13 +277,7 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 
 " Open a Quickfix window for the last search.
-nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-
-" Highlight word
-nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
-nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " colorscheme
 set background=dark
@@ -284,7 +295,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set wrap
-set formatoptions=qrn1
+set formatoptions+=j
 set cpo+=J
 
 " Numbers
@@ -296,22 +307,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-
-"noremap <Tab> <c-r>=InsertTabWrapper()<cr>
-"inoremap <S-Tab> <c-n>
 
 " force navigation through hjkl
 nnoremap <Left> :echoe "Use h"<CR>
@@ -338,11 +333,13 @@ filetype plugin indent on
 " Yank from current cursor position to end of line
 map Y y$
 " Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
-vnoremap <leader>yo "*y
-nnoremap <leader>po "*p
+vnoremap <Leader>yo "*y
+nnoremap <Leader>po "*p
 
 " clear highlight after search
-noremap <silent><Leader>/ :nohls<CR>
+noremap <silent><Leader><space> :nohls<CR>
+set hlsearch " turn on search highlighting
+set incsearch " do incremental searching
 
 " better ESC
 inoremap <C-k> <Esc>
@@ -358,19 +355,19 @@ nnoremap <Leader>tp :tabprevious<CR>
 nnoremap <Leader>tn :tabnext<CR>
 
 " easy buffer navigation
-noremap <leader>bp :bprevious<cr>
-noremap <leader>bn :bnext<cr>
+noremap <Leader>bp :bprevious<cr>
+noremap <Leader>bn :bnext<cr>
 
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
-nnoremap <leader>sv <C-w>v<C-w>l
-nnoremap <leader>sh <C-w>s<C-w>j
+nnoremap <Leader>sv <C-w>v<C-w>l
+nnoremap <Leader>sh <C-w>s<C-w>j
 
 " quickly edit config files
-nnoremap <leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
-exec 'nnoremap <leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
-nnoremap <leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
-nnoremap <leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
-nnoremap <leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
+nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
+exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
+nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
+nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
+nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
 
 " vim config file configuration
 augroup ft_vim
@@ -380,14 +377,13 @@ augroup ft_vim
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
-" general stuff
 " Don't redraw while executing macros
 set nolazyredraw
 
 " Disable the macvim toolbar
 set guioptions-=T
 
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:␣
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
 
 " Always use vertical diffs
@@ -398,15 +394,9 @@ if &term =~ '256color'
     set t_ut=
 endif
 
-" remove trailing whitespace after save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" clear search matching shortcut
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
-
 " creates a private gist from the visual selection with the filename as the gist name
 " requires gist cli tool
-noremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
+noremap <Leader>G :w !gist -p -t %:e \| pbcopy<cr>
 
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -417,9 +407,11 @@ command! W :w
 " folding options
 set foldlevelstart=0
 set foldmethod=syntax
+
 " zz to toggle folds.
 nnoremap zz za
 vnoremap zz za
+
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
@@ -428,8 +420,12 @@ nnoremap zO zCzO
 nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <Leader>w :w!<cr>
 
 " Reload files changed outside vim. This makes vim act like most editors.
 " see: http://items.sjbach.com/319/configuring-vim-right
 set autoread
+set fileformats+=mac
+
+" set ctags filepath
+setglobal tags-=./tags tags-=./tags; tags^=./tags;
