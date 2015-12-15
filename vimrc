@@ -74,6 +74,15 @@ map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
 let NERDTreeWinSize=28
+" autocloses nerdtree (and therefore vim) if it's the only buffer left
+function! s:CloseNERDTreeIfOnlyBufferLeft()
+  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+    q
+  endif
+endfunction
+augroup autoclose_nerdtree
+  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+augroup END
 
 " TMUX integration
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
