@@ -70,10 +70,11 @@ let g:syntastic_make_checkers = ['gnumake']
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
-map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
-let NERDTreeWinSize=28
+let g:NERDTreeWinSize=28
+let g:NERDTreeChDirMode=2
+map <Leader>s :NERDTreeToggle<CR>
 " autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
   if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
