@@ -1302,9 +1302,11 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSColorPanelMode</key>
-	<string>6</string>
+	<string>1</string>
 	<key>NSColorPickerPageableNameListDefaults</key>
 	<string>1Apple</string>
+	<key>NSColorPickerSlidersDefaults</key>
+	<string>1</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dotfiles/iterm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -1346,7 +1348,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>190 158 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>5 22 1270 755 0 0 1280 777 </string>
+	<string>7 64 1276 706 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1541,7 +1543,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>200</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -1908,7 +1910,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
-			<integer>25</integer>
+			<integer>45</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -2075,10 +2077,12 @@
 			<string>/Users/rrufino</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453436181.11899298</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>471626576.898413</real>
+	<real>471846661.07952201</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
@@ -2145,7 +2149,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-12-14T08:43:55Z</date>
+	<date>2015-12-15T08:44:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUSkippedVersion</key>
