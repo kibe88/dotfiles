@@ -201,6 +201,7 @@ let g:sneak#streak = 1
 
 " statusbar
 Plug 'bling/vim-airline'
+let g:airline_powerline_fonts=1
 
 call plug#end()
 
