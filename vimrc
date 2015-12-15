@@ -184,7 +184,9 @@ Plug 'rizzatti/dash.vim'
 :nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
+" Rename the current buffer
 Plug 'danro/rename.vim'
+map <Leader>mv :Rename<CR>
 
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
