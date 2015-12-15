@@ -222,7 +222,7 @@ augroup END
 Plug 'thirtythreeforty/lessspace.vim'
 
 " Installs the most recent version of match it
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
