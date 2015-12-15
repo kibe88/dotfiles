@@ -29,6 +29,8 @@ Plug 'ervandew/supertab' " awesome tab
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gmv :Gmove<CR>
+nnoremap <Leader>gb :GBrowse<CR>
 
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
