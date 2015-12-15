@@ -37,12 +37,8 @@ if commandExists brew; then
   export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
 
-# Enable color themes
-#source ~/.gentoo_colors
-#source ~/.nice_colors
-#source ~/.bash_themes/bcon
-#source ~/.bash_themes/osx
-source ~/.bash_themes/green
+# shell prompt customization
+source ~/.bash_themes/k
 
 # Explictly setting locale cause sometimes osx doesn't
 export LC_ALL=en_US.UTF-8
