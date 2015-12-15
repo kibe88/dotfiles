@@ -49,13 +49,13 @@ export LC_ALL=en_US.UTF-8
 
 # Enable git completion script
 if [ -f ${HOME}/bin/git_completion.sh ]; then
-	source ${HOME}/bin/git_completion.sh
+	source ${HOME}/.bin/git_completion.sh
 else
     echo "WARNING: Can't find git_completion.sh"
 fi
 
 # Enable django completion
-if [ -f ${HOME}/bin/django_bash_completion.sh ]; then
+if [ -f ${HOME}/.bin/django_bash_completion.sh ]; then
     . ${HOME}/bin/django_bash_completion.sh
 else
     echo "WARNING: Can't find django_bash_completion.sh"
