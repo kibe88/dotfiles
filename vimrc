@@ -156,9 +156,6 @@ augroup cline
     au InsertLeave * set cursorline
 augroup END
 
- " statusbar
- Plug 'bling/vim-airline'
-
  " indentation guidelines
  Plug 'Yggdroot/indentLine'
  set list lcs=tab:\|\
@@ -199,6 +196,9 @@ let javascript_enable_domhtmlcss = 1
 " Vim motion plugin that jumps to any location specified by two characters
 Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
+
+" statusbar
+Plug 'bling/vim-airline'
 
 call plug#end()
 
