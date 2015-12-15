@@ -3,6 +3,7 @@ alias cask='brew cask'
 
 alias befrun='bundle exec foreman run'
 alias befstart='bundle exec foreman start'
+alias berspec='bundle exec rspec ./spec'
 
 alias amsterdam-server="SOLR_URL=http://localhost:8983/ rails s -p 3001"
 alias monaco-server="bin/rails s -p 3000"
