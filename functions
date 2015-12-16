@@ -46,3 +46,5 @@ getMyIP() {
 commandExists() {
     type "$1" &> /dev/null ;
 }
+
+is_osx () { [[ $OSTYPE == darwin* ]]; }
