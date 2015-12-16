@@ -69,6 +69,11 @@ let g:syntastic_make_checkers = ['gnumake']
 " colorscheme
 Plug 'morhetz/gruvbox'
 
+" Auto change vim dir based on the 'project' root directory (defaults to vcs)
+Plug 'airblade/vim-rooter'
+let g:rooter_change_directory_for_non_project_files=1 "behaves like autochdir for on project files
+let g:rooter_silent_chdir=1 "don't echo dir after opening a file
+
 Plug 'scrooloose/nerdtree'
 set guioptions-=r
 set guioptions-=L
@@ -148,8 +153,7 @@ if executable('ag')
   " ag is fast enough that ctrlp doesnt need cache
   let g:ctrlp_use_caching = 0
 endif
-
-let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
@@ -240,6 +244,8 @@ Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir=0
+"let g:startify_change_to_vcs_root = 0
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
