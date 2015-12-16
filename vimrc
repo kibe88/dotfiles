@@ -457,3 +457,6 @@ set fileformats+=mac
 
 " set ctags filepath
 setglobal tags-=./tags tags-=./tags; tags^=./tags;
+
+" deals with unsaved buffer more conveniently
+set confirm
