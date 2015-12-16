@@ -37,35 +37,31 @@ if commandExists brew; then
   export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
 
-# Enable color themes
-#source ~/.gentoo_colors
-#source ~/.nice_colors
-#source ~/.bash_themes/bcon
-#source ~/.bash_themes/osx
-source ~/.bash_themes/green
+# shell prompt customization
+source ~/.bash_themes/k
 
 # Explictly setting locale cause sometimes osx doesn't
 export LC_ALL=en_US.UTF-8
 
 # Enable git completion script
 if [ -f ${HOME}/bin/git_completion.sh ]; then
-	source ${HOME}/bin/git_completion.sh
+	source ${HOME}/.bin/git_completion.sh
 else
     echo "WARNING: Can't find git_completion.sh"
 fi
 
 # Enable django completion
-if [ -f ${HOME}/bin/django_bash_completion.sh ]; then
+if [ -f ${HOME}/.bin/django_bash_completion.sh ]; then
     . ${HOME}/bin/django_bash_completion.sh
 else
     echo "WARNING: Can't find django_bash_completion.sh"
 fi
 
-# Ignore case when using auto competion
-set completion-ignore-case on
+# Ignore case when using auto completion
+set completion-ignore-case On
 
 # This makes it unnecessary to press Tab twice when there is more than one match
-set show-all-if-ambiguous on
+set show-all-if-ambiguous On
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

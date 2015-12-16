@@ -29,6 +29,8 @@ Plug 'ervandew/supertab' " awesome tab
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gmv :Gmove<CR>
+nnoremap <Leader>gb :GBrowse<CR>
 
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
@@ -68,10 +70,20 @@ let g:syntastic_make_checkers = ['gnumake']
 Plug 'morhetz/gruvbox'
 
 Plug 'scrooloose/nerdtree'
-map <Leader>s :NERDTreeToggle<CR>
 set guioptions-=r
 set guioptions-=L
-let NERDTreeWinSize=28
+let g:NERDTreeWinSize=28
+let g:NERDTreeChDirMode=2
+map <Leader>s :NERDTreeToggle<CR>
+" autocloses nerdtree (and therefore vim) if it's the only buffer left
+function! s:CloseNERDTreeIfOnlyBufferLeft()
+  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+    q
+  endif
+endfunction
+augroup autoclose_nerdtree
+  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+augroup END
 
 " TMUX integration
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
@@ -187,7 +199,9 @@ Plug 'rizzatti/dash.vim'
 nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
+" Rename the current buffer
 Plug 'danro/rename.vim'
+map <Leader>mv :Rename<CR>
 
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
@@ -210,7 +224,7 @@ Plug 'Raimondi/delimitMate'
 " Configures whitespace behavior
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
-map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
+        map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
 " Show trailing whitespace on insert mode only
 let g:better_whitespace_enabled = 0
 augroup trailing
@@ -222,7 +236,7 @@ augroup END
 Plug 'thirtythreeforty/lessspace.vim'
 
 " Installs the most recent version of match it
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
