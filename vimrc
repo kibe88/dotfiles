@@ -394,8 +394,7 @@ augroup ft_vim
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
-" Don't redraw while executing macros
-set nolazyredraw
+set lazyredraw
 
 " Disable the macvim toolbar
 set guioptions-=T
