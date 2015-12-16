@@ -138,7 +138,7 @@ au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
-" Creates non existente dirs automatically
+" Creates non existent dirs automatically
 Plug 'pbrisbin/vim-mkdir'
 
 " fuzzy file search (edited to use ag)
