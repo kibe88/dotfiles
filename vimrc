@@ -428,6 +428,18 @@ set foldmethod=syntax
 nnoremap zz za
 vnoremap zz za
 
+" zZ to toggle folds recursivily
+nnoremap zZ zA
+vnoremap zZ zA
+
+" za to open all folds
+nnoremap za zR
+vnoremap za zR
+
+" zA to close all folds
+nnoremap zA zM
+vnoremap zA zM
+
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
