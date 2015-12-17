@@ -154,6 +154,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
+let g:ctrlp_reuse_window=1
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
@@ -246,6 +247,9 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir=0
 "let g:startify_change_to_vcs_root = 0
+augroup change_startify_buffer
+  autocmd FileType startify setlocal buftype=
+augroup END
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
