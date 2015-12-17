@@ -37,6 +37,10 @@ if commandExists brew; then
   export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
 
+if is_osx; then
+    source ${HOME}/.osx
+fi
+
 # shell prompt customization
 source ~/.bash_themes/k
 

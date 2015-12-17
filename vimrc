@@ -69,6 +69,11 @@ let g:syntastic_make_checkers = ['gnumake']
 " colorscheme
 Plug 'morhetz/gruvbox'
 
+" Auto change vim dir based on the 'project' root directory (defaults to vcs)
+Plug 'airblade/vim-rooter'
+let g:rooter_change_directory_for_non_project_files=1 "behaves like autochdir for on project files
+let g:rooter_silent_chdir=1 "don't echo dir after opening a file
+
 Plug 'scrooloose/nerdtree'
 set guioptions-=r
 set guioptions-=L
@@ -133,7 +138,7 @@ au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
-" Creates non existente dirs automatically
+" Creates non existent dirs automatically
 Plug 'pbrisbin/vim-mkdir'
 
 " fuzzy file search (edited to use ag)
@@ -148,8 +153,7 @@ if executable('ag')
   " ag is fast enough that ctrlp doesnt need cache
   let g:ctrlp_use_caching = 0
 endif
-
-let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
 
 " Easy buffer management through a single list
  Plug 'troydm/easybuffer.vim'
@@ -240,6 +244,8 @@ Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir=0
+"let g:startify_change_to_vcs_root = 0
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
@@ -300,13 +306,14 @@ set colorcolumn=+1
 
 " indentation
 set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
+set tabstop=4 "4space tab
+set softtabstop=4 "Causes backspace to delete 4 spaces = converted <TAB>
+set shiftwidth=4 "The amount to block indent when using < and >
+set expandtab  "Replaces a <TABwith spaces--more portable
 set wrap
 set formatoptions+=j
 set cpo+=J
+set smarttab "Uses shiftwidth instead of tabstop at start of lines
 
 " Numbers
 set number
@@ -387,8 +394,7 @@ augroup ft_vim
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
-" Don't redraw while executing macros
-set nolazyredraw
+set lazyredraw
 
 " Disable the macvim toolbar
 set guioptions-=T
@@ -422,6 +428,18 @@ set foldmethod=syntax
 nnoremap zz za
 vnoremap zz za
 
+" zZ to toggle folds recursivily
+nnoremap zZ zA
+vnoremap zZ zA
+
+" za to open all folds
+nnoremap za zR
+vnoremap za zR
+
+" zA to close all folds
+nnoremap zA zM
+vnoremap zA zM
+
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
 nnoremap zO zCzO
@@ -439,3 +457,6 @@ set fileformats+=mac
 
 " set ctags filepath
 setglobal tags-=./tags tags-=./tags; tags^=./tags;
+
+" deals with unsaved buffer more conveniently
+set confirm
