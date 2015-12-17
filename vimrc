@@ -19,7 +19,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'mattn/emmet-vim' " zencode html output
-let g:user_emmet_leader_key='<Tab>' "maps emmet trigger to tab
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,erb,css EmmetInstall
