@@ -10,10 +10,6 @@ export EDITOR='vim'
 export ES_MIN_MEM=1024m
 export ES_MAX_MEM=2048m
 
-# http://stackoverflow.com/questions/22697440/cc-failed-with-exit-status-1-error-when-install-python-library
-export CFLAGS=-Qunused-arguments
-export CPPFLAGS=-Qunused-arguments
-
 # boot2docker
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/kibe/.boot2docker/certs/boot2docker-vm

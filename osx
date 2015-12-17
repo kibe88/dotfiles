@@ -1,0 +1,8 @@
+# http://stackoverflow.com/questions/22697440/cc-failed-with-exit-status-1-error-when-install-python-library
+export CFLAGS=-Qunused-arguments
+export CPPFLAGS=-Qunused-arguments
+
+LUNCHY_COMPLETION=$(dirname `gem which lunchy`)/../extras/lunchy-completion.bash
+if [ -f $LUNCHY_COMPLETION ]; then
+    . $LUNCHY_COMPLETION
+fi
