@@ -104,7 +104,7 @@ augroup END
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxHeight = "25"
+let g:VimuxHeight = "30"
 
 " tmux + vim + rspec integration
 Plug 'skalnik/vim-vroom'
