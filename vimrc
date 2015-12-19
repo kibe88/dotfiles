@@ -104,7 +104,8 @@ augroup END
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-let g:VimuxHeight = "30"
+let g:VimuxOrientation="h"
+let g:VimuxHeight = "45"
 " opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
 nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 
