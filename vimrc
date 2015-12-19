@@ -105,6 +105,8 @@ augroup END
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 let g:VimuxHeight = "30"
+" opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
+nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
 
 " tmux + vim + rspec integration
 Plug 'skalnik/vim-vroom'
@@ -220,6 +222,8 @@ map <Leader>mv :Rename<CR>
 
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
+" set ctags filepath
+setglobal tags-=./tags tags-=./tags; tags^=./tags;
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
@@ -458,9 +462,6 @@ vnoremap zA zM
 " cursor happens to be.
 nnoremap zO zCzO
 
-" opens up clean terminal pane in tmux using vimux (hi is an alias to clear)
-nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
-
 " Fast saving
 nmap <Leader>w :w!<cr>
 
@@ -468,9 +469,6 @@ nmap <Leader>w :w!<cr>
 " see: http://items.sjbach.com/319/configuring-vim-right
 set autoread
 set fileformats+=mac
-
-" set ctags filepath
-setglobal tags-=./tags tags-=./tags; tags^=./tags;
 
 " deals with unsaved buffer more conveniently
 set confirm
