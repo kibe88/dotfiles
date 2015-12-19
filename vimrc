@@ -13,16 +13,27 @@ Plug 'rking/ag.vim'
 nnoremap <Leader>a :Ag -i<space>
 
 " Configures all tab related plugins
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " snippets collection
-" Map ultisnips triggers to tab
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-Plug 'mattn/emmet-vim' " zencode html output
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'honza/vim-snippets' " snippets collection
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#disable_runtime_snippets=1 "disable default neosnippets
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+Plug 'mattn/emmet-vim' "zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css EmmetInstall
-Plug 'ervandew/supertab' " awesome tab
+" Tag awesomenewss providing tab chains
+Plug 'neitanod/vim-clevertab'
+inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
+                      \<c-r>=CleverTab#Complete('tab')<CR>
+                      \<c-r>=CleverTab#Complete('neosnippet')<CR>
+                      \<c-r>=CleverTab#Complete('keyword')<CR>
+                      \<c-r>=CleverTab#Complete('neocomplete')<CR>
+                      \<c-r>=CleverTab#Complete('omni')<CR>
+                      \<c-r>=CleverTab#Complete('stop')<CR>
+inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
 
 " git wrapper
 Plug 'tpope/vim-fugitive'
