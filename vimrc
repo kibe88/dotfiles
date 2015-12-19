@@ -437,6 +437,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " maps commom vi typos so we won't go insane
 command! W :w
+command! Wq :wq
+command! Q :q
 
 " folding options
 set foldlevelstart=0
