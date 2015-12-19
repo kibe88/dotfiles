@@ -21,7 +21,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'mattn/emmet-vim' " zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
-autocmd FileType html,erb,css EmmetInstall
+autocmd FileType html,eruby,css EmmetInstall
 Plug 'ervandew/supertab' " awesome tab
 
 " git wrapper
