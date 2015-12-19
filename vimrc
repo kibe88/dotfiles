@@ -219,7 +219,7 @@ map <Leader>ds :Dash<Space>
 
 " Rename the current buffer
 Plug 'danro/rename.vim'
-map <Leader>mv :Rename<CR>
+map <Leader>mv :Rename<Space>
 
 Plug 'szw/vim-tags'
 map <Leader>ct :TagsGenerate!<CR>
