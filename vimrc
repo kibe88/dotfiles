@@ -207,8 +207,8 @@ Plug 'mtth/scratch.vim'
 let g:scratch_horizontal = 0 " set scratch to open vertically
 let g:scratch_top = 0 " when scratch is set to open vertically top means _left
 let g:scratch_height = 45
-"scratch needs it to be set to autohide window when leaving insert mode"
-set hidden 
+"scratch needs this to autohide window when leaving insert mode
+set hidden
 " sets keys to my liking (<Leader>gs is already used by fugitive)
 let g:scratch_no_mappings = 1
 nmap <Leader>n <plug>(scratch-insert-reuse)
@@ -433,7 +433,7 @@ noremap <Leader>G :w !gist -p -t %:e \| pbcopy<cr>
 " Highlight VCS conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-" maps commom vi typos so we won't go insane
+" maps commom vi typos so I won't go insane
 command! W :w
 command! Wq :wq
 command! Q :q
