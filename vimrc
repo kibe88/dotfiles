@@ -18,7 +18,7 @@ Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " snippets collection
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#disable_runtime_snippets=1 "disable default neosnippets
+let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
 Plug 'mattn/emmet-vim' "zencode html output
 " Enable emmet just for html/css
