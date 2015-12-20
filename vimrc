@@ -411,9 +411,6 @@ augroup END
 
 set lazyredraw
 
-" Disable the macvim toolbar
-set guioptions-=T
-
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
 
