@@ -1272,7 +1272,7 @@
 	<key>HideMenuBarInFullscreen</key>
 	<true/>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HighlightTabLabels</key>
@@ -1348,7 +1348,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>190 158 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 0 1271 777 0 0 1280 777 </string>
+	<string>7 0 1270 774 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1908,9 +1908,9 @@
 			<key>Prompt Before Closing 2</key>
 			<integer>0</integer>
 			<key>Right Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Rows</key>
-			<integer>40</integer>
+			<integer>45</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -2082,7 +2082,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453436181.11899298</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>471965845.67246002</real>
+	<real>472221444.08219999</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
