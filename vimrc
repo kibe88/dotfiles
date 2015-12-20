@@ -329,7 +329,6 @@ set tabstop=4 "4space tab
 set softtabstop=4 "Causes backspace to delete 4 spaces = converted <TAB>
 set shiftwidth=4 "The amount to block indent when using < and >
 set expandtab  "Replaces a <TABwith spaces--more portable
-set wrap
 set formatoptions+=j
 set cpo+=J
 set smarttab "Uses shiftwidth instead of tabstop at start of lines
