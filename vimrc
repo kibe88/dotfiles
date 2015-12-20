@@ -1,6 +1,6 @@
 let mapleader = ","
 let maplocalleader = "\\"
-let dotvim=expand('<sfile>:p:h') . "/.vim/"
+let s:dotvim=expand('<sfile>:p:h') . "/.vim/"
 set nocompatible " turn off vi compat
 
 call plug#begin('~/.vim/plugged')
@@ -273,10 +273,10 @@ map <Leader>gv :Gitv<CR>
 call plug#end()
 
 " backups
-exec 'set backupdir='.dotvim.'/tmp/backup//'
+exec 'set backupdir='.s:dotvim.'/tmp/backup//'
 
 " swap into its own dir
-exec 'set directory='.dotvim.'/tmp/swap//'
+exec 'set directory='.s:dotvim.'/tmp/swap//'
 set backup
 set noswapfile
 
@@ -295,7 +295,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " undo files
-exec 'set undodir='.dotvim.'/tmp/undo//'
+exec 'set undodir='.s:dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
@@ -400,7 +400,7 @@ nnoremap <Leader>sh <C-w>s<C-w>j
 
 " quickly edit config files
 nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
-exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.dotvim.'/snippets/<cr>'
+exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.s:dotvim.'/snippets/<cr>'
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
