@@ -181,11 +181,11 @@ let g:ctrlp_reuse_window=1
 
 " Only show cursorline in the current window and in normal mode.
 augroup cline
-    au!
-    au WinLeave * set nocursorline
-    au WinEnter * set cursorline
-    au InsertEnter * set nocursorline
-    au InsertLeave * set cursorline
+  au!
+  au WinLeave * set nocursorline
+  au WinEnter * set cursorline
+  au InsertEnter * set nocursorline
+  au InsertLeave * set cursorline
 augroup END
 
  " indentation guidelines
@@ -237,24 +237,21 @@ let javascript_enable_domhtmlcss = 1
 Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
 
-" Set number in insert mode and provides a toggler between number/relativenumber
-Plug 'myusuf3/numbers.vim'
-nnoremap <Leader>nt :NumbersToggle<CR>
-
 " Automatic closing off quotes, brackets and such
 Plug 'Raimondi/delimitMate'
 
 " Configures whitespace behavior
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
-        map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
+map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
 " Show trailing whitespace on insert mode only
 let g:better_whitespace_enabled = 0
 augroup trailing
-    au!
-    au InsertEnter * :EnableWhitespace
-    au InsertLeave * :DisableWhitespace
+  au!
+  au InsertEnter * :EnableWhitespace
+  au InsertLeave * :DisableWhitespace
 augroup END
+
 " Remove whitespace only from edited lines
 Plug 'thirtythreeforty/lessspace.vim'
 
@@ -408,7 +405,7 @@ nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
 " vim config file configuration
 augroup ft_vim
   au!
-  au FileType vim setlocal foldmethod=marker
+  au FileType vim set foldmethod=marker tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   au FileType help setlocal textwidth=78
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
@@ -426,7 +423,7 @@ set diffopt+=vertical
 
 " fixes vim background in tmux
 if &term =~ '256color'
-    set t_ut=
+  set t_ut=
 endif
 
 " creates a private gist from the visual selection with the filename as the gist name
