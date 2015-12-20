@@ -460,6 +460,7 @@ nnoremap zO zCzO
 
 " Fast saving
 nmap <Leader>w :w!<cr>
+nmap <Leader>wq :wq!<cr>
 
 " Reload files changed outside vim. This makes vim act like most editors.
 " see: http://items.sjbach.com/319/configuring-vim-right
