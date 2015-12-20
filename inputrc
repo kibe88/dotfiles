@@ -1,0 +1,5 @@
+# Ignore case when using auto completion
+set completion-ignore-case On"
+
+# This makes it unnecessary to press Tab twice when there is more than one match
+set show-all-if-ambiguous On"

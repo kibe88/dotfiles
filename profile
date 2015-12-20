@@ -61,12 +61,6 @@ else
     echo "WARNING: Can't find django_bash_completion.sh"
 fi
 
-# Ignore case when using auto completion
-set completion-ignore-case On
-
-# This makes it unnecessary to press Tab twice when there is more than one match
-set show-all-if-ambiguous On
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
