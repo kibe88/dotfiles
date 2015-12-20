@@ -3,6 +3,9 @@ let maplocalleader = "\\"
 let s:dotvim=expand('<sfile>:p:h') . "/.vim/"
 set nocompatible " turn off vi compat
 
+" turns filetype plugins on
+filetype plugin indent on
+
 call plug#begin('~/.vim/plugged')
 
 " easy plugin installation
@@ -362,9 +365,6 @@ set splitright
 
 " backspace acting normally
 set backspace=2
-
-" turns filetype plugins on
-filetype plugin indent on
 
 " Yank from current cursor position to end of line
 map Y y$
