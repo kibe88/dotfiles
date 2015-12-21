@@ -44,6 +44,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gmv :Gmove<CR>
 nnoremap <Leader>gb :GBrowse<CR>
+" global git search for word under the cursor (with highlight) (taken from vimified)
+nmap <leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
+" same in visual mode
+vmap <leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
