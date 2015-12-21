@@ -27,8 +27,9 @@ Plug 'mattn/emmet-vim' "zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css EmmetInstall
-" Tag awesomenewss providing tab chains
+" Tab awesomeness providing tab chains
 Plug 'neitanod/vim-clevertab'
+" neosnippet tab chain (default is ultisnippets)
 inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
                       \<c-r>=CleverTab#Complete('tab')<CR>
                       \<c-r>=CleverTab#Complete('neosnippet')<CR>
