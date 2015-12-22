@@ -278,6 +278,7 @@ let g:startify_change_to_vcs_root=0
 augroup change_startify_buffer
   autocmd FileType startify setlocal buftype=
 augroup END
+nmap <Leader>st :Startify<CR>
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
