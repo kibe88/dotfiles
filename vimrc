@@ -176,6 +176,7 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
 let g:ctrlp_reuse_window=1
+nmap <Leader>cf :CtrlPBufTag<CR>
 
 " Easy buffer management through a single list
 Plug 'troydm/easybuffer.vim'
