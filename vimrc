@@ -162,7 +162,7 @@ let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', '
 Plug 'pbrisbin/vim-mkdir'
 
 " fuzzy file search (edited to use ag)
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
