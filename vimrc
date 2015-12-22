@@ -30,12 +30,12 @@ autocmd FileType html,eruby,css EmmetInstall
 " Tag awesomenewss providing tab chains
 Plug 'neitanod/vim-clevertab'
 inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
-                      \<c-r>=CleverTab#Complete('tab')<CR>
-                      \<c-r>=CleverTab#Complete('neosnippet')<CR>
-                      \<c-r>=CleverTab#Complete('keyword')<CR>
-                      \<c-r>=CleverTab#Complete('neocomplete')<CR>
-                      \<c-r>=CleverTab#Complete('omni')<CR>
-                      \<c-r>=CleverTab#Complete('stop')<CR>
+                    \<c-r>=CleverTab#Complete('tab')<CR>
+                    \<c-r>=CleverTab#Complete('neosnippet')<CR>
+                    \<c-r>=CleverTab#Complete('keyword')<CR>
+                    \<c-r>=CleverTab#Complete('neocomplete')<CR>
+                    \<c-r>=CleverTab#Complete('omni')<CR>
+                    \<c-r>=CleverTab#Complete('stop')<CR>
 inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
 
 " git wrapper
@@ -58,9 +58,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
- " statusbar
- Plug 'bling/vim-airline'
- let g:airline_powerline_fonts = 1
+" statusbar
+Plug 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
 "syntax checker
 Plug 'scrooloose/syntastic'
@@ -99,12 +99,12 @@ let g:NERDTreeChDirMode=2
 map <Leader>s :NERDTreeToggle<CR>
 " autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
-  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-    q
-  endif
+if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+  q
+endif
 endfunction
 augroup autoclose_nerdtree
-  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
 augroup END
 
 " TMUX integration
@@ -177,8 +177,8 @@ let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a pl
 let g:ctrlp_reuse_window=1
 
 " Easy buffer management through a single list
- Plug 'troydm/easybuffer.vim'
- nmap <Leader>bt :EasyBufferToggle<cr>
+Plug 'troydm/easybuffer.vim'
+nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
