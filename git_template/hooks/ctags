@@ -1,7 +1,9 @@
 #!/bin/sh
-mkdir .git/tags_lock 2>/dev/null || exit 0
-trap "rmdir .git/tags_lock; rm .git/tags.$$" EXIT
+set -e
 
-ctags --tag-relative -R -f .git/tags.$$ --exclude=.git --languages=-sql,-css
-mv .git/tags.$$ .git/tags
-# -javascript
+PATH="/usr/local/bin:$PATH"
+dir="$(git rev-parse --git-dir)"
+trap 'rm -f "$dir/$$.tags"' EXIT
+git ls-files | \
+      "${CTAGS:-ctags}" --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql
+mv "$dir/$$.tags" "$dir/tags"

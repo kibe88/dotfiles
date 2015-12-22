@@ -1,3 +1,6 @@
+[init]
+  templatedir = ~/.git_template
+
 [user]
 	name = Renato Rufino
 	email = renators@gmail.com
