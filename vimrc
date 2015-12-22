@@ -228,10 +228,17 @@ map <Leader>ds :Dash<Space>
 Plug 'danro/rename.vim'
 map <Leader>mv :Rename<Space>
 
-Plug 'szw/vim-tags'
-map <Leader>ct :TagsGenerate!<CR>
-" set ctags filepath
-setglobal tags-=./tags tags-=./tags; tags^=./tags;
+Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
+" writes to the first tag file vim resolves which means git when fugitive is
+" installed
+let g:easytags_dynamic_files=1 
+let g:easytags_cmd='/usr/local/bin/ctags'
+let g:easytags_auto_highlight=0
+
+" ctag tag navigation through ctrlp (in case of one match acts like ide goto)
+Plug 'ivalkeen/vim-ctrlp-tjump'
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
