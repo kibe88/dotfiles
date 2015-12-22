@@ -1,3 +1,6 @@
+[init]
+  templatedir = ~/.git_template
+
 [user]
 	name = Renato Rufino
 	email = renators@gmail.com
@@ -30,26 +33,32 @@
 	ll = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s
 	la = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s --all
 	ls = ls-files
-	flow-setup = "!git branch --track develop origin/develop 2>/dev/null ; git flow init -fd && git checkout master && git pull origin master && git checkout develop && git pull origin develop"
 	df = diff --color --color-words --abbrev
     st = status -s
+	ctags = !.git/hooks/ctags
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
+
 [push]
 	default = simple
+
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
 	required = true
+
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+
 # force github over ssh
 [url "git@github.com:"]
     insteadOf = "https://github.com/"

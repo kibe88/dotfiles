@@ -31,12 +31,12 @@ autocmd FileType html,eruby,css EmmetInstall
 Plug 'neitanod/vim-clevertab'
 " neosnippet tab chain (default is ultisnippets)
 inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
-                      \<c-r>=CleverTab#Complete('tab')<CR>
-                      \<c-r>=CleverTab#Complete('neosnippet')<CR>
-                      \<c-r>=CleverTab#Complete('keyword')<CR>
-                      \<c-r>=CleverTab#Complete('neocomplete')<CR>
-                      \<c-r>=CleverTab#Complete('omni')<CR>
-                      \<c-r>=CleverTab#Complete('stop')<CR>
+                    \<c-r>=CleverTab#Complete('tab')<CR>
+                    \<c-r>=CleverTab#Complete('neosnippet')<CR>
+                    \<c-r>=CleverTab#Complete('keyword')<CR>
+                    \<c-r>=CleverTab#Complete('neocomplete')<CR>
+                    \<c-r>=CleverTab#Complete('omni')<CR>
+                    \<c-r>=CleverTab#Complete('stop')<CR>
 inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
 
 " git wrapper
@@ -49,6 +49,7 @@ nnoremap <Leader>gb :GBrowse<CR>
 nmap <leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
 " same in visual mode
 vmap <leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+nmap <Leader>gcam :Git commit --ammend --reuse-message=HEAD<CR>
 
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
@@ -59,9 +60,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
- " statusbar
- Plug 'bling/vim-airline'
- let g:airline_powerline_fonts = 1
+" statusbar
+Plug 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
 
 "syntax checker
 Plug 'scrooloose/syntastic'
@@ -100,12 +101,12 @@ let g:NERDTreeChDirMode=2
 map <Leader>s :NERDTreeToggle<CR>
 " autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
-  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-    q
-  endif
+if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+  q
+endif
 endfunction
 augroup autoclose_nerdtree
-  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
 augroup END
 
 " TMUX integration
@@ -163,7 +164,7 @@ let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', '
 Plug 'pbrisbin/vim-mkdir'
 
 " fuzzy file search (edited to use ag)
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -176,10 +177,11 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
 let g:ctrlp_reuse_window=1
+nmap <Leader>cf :CtrlPBufTag<CR>
 
 " Easy buffer management through a single list
- Plug 'troydm/easybuffer.vim'
- nmap <Leader>bt :EasyBufferToggle<cr>
+Plug 'troydm/easybuffer.vim'
+nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
@@ -229,10 +231,17 @@ map <Leader>ds :Dash<Space>
 Plug 'danro/rename.vim'
 map <Leader>mv :Rename<Space>
 
-Plug 'szw/vim-tags'
-map <Leader>ct :TagsGenerate!<CR>
-" set ctags filepath
-setglobal tags-=./tags tags-=./tags; tags^=./tags;
+Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
+" writes to the first tag file vim resolves which means git when fugitive is
+" installed
+let g:easytags_dynamic_files=1 
+let g:easytags_cmd='/usr/local/bin/ctags'
+let g:easytags_auto_highlight=0
+
+" ctag tag navigation through ctrlp (in case of one match acts like ide goto)
+Plug 'ivalkeen/vim-ctrlp-tjump'
+nnoremap <Leader>gf :CtrlPtjump<cr>
+vnoremap <Leader>gf :CtrlPtjumpVisual<cr>
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
@@ -270,6 +279,7 @@ let g:startify_change_to_vcs_root=0
 augroup change_startify_buffer
   autocmd FileType startify setlocal buftype=
 augroup END
+nmap <Leader>st :Startify<CR>
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
