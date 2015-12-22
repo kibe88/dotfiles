@@ -35,10 +35,12 @@
 	ls = ls-files
 	df = diff --color --color-words --abbrev
     st = status -s
+	ctags = !.git/hooks/ctags
 
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
+
 [push]
 	default = simple
 
