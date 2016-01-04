@@ -273,12 +273,39 @@ Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
-let g:startify_change_to_dir=0
-let g:startify_change_to_vcs_root=0
 augroup change_startify_buffer
   autocmd FileType startify setlocal buftype=
 augroup END
 nmap <Leader>st :Startify<CR>
+let g:startify_list_order = [
+      \ ['   Bookmarks '], 'bookmarks',
+      \ ['   MRU '],       'files' ,
+      \ ['   MRU DIR '],   'dir',
+      \ ['   Sessions '],  'sessions',
+      \ ]
+
+let g:startify_skiplist = [
+  \ 'COMMIT_EDITMSG',
+  \ 'bundle/.*/doc',
+  \ '/Users/rrufino/local/vim/share/vim/vim74/doc',
+  \ ]
+
+let g:startify_bookmarks=[ {'v': '~/dotfiles/vimrc'}, {'a': '~/Projects/estante/amsterdam'}]
+let g:startify_change_to_dir= 0
+let g:startify_change_to_vcs_root=0
+let g:startify_enable_special=0
+let g:startify_files_number=8
+let g:startify_session_autoload=1
+let g:startify_session_delete_buffers=1
+let g:startify_session_persistence=1
+
+function! s:center_header(lines) abort
+  let longest_line   = max(map(copy(a:lines), 'len(v:val)'))
+  let centered_lines = map(copy(a:lines), 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+  return centered_lines
+endfunction
+
+let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'), '\n'))
 
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
