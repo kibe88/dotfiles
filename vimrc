@@ -548,3 +548,8 @@ set ttimeout           " do timeout on terminal key codes
 set timeoutlen=100     " timeout after 100 msec
 
 set guicursor+=n-v-c:blinkon0 " disable cursor blinking in all modes
+
+" w!! to write a file as sudo
+" stolen from Steve Losh
+cmap w!! w !sudo tee % >/dev/null
+nnoremap <Leader>ws :w!!<CR>
