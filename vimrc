@@ -66,8 +66,21 @@ nmap <Leader>ea <Plug>(EasyAlign)
 
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
+" All about surroundings i.e you can change 'a' to [a] using cs'[
+Plug 'tpope/vim-surround'
+" From: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
+" Use v or # to get a variable interpolation (inside of a string)}
+" ysiw#   Wrap the token under the cursor in #{}
+" v...s#  Wrap the selection in #{}
+let g:surround_113 = "#{\r}"   " v
+let g:surround_35  = "#{\r}"   " #
+
+" Select text in an ERb file with visual mode and then press s- or s=
+" Or yss- to do entire line.
+let g:surround_45 = "<% \r %>"    " -
+let g:surround_61 = "<%= \r %>"   " ="
 
 " statusbar
 Plug 'bling/vim-airline'
