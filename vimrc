@@ -207,8 +207,22 @@ nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
+" Code below prevents conflict with NeoComplete
+" See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 
-" Only show cursorline in the current window and in normal mode.
+ "Only show cursorline in the current window and in normal mode.
 augroup cline
   au!
   au WinLeave * set nocursorline
