@@ -37,8 +37,9 @@ Plug 'mattn/emmet-vim' "zencode html output
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css EmmetInstall
 
-" Tag awesomenewss providing tab chains
+" Tab awesomeness providing tab chains
 Plug 'neitanod/vim-clevertab'
+" neosnippet tab chain (default is ultisnippets)
 inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
                     \<c-r>=CleverTab#Complete('tab')<CR>
                     \<c-r>=CleverTab#Complete('neosnippet')<CR>
@@ -128,7 +129,7 @@ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 endif
 endfunction
 augroup autoclose_nerdtree
-autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
 augroup END
 
 " TMUX integration
