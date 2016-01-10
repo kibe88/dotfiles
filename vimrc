@@ -21,6 +21,9 @@ nnoremap <Leader>acf :exec "Ag " . expand("%:t:r")<CR>
 
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
+" This makes sure we use neocomplete completefunc instead of
+" the one in rails.vim, otherwise this plugin will crap out.
+ let g:neocomplete#force_overwrite_completefunc = 1
 
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " snippets collection
