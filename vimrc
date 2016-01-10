@@ -507,6 +507,10 @@ command! Q :q
 set foldlevelstart=0
 set foldmethod=syntax
 
+" map default zz mapping to zm.
+nnoremap zm zz
+vnoremap zm zz
+
 " zz to toggle folds.
 nnoremap zz za
 vnoremap zz za
