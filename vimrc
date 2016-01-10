@@ -277,8 +277,8 @@ let g:easytags_async=1
 
 " ctag tag navigation through ctrlp (in case of one match acts like ide goto)
 Plug 'ivalkeen/vim-ctrlp-tjump'
-nnoremap <Leader>gf :CtrlPtjump<cr>
-vnoremap <Leader>gf :CtrlPtjumpVisual<cr>
+nnoremap gf :CtrlPtjump<cr>
+vnoremap gf :CtrlPtjumpVisual<cr>
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
