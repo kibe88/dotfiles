@@ -295,13 +295,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
 map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
-" Show trailing whitespace on insert mode only
+map <silent><Leader>tw :ToggleWhitespace<CR>
 let g:better_whitespace_enabled = 0
-augroup trailing
-  au!
-  au InsertEnter * :EnableWhitespace
-  au InsertLeave * :DisableWhitespace
-augroup END
 
 " Remove whitespace only from edited lines
 Plug 'thirtythreeforty/lessspace.vim'
