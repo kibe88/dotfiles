@@ -542,3 +542,9 @@ set fileformats+=mac
 
 " deals with unsaved buffer more conveniently
 set confirm
+
+set notimeout          " don't timeout on mappings
+set ttimeout           " do timeout on terminal key codes
+set timeoutlen=100     " timeout after 100 msec
+
+set guicursor+=n-v-c:blinkon0 " disable cursor blinking in all modes
