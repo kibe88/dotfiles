@@ -273,6 +273,7 @@ Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
 let g:easytags_dynamic_files=1 
 let g:easytags_cmd='/usr/local/bin/ctags'
 let g:easytags_auto_highlight=0
+let g:easytags_async=1
 
 " ctag tag navigation through ctrlp (in case of one match acts like ide goto)
 Plug 'ivalkeen/vim-ctrlp-tjump'
