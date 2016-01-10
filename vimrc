@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " easy plugin installation
 map <Leader>i :PlugInstall<CR>
 
-" shows silverlight search results in a split window
+" Shows silverlight search results in a split window
 Plug 'rking/ag.vim'
 nnoremap <Leader>a :Ag -i<space>
 " Search for word under the cursor
@@ -21,16 +21,19 @@ nnoremap <Leader>acf :exec "Ag " . expand("%:t:r")<CR>
 
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
+
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " snippets collection
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+
 Plug 'mattn/emmet-vim' "zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css EmmetInstall
+
 " Tag awesomenewss providing tab chains
 Plug 'neitanod/vim-clevertab'
 inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
@@ -198,12 +201,12 @@ augroup cline
   au InsertLeave * set cursorline
 augroup END
 
- " indentation guidelines
- Plug 'Yggdroot/indentLine'
- set list lcs=tab:\|\
- let g:indentLine_char = '∙'
- " other useful characters
- "let g:indentLine_char = '∙▹¦'
+" indentation guidelines
+Plug 'Yggdroot/indentLine'
+set list lcs=tab:\|\
+let g:indentLine_char = '∙'
+" other useful characters
+"let g:indentLine_char = '∙▹¦'
 
 " adds gutter with git diff info
 Plug 'airblade/vim-gitgutter'
