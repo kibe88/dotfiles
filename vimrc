@@ -324,7 +324,6 @@ let g:startify_list_order = [
 let g:startify_skiplist = [
   \ 'COMMIT_EDITMSG',
   \ 'bundle/.*/doc',
-  \ '/Users/rrufino/local/vim/share/vim/vim74/doc',
   \ ]
 
 let g:startify_bookmarks=[ {'v': '~/dotfiles/vimrc'}, {'a': '~/Projects/estante/amsterdam'}]
@@ -451,9 +450,6 @@ noremap <silent><Leader><space> :nohls<CR>
 set hlsearch " turn on search highlighting
 set incsearch " do incremental searching
 
-" better ESC
-inoremap <C-k> <Esc>
-
 " always reload vimrc after save
 augroup reload_vimrc
   autocmd!
@@ -474,7 +470,6 @@ nnoremap <Leader>sh <C-w>s<C-w>j
 
 " quickly edit config files
 nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
-exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.s:dotvim.'/snippets/<cr>'
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
