@@ -14,6 +14,10 @@ map <Leader>i :PlugInstall<CR>
 " shows silverlight search results in a split window
 Plug 'rking/ag.vim'
 nnoremap <Leader>a :Ag -i<space>
+" Search for word under the cursor
+nnoremap <Leader>aw :Ag <cword><CR>
+" Search for usages of the current file
+nnoremap <Leader>acf :exec "Ag " . expand("%:t:r")<CR>
 
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
