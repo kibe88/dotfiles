@@ -11,22 +11,32 @@ call plug#begin('~/.vim/plugged')
 " easy plugin installation
 map <Leader>i :PlugInstall<CR>
 
-" shows silverlight search results in a split window
+" Shows silverlight search results in a split window
 Plug 'rking/ag.vim'
 nnoremap <Leader>a :Ag -i<space>
+" Search for word under the cursor
+nnoremap <Leader>aw :Ag <cword><CR>
+" Search for usages of the current file
+nnoremap <Leader>acf :exec "Ag " . expand("%:t:r")<CR>
 
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
+" This makes sure we use neocomplete completefunc instead of
+" the one in rails.vim, otherwise this plugin will crap out.
+ let g:neocomplete#force_overwrite_completefunc = 1
+
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " snippets collection
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
 let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+
 Plug 'mattn/emmet-vim' "zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css EmmetInstall
+
 " Tab awesomeness providing tab chains
 Plug 'neitanod/vim-clevertab'
 " neosnippet tab chain (default is ultisnippets)
@@ -45,11 +55,11 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gmv :Gmove<CR>
 nnoremap <Leader>gb :GBrowse<CR>
+nnoremap <Leader>gcam :Git commit --ammend --reuse-message=HEAD<CR>
 " global git search for word under the cursor (with highlight) (taken from vimified)
 nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
 " same in visual mode
 vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
-nmap <Leader>gcam :Git commit --ammend --reuse-message=HEAD<CR>
 
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
@@ -57,8 +67,21 @@ nmap <Leader>ea <Plug>(EasyAlign)
 
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
+" All about surroundings i.e you can change 'a' to [a] using cs'[
+Plug 'tpope/vim-surround'
+" From: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
+" Use v or # to get a variable interpolation (inside of a string)}
+" ysiw#   Wrap the token under the cursor in #{}
+" v...s#  Wrap the selection in #{}
+let g:surround_113 = "#{\r}"   " v
+let g:surround_35  = "#{\r}"   " #
+
+" Select text in an ERb file with visual mode and then press s- or s=
+" Or yss- to do entire line.
+let g:surround_45 = "<% \r %>"    " -
+let g:surround_61 = "<%= \r %>"   " ="
 
 " statusbar
 Plug 'bling/vim-airline'
@@ -72,7 +95,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_error_symbol = "✗"
@@ -185,8 +208,22 @@ nmap <Leader>bt :EasyBufferToggle<cr>
 
  " sublime text like multiple selection and edition
  Plug 'terryma/vim-multiple-cursors'
+" Code below prevents conflict with NeoComplete
+" See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
 
-" Only show cursorline in the current window and in normal mode.
+ "Only show cursorline in the current window and in normal mode.
 augroup cline
   au!
   au WinLeave * set nocursorline
@@ -195,12 +232,12 @@ augroup cline
   au InsertLeave * set cursorline
 augroup END
 
- " indentation guidelines
- Plug 'Yggdroot/indentLine'
- set list lcs=tab:\|\
- let g:indentLine_char = '∙'
- " other useful characters
- "let g:indentLine_char = '∙▹¦'
+" indentation guidelines
+Plug 'Yggdroot/indentLine'
+set list lcs=tab:\|\
+let g:indentLine_char = '∙'
+" other useful characters
+"let g:indentLine_char = '∙▹¦'
 
 " adds gutter with git diff info
 Plug 'airblade/vim-gitgutter'
@@ -237,11 +274,12 @@ Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
 let g:easytags_dynamic_files=1 
 let g:easytags_cmd='/usr/local/bin/ctags'
 let g:easytags_auto_highlight=0
+let g:easytags_async=1
 
 " ctag tag navigation through ctrlp (in case of one match acts like ide goto)
 Plug 'ivalkeen/vim-ctrlp-tjump'
-nnoremap <Leader>gf :CtrlPtjump<cr>
-vnoremap <Leader>gf :CtrlPtjumpVisual<cr>
+nnoremap gf :CtrlPtjump<cr>
+vnoremap gf :CtrlPtjumpVisual<cr>
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
@@ -258,13 +296,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'ntpeters/vim-better-whitespace'
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
 map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
-" Show trailing whitespace on insert mode only
+map <silent><Leader>tw :ToggleWhitespace<CR>
 let g:better_whitespace_enabled = 0
-augroup trailing
-  au!
-  au InsertEnter * :EnableWhitespace
-  au InsertLeave * :DisableWhitespace
-augroup END
 
 " Remove whitespace only from edited lines
 Plug 'thirtythreeforty/lessspace.vim'
@@ -288,7 +321,6 @@ let g:startify_list_order = [
 let g:startify_skiplist = [
   \ 'COMMIT_EDITMSG',
   \ 'bundle/.*/doc',
-  \ '/Users/rrufino/local/vim/share/vim/vim74/doc',
   \ ]
 
 let g:startify_bookmarks=[ {'v': '~/dotfiles/vimrc'}, {'a': '~/Projects/estante/amsterdam'}]
@@ -415,9 +447,6 @@ noremap <silent><Leader><space> :nohls<CR>
 set hlsearch " turn on search highlighting
 set incsearch " do incremental searching
 
-" better ESC
-inoremap <C-k> <Esc>
-
 " always reload vimrc after save
 augroup reload_vimrc
   autocmd!
@@ -438,7 +467,6 @@ nnoremap <Leader>sh <C-w>s<C-w>j
 
 " quickly edit config files
 nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<cr>
-exec 'nnoremap <Leader>es <C-w>s<C-w>j:e '.s:dotvim.'/snippets/<cr>'
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<cr>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<cr>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<cr>
@@ -480,6 +508,10 @@ command! Q :q
 set foldlevelstart=0
 set foldmethod=syntax
 
+" map default zz mapping to zm.
+nnoremap zm zz
+vnoremap zm zz
+
 " zz to toggle folds.
 nnoremap zz za
 vnoremap zz za
@@ -511,3 +543,14 @@ set fileformats+=mac
 
 " deals with unsaved buffer more conveniently
 set confirm
+
+set notimeout          " don't timeout on mappings
+set ttimeout           " do timeout on terminal key codes
+set timeoutlen=100     " timeout after 100 msec
+
+set guicursor+=n-v-c:blinkon0 " disable cursor blinking in all modes
+
+" w!! to write a file as sudo
+" stolen from Steve Losh
+cmap w!! w !sudo tee % >/dev/null
+nnoremap <Leader>ws :w!!<CR>
