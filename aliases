@@ -15,6 +15,6 @@ alias hi="clear"
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Count of non-hidden files in current dir
-alias numfiles='echo $(ls -1 | wc -l)'
+alias numfiles='echo $(ls | wc -l)'
 
 [ -r "~/.aliases.local" ] && [ -f "~/.aliases.local" ] && source "~/.aliases.local";
