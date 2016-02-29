@@ -550,3 +550,7 @@ set guicursor+=n-v-c:blinkon0 " disable cursor blinking in all modes
 " stolen from Steve Losh
 cmap w!! w !sudo tee % >/dev/null
 nnoremap <Leader>ws :w!!<CR>
+
+" Toggle number gutter
+noremap <Leader>m :set invnumber<CR>
+inoremap <Leader>m <C-O>:set invnumber<CR>
