@@ -1,6 +1,6 @@
 # Loads shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
-for file in ~/.{path,exports,aliases,functions}; do
+for file in ~/.{functions,path,exports,aliases}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
