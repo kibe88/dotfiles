@@ -19,8 +19,6 @@ if commandExists brew; then
 
   if [[ -r $(brew --prefix)/bin/virtualenvwrapper.sh ]]; then
       source $(brew --prefix)/bin/virtualenvwrapper.sh
-  else
-      echo "WARNING: Can't find virtualenvwrapper.sh"
   fi
 
   export VIRTUALENVWRAPPER_VIRTUALENV=$(brew --prefix)/bin/virtualenv
