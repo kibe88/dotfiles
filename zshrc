@@ -4,16 +4,17 @@ if [[ -r ~/.profile ]]; then
 fi
 
 # start zgen
-if [ -f ~/.zgen/zgen.zsh ] && ! zgen saved; then
+if [ -f ~/.zgen/zgen.zsh ]; then
     source ~/.zgen/zgen.zsh
+    if ! zgen saved; then
+        echo 'Creating zgen save'
 
-    echo 'Creating zgen save'
+        zgen prezto prompt theme 'sorin'
+        zgen prezto
+        zgen prezto git
+        zgen prezto command-not-found
+        zgen prezto syntax-highlighting
 
-    zgen prezto prompt theme 'sorin'
-    zgen prezto
-    zgen prezto git
-    zgen prezto command-not-found
-    zgen prezto syntax-highlighting
-
-    zgen save
+        zgen save
+    fi
 fi
