@@ -1,8 +1,3 @@
-echo 'oi'
-if [[ -r ~/.profile ]]; then
-  source ~/.profile
-fi
-
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
     source ~/.zgen/zgen.zsh
@@ -17,4 +12,8 @@ if [ -f ~/.zgen/zgen.zsh ]; then
 
         zgen save
     fi
+fi
+
+if [ -f ~/.profile ]; then
+  source ~/.profile
 fi
