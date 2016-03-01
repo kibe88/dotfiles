@@ -9,14 +9,12 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 # Loads shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,exports,aliases,functions,extra}; do
+for file in ~/.{path,exports,aliases,functions}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
 if commandExists brew; then
-  export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-
   if [[ -r $(brew --prefix)/bin/virtualenvwrapper.sh ]]; then
       source $(brew --prefix)/bin/virtualenvwrapper.sh
   fi
