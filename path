@@ -13,3 +13,26 @@ PATH=/usr/local/opt/ruby/bin:$PATH
 
 # Brewed npm
 PATH=/usr/local/share/npm/bin:$PATH
+
+# rbenv installation
+PATH="$HOME/.rbenv/bin:$PATH"
+if commandExists rbenv; then
+  eval "$(rbenv init -)"
+  PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+fi
+
+# virtualenv installation
+if commandExists brew; then
+  if [[ -r $(brew --prefix)/bin/virtualenvwrapper.sh ]]; then
+      source $(brew --prefix)/bin/virtualenvwrapper.sh
+  fi
+
+  export VIRTUALENVWRAPPER_VIRTUALENV=$(brew --prefix)/bin/virtualenv
+
+  # Enable virtualenvwrapper
+  export WORKON_HOME=$HOME/.virtualenvs
+  export PIP_RESPECT_VIRTUALENV=true
+  export PIP_VIRTUALENV_BASE=$WORKON_HOME
+
+  export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
+fi

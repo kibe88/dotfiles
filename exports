@@ -14,3 +14,17 @@ export ES_MAX_MEM=2048m
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/kibe/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+# Explictly setting locale cause sometimes osx doesn't
+export LC_ALL=en_US.UTF-8
+
+# RUBY PERFS
+export RUBY_GC_HEAP_INIT_SLOTS=800000
+export RUBY_HEAP_FREE_MIN=100000
+export RUBY_HEAP_SLOTS_INCREMENT=300000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=79000000
+
+# Enable 256 color terminal support
+export TERM='xterm-256color'
+
