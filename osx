@@ -2,7 +2,9 @@
 export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
-LUNCHY_COMPLETION=$(dirname `gem which lunchy`)/../extras/lunchy-completion.bash
-if [ -f $LUNCHY_COMPLETION ]; then
-    . $LUNCHY_COMPLETION
+LUNCHY_BASH_COMPLETION=$(dirname `gem which lunchy`)/../extras/lunchy-completion.bash
+#TODO: check running shell and source accordingly
+LUNCHY_ZSH_COMPLETION=$(dirname `gem which lunchy`)/../extras/lunchy-completion.zsh
+if [ -f $LUNCHY_ZSH_COMPLETION ]; then
+    . $LUNCHY_ZSH_COMPLETION
 fi

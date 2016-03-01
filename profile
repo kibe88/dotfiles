@@ -34,13 +34,6 @@ fi
 # Explictly setting locale cause sometimes osx doesn't
 export LC_ALL=en_US.UTF-8
 
-# Enable git completion script
-if [ -f ${HOME}/.bin/git_completion.sh ]; then
-	source ${HOME}/.bin/git_completion.sh
-else
-    echo "WARNING: Can't find git_completion.sh"
-fi
-
 # RUBY PERFS
 export RUBY_GC_HEAP_INIT_SLOTS=800000
 export RUBY_HEAP_FREE_MIN=100000
