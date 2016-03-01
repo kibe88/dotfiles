@@ -84,3 +84,11 @@ extract() {
     return "$e"
 }
 
+# Enable git completion script
+if [ -f ${HOME}/.bin/git_completion.sh ]; then
+    source ${HOME}/.bin/git_completion.sh
+else
+    echo "WARNING: Can't find git_completion.sh"
+fi
+
+
