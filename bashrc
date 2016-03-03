@@ -1,3 +1,26 @@
+[ -r ~/.functions ] && [ -f ~/.functions ] && source ~/.functions
+
+# TMUX
+if commandExists tmux; then
+    # if no session is started, start a new session
+    test -z ${TMUX} && tmux
+
+    # when quitting tmux, try to attach
+    while test -z ${TMUX}; do
+        tmux attach || break
+    done
+fi
+
+for file in ~/.{path,exports,aliases}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+
+if is_osx; then
+    source ${HOME}/.osx
+fi
+
 # Make sure extglob is enabled:
 shopt -s extglob
 
@@ -90,5 +113,4 @@ if [ -f ${HOME}/.bin/git_completion.sh ]; then
 else
     echo "WARNING: Can't find git_completion.sh"
 fi
-
 
