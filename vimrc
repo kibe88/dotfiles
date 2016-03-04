@@ -552,10 +552,6 @@ set fileformats+=mac
 " Deals with unsaved buffer more conveniently
 set confirm
 
-set notimeout      " Don't timeout on mappings
-set ttimeout       " Do timeout on terminal key codes
-set timeoutlen=100 " Timeout after 100 msec
-
 set guicursor+=n-v-c:blinkon0 " Disable cursor blinking in all modes
 
 " w!! to write a file as sudo
