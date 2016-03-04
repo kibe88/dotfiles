@@ -36,6 +36,10 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto git
         zgen prezto command-not-found
         zgen prezto syntax-highlighting
+        zgen prezto homebrew
+        zgen prezto osx
+        zgen prezto archive
+        zgen prezto environment
 
         zgen save
     fi
