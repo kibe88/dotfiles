@@ -1,1 +1,2 @@
+zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 

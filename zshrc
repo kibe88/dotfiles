@@ -40,6 +40,9 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto osx
         zgen prezto archive
         zgen prezto environment
+        zgen prezto ruby
+        zgen prezto python
+        zgen prezto node
 
         zgen save
     fi
@@ -48,3 +51,4 @@ fi
 if [ -f ~/.profile ]; then
   source ~/.profile
 fi
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
