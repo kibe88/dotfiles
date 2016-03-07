@@ -1,6 +1,6 @@
 [ -r ~/.functions ] && [ -f ~/.functions ] && source ~/.functions
 
-for file in ~/.{exports,aliases}; do
+for file in ~/.{exports,path,aliases}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -12,9 +12,6 @@ fi
 export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc)
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
-
-    # as zgen may need some user defined bin we source it before zgen
-    [ -r ~/.path ] && [ -f ~/.path ] && source ~/.path
 
     source ~/.zgen/zgen.zsh
 
