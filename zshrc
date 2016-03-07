@@ -25,8 +25,10 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto
         zgen prezto tmux
         zgen prezto git
+        zgen prezto completion
         zgen prezto command-not-found
         zgen prezto syntax-highlighting
+        zgen prezto directory
         zgen prezto homebrew
         zgen prezto osx
         zgen prezto archive
