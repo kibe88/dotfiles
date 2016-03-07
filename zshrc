@@ -33,6 +33,8 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto history
         zgen prezto history-substring-search
 
+        zgen load zsh-users/zsh-completions src
+
         zgen save
     fi
 fi

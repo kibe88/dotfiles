@@ -114,3 +114,10 @@ else
     echo "WARNING: Can't find git_completion.sh"
 fi
 
+# Load lunchy completion (osx launchctl wrapper for easier daemon handling)
+if is_osx; then
+  LUNCHY_COMPLETION=$(dirname `gem which lunchy`)/../extras/lunchy-completion.bash
+  if [ -f $LUNCHY_COMPLETION ]; then
+    . $LUNCHY_COMPLETION
+  fi
+fi
