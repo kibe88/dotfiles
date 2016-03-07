@@ -5,3 +5,22 @@ zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 
 # emacs style keybindings (ctrl+a / ctrl+e)
 zgen prezto editor key-bindings 'emacs'
+
+# History Substring Search
+
+# Set the query found color.
+# zstyle ':prezto:module:history-substring-search:color' found ''
+
+# Set the query not found color.
+# zstyle ':prezto:module:history-substring-search:color' not-found ''
+
+# Set the search globbing flags.
+# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+
+# Auto convert .... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+# Ignore submodules when they are dirty, untracked, all, or none.
+zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+zstyle ':prezto:module:git:info:context:subcontext' format 'string'

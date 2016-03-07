@@ -43,6 +43,9 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto ruby
         zgen prezto python
         zgen prezto node
+		zgen prezto utility
+        zgen prezto history
+        zgen prezto history-substring-search
 
         zgen save
     fi
