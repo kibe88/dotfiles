@@ -10,6 +10,8 @@ zgen prezto editor key-bindings 'emacs'
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
+zgen prezto prompt theme 'sorin'
+
 # History Substring Search
 
 # Set the query found color.
