@@ -1,16 +1,5 @@
 [ -r ~/.functions ] && [ -f ~/.functions ] && source ~/.functions
 
-# TMUX
-if commandExists tmux; then
-    # if no session is started, start a new session
-    test -z ${TMUX} && tmux
-
-    # when quitting tmux, try to attach
-    while test -z ${TMUX}; do
-        tmux attach || break
-    done
-fi
-
 for file in ~/.{exports,aliases}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -33,6 +22,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
 
         zgen prezto prompt theme 'sorin'
         zgen prezto
+        zgen prezto tmux
         zgen prezto git
         zgen prezto command-not-found
         zgen prezto syntax-highlighting

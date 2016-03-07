@@ -6,6 +6,10 @@ zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 # emacs style keybindings (ctrl+a / ctrl+e)
 zgen prezto editor key-bindings 'emacs'
 
+# Auto start tmux local and when using ssh remotely
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
 # History Substring Search
 
 # Set the query found color.
