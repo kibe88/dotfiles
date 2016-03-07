@@ -24,5 +24,8 @@ alias mkdir="mkdir -p"
 # ls more organized
 alias ls='ls -GFhla'
 
+# alias hub as git
+eval "$(hub alias -s)"
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
