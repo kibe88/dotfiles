@@ -6,6 +6,13 @@ set nocompatible " Turn off vi compat
 " Turns filetype plugins on
 filetype plugin indent on
 
+" Installs vim plug if isn't already
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 " Begin plugin config (Any plugin related settings are below its install command)
 call plug#begin('~/.vim/plugged')
 
