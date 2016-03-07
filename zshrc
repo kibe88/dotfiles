@@ -9,6 +9,7 @@ if is_osx; then
     source ${HOME}/.osx
 fi
 
+export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc)
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
 
