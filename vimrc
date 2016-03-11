@@ -42,7 +42,7 @@ let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Pref
 Plug 'mattn/emmet-vim' " Zencode html output
 " Enable emmet just for html/css
 let g:user_emmet_install_global = 0
-autocmd FileType html,eruby,css EmmetInstall
+autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
 
 " Tab awesomeness providing tab chains
 Plug 'neitanod/vim-clevertab'
@@ -191,6 +191,7 @@ Plug 'slim-template/vim-slim'
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
 au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
@@ -361,6 +362,9 @@ let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'
 " Git repo viewer (like gitk)
 Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 map <Leader>gv :Gitv<CR>
+
+" Perl support
+Plug 'vim-perl/vim-perl'
 
 call plug#end()
 
