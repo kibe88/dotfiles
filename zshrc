@@ -18,6 +18,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto
         zgen prezto tmux
         zgen prezto git
+        zgen prezto utility
         zgen prezto completion
         zgen prezto command-not-found
         zgen prezto syntax-highlighting
@@ -29,9 +30,10 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto ruby
         zgen prezto python
         zgen prezto node
-		zgen prezto utility
         zgen prezto history
         zgen prezto history-substring-search
+
+        zgen load zsh-users/zsh-completions src
 
         zgen save
     fi
