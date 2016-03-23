@@ -292,6 +292,7 @@ let g:easytags_async=1
 Plug 'ivalkeen/vim-ctrlp-tjump'
 nnoremap gf :CtrlPtjump<CR>
 vnoremap gf :CtrlPtjumpVisual<CR>
+let g:ctrlp_tjump_only_silent = 1
 
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
