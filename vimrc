@@ -213,6 +213,8 @@ if executable('ag')
 endif
 let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
 let g:ctrlp_reuse_window=1
+" Enable ctrlp-extensions
+let g:ctrlp_extensions = ['tag', 'buffertag']
 nmap <Leader>cf :CtrlPBufTag<CR>
 
 " Easy buffer management through a single list
