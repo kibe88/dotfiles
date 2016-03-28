@@ -4,14 +4,14 @@
 [user]
 	name = Renato Rufino
 	email = renators@gmail.com
+
 [color]
 	diff = auto
 	branch = auto
 	status = auto
 	interactive = auto
 
-# Ver:
-#
+# See:
 #   http://shallowsky.com/blog/programming/gitcolors.html
 #   http://scie.nti.st/2007/5/2/colors-in-git
 #
