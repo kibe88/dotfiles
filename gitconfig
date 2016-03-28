@@ -25,7 +25,6 @@
 	graph = format:%Cblue%h%d%Creset%20%s
 
 [alias]
-	st = !GIT_PAGER= git status
 	ci = commit
 	br = branch
 	co = checkout
