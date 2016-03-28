@@ -28,6 +28,7 @@
 	ci = commit
 	br = branch
 	co = checkout
+    cb = checkout -b
 	lp = log -p
 	ll = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s
 	la = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s --all
