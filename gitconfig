@@ -39,6 +39,20 @@
     amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
     this = !git init && git add . && git commit -m \"initial commit\"
 
+    # Borrowed from: https://gist.github.com/robmiller/6018582
+    branch-name = "!git rev-parse --abbrev-ref HEAD" # Get the current branch name
+    publish = "!git push -u origin $(git branch-name)" # Push the current branch to the remote "origin", and set it to track # the upstream branch
+    unpublish = "!git push origin :$(git branch-name)" # Delete the remote version of the current branch
+    unstage = reset HEAD # Unstage any files that have been added to the staging area
+
+    update = "git pull origin $(git branch-name)" # Pull the current branch from the remote
+
+	pick = cherry-pick
+	pop = stash pop
+	sm = !git submodule # Add git submodule
+	smi = !git submodule update --init --recursive # AD
+	up = !git pull && git smi
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
