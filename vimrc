@@ -480,6 +480,8 @@ set incsearch " do incremental searching
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  " Sources vim conf when editing ~/dotfiles/vimrc as well (~/.vimrc is just a symlink to s:repovimrc)
+  autocmd BufWritePost s:repovimrc source $MYVIMRC
 augroup END
 
 " Easy tab navigation
