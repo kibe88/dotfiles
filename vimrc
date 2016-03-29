@@ -1,6 +1,8 @@
 let mapleader = ","
 let maplocalleader = "\\"
 let s:dotvim = $HOME . "/.vim/"
+let s:dotfiles = $HOME . "/dotfiles"
+let s:repovimrc = s:dotfiles . "/vimrc"
 set nocompatible " Turn off vi compat
 
 " Turns filetype plugins on
@@ -342,7 +344,7 @@ let g:startify_skiplist = [
   \ ]
 
 let g:startify_bookmarks=[
- \ {'v': '~/dotfiles/vimrc'},
+ \ {'v': s:repovimrc },
  \ {'a': '~/Projects/estante/amsterdam'},
  \ {'m': '~/projects/pessoal/agenda-api'}
  \ ]
@@ -488,7 +490,7 @@ nnoremap <Leader>sv <C-w>v<C-w>l
 nnoremap <Leader>sh <C-w>s<C-w>j
 
 " Quickly edit config files
-nnoremap <Leader>ev <C-w>s<C-w>j:e ~/dotfiles/vimrc<CR>
+nnoremap <Leader>ev <C-w>s<C-w>j:e s:repovimrc<CR>
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<CR>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<CR>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
