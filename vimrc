@@ -1,6 +1,6 @@
 let mapleader = ","
 let maplocalleader = "\\"
-let s:dotvim=expand('<sfile>:p:h') . "/.vim/"
+let s:dotvim = $HOME . "/.vim/"
 set nocompatible " Turn off vi compat
 
 " Turns filetype plugins on
