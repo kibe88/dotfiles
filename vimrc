@@ -371,6 +371,11 @@ map <Leader>gv :Gitv<CR>
 " Perl support
 Plug 'vim-perl/vim-perl'
 
+" Add coding style settings per project (using editorconfig)
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
+let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
+
 call plug#end()
 
 " Backups
