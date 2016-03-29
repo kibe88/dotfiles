@@ -35,6 +35,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
 
         zgen load zsh-users/zsh-completions src
         zgen load dbkaplun/smart-cd
+        zgen load zsh-titles
 
         zgen save
     fi
