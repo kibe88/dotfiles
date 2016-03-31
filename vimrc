@@ -585,3 +585,7 @@ nnoremap <Leader>ws :w!!<CR>
 " Toggle number gutter
 noremap <Leader>m :set invnumber<CR>
 inoremap <Leader>m <C-O>:set invnumber<CR>
+
+" Per project vimrc files
+set exrc " Enable per project vimrc
+set secure " Run insecure commands (write, autocmd and shell) only if vimrc file is owned by the user
