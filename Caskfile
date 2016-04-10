@@ -1,44 +1,20 @@
-install caskroom/cask/brew-cask
-tap caskroom/versions
-
-# dev
-cask install iterm2
-cask install github
-cask install sourcetree
-cask install sublime-text3
-cask install vimr
-cask install alfred
-cask install caffeine
-cask install virtualbox
-cask install sequel-pro
-cask install pgadmin3
-cask install java7
-cask install dash
-
-# google
-cask install google-drive
-
-# messengers
-cask install adium
-cask install slack
-cask install skype
-cask install hipchat
-cask install colloquy
-
-# media
-cask install spotify
-cask install mplayerx
-cask install flash-player
-
-# utils
-cask install the-unarchiver
-cask install flux
-cask install caffeine
-
-# browsers
-cask install google-chrome
-cask install firefox
-
-# notes
-cask install evernote
-
+caffeine
+colloquy
+dash
+evernote
+flux
+google-chrome
+iterm2
+karabiner
+maintenance
+mplayerx
+onyx
+pgadmin3
+send-to-kindle
+skitch
+skype
+slack
+spotify
+the-unarchiver
+transmission
+vlc
