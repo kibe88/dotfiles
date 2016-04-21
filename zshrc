@@ -36,13 +36,12 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load zsh-users/zsh-completions src
         zgen load dbkaplun/smart-cd
         zgen load jreese/zsh-titles
+        if is_osx; then
+          zgen load ${HOME}/.osx
+        fi
 
         zgen save
     fi
-fi
-
-if is_osx; then
-    source ${HOME}/.osx
 fi
 
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
