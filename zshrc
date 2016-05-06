@@ -5,7 +5,7 @@ for file in ~/.{exports,path,aliases}; do
 done;
 unset file;
 
-export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc)
+export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc $HOME/.zshrc)
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
 
