@@ -5,7 +5,7 @@ for file in ~/.{exports,path,aliases}; do
 done;
 unset file;
 
-export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc)
+export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc $HOME/.zshrc)
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
 
@@ -17,11 +17,11 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto prompt theme 'sorin'
         zgen prezto
         zgen prezto tmux
-        zgen prezto syntax-highlighting
         zgen prezto git
+        zgen prezto command-not-found
+        zgen prezto syntax-highlighting
         zgen prezto utility
         zgen prezto completion
-        zgen prezto command-not-found
         zgen prezto directory
         zgen prezto homebrew
         zgen prezto osx

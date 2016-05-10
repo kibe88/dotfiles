@@ -180,7 +180,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
 Plug 'tpope/vim-rbenv'
 
-autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml set tw=100 ai sw=2 sts=2 et
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Html formatting
@@ -588,3 +588,7 @@ inoremap <Leader>m <C-O>:set invnumber<CR>
 
 " Enables fzf in vim
 set rtp+=/usr/local/opt/fzf
+
+" Per project vimrc files
+set exrc " Enable per project vimrc
+set secure " Run insecure commands (write, autocmd and shell) only if vimrc file is owned by the user
