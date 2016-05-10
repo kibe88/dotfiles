@@ -40,6 +40,10 @@ if [ -f ~/.zgen/zgen.zsh ]; then
           zgen load ${HOME}/.osx
         fi
 
+        zgen load /usr/local/opt/fzf/shell/key-bindings.zsh
+        zgen load /usr/local/opt/fzf/shell/completion.zsh
+        zgen load ${HOME}/dotfiles/shell-extensions/fzf
+
         zgen save
     fi
 fi

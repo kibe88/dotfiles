@@ -585,3 +585,6 @@ nnoremap <Leader>ws :w!!<CR>
 " Toggle number gutter
 noremap <Leader>m :set invnumber<CR>
 inoremap <Leader>m <C-O>:set invnumber<CR>
+
+" Enables fzf in vim
+set rtp+=/usr/local/opt/fzf
