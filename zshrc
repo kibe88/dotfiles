@@ -31,8 +31,6 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto node
         zgen prezto history
 
-        zgen load zsh-users/zsh-completions src
-        zgen load jreese/zsh-titles
         if is_osx; then
           zgen load ${HOME}/.osx
         fi
@@ -40,6 +38,8 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load /usr/local/opt/fzf/shell/key-bindings.zsh
         zgen load /usr/local/opt/fzf/shell/completion.zsh
         zgen load ${HOME}/dotfiles/shell-extensions/fzf
+        zgen load zsh-users/zsh-completions src
+        zgen load jreese/zsh-titles
 
         zgen save
     fi
