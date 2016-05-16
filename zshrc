@@ -30,7 +30,6 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto python
         zgen prezto node
         zgen prezto history
-        zgen prezto history-substring-search
 
         zgen load zsh-users/zsh-completions src
         zgen load jreese/zsh-titles
