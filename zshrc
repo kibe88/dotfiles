@@ -43,6 +43,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load jreese/zsh-titles
         zgen load unixorn/autoupdate-zgen
         zgen load mrowa44/emojify
+        zgen load supercrabtree/k
 
         zgen save
     fi

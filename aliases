@@ -13,7 +13,7 @@ alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 # Count of non-hidden files in current dir
 alias numfiles='echo $(ls | wc -l)'
 
-alias k='kill -9'
+alias kl='kill -9'
 
 alias mkdir="mkdir -p"
 
