@@ -14,7 +14,6 @@ if [ -f ~/.zgen/zgen.zsh ]; then
     if ! zgen saved; then
         echo 'Creating zgen save'
 
-        zgen prezto prompt theme 'sorin'
         zgen prezto
         zgen prezto tmux
         zgen prezto git
