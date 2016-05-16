@@ -1,10 +1,6 @@
 # cask
 alias cask='brew cask'
 
-alias befrun='bundle exec foreman run'
-alias befstart='bundle exec foreman start'
-alias berspec='bundle exec rspec ./spec'
-
 alias amsterdam-server="SOLR_URL=http://localhost:8983/ rails s -p 3001"
 alias monaco-server="bin/rails s -p 3000"
 alias library-server="SOLR_URL=http://localhost:8983/solr/library bin/rails s -p 3002"
@@ -17,7 +13,7 @@ alias cleanupds="find . -type f -name '*.DS_Store' -ls -delete"
 # Count of non-hidden files in current dir
 alias numfiles='echo $(ls | wc -l)'
 
-alias k='kill -9'
+alias kl='kill -9'
 
 alias mkdir="mkdir -p"
 

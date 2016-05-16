@@ -21,14 +21,6 @@ call plug#begin('~/.vim/plugged')
 " Easy plugin installation
 map <Leader>i :PlugInstall<CR>
 
-" Shows silverlight search results in a split window
-Plug 'rking/ag.vim'
-nnoremap <Leader>a :Ag -i<space>
-" Search for word under the cursor
-nnoremap <Leader>aw :Ag <cword><CR>
-" Search for usages of the current file
-nnoremap <Leader>acf :exec "Ag " . expand("%:t:r")<CR>
-
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
 " This makes sure we use neocomplete completefunc instead of the one in rails.vim
@@ -201,23 +193,22 @@ let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', '
 " Creates non existent dirs automatically
 Plug 'pbrisbin/vim-mkdir'
 
-" Fuzzy file search (uses ag if available)
-Plug 'ctrlpvim/ctrlp.vim'
-if executable('ag')
-  " use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
-  " ag is fast enough that ctrlp doesnt need cache
-  let g:ctrlp_use_caching = 0
-endif
-let g:ctrlp_working_path_mode = '' "removes ctrlp chdir behavior as there's a plugin that does it already
-let g:ctrlp_reuse_window=1
-" Enable ctrlp-extensions
-let g:ctrlp_extensions = ['tag', 'buffertag']
-nmap <Leader>ct :CtrlPBufTag<CR>
+" Fuzzy file search (using fzf)
+Plug 'junegunn/fzf.vim'
+nmap <silent><C-t> :FZF<CR>
+nmap <Leader>ct :BTags<CR>
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+nnoremap <Leader>a :Ag<space>
+function! SearchWordWithAg()
+  execute 'Ag' expand(<cword>)
+endfunction
+function! SearchForUsagesOfTheCurrentFile()
+  execute 'Ag' expand("%:t:r")
+endfunction
+nnoremap <Leader>aw :call SearchWordWithAg()<CR>
+" Search for usages of the current file
+nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
 
 " Easy buffer management through a single list
 Plug 'troydm/easybuffer.vim'
@@ -376,6 +367,9 @@ Plug 'vim-perl/vim-perl'
 Plug 'editorconfig/editorconfig-vim'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
 let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
+
+" Deals with annoying swap files messages doing what users would commonly do
+Plug 'gioele/vim-autoswap'
 
 call plug#end()
 
@@ -586,6 +580,9 @@ nnoremap <Leader>ws :w!!<CR>
 " Toggle number gutter
 noremap <Leader>m :set invnumber<CR>
 inoremap <Leader>m <C-O>:set invnumber<CR>
+
+" Enables fzf in vim
+set rtp+=/usr/local/opt/fzf
 
 " Per project vimrc files
 set exrc " Enable per project vimrc
