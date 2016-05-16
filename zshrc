@@ -41,6 +41,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load zsh-users/zsh-completions src
         zgen load jreese/zsh-titles
         zgen load unixorn/autoupdate-zgen
+        zgen load mrowa44/emojify
 
         zgen save
     fi
