@@ -180,7 +180,7 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
 Plug 'tpope/vim-rbenv'
 
-autocmd FileType ruby,eruby,yaml set tw=100 ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml,less set tw=100 ai sw=2 sts=2 et
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Html formatting
@@ -506,7 +506,7 @@ nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
 augroup ft_vim
   au!
   au FileType vim set foldmethod=marker tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-  au FileType help setlocal textwidth=78
+  au FileType help setlocal textwidth=100
   au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
