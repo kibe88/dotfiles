@@ -33,6 +33,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
 
         if is_osx; then
           zgen load ${HOME}/.osx
+          zgen load unixorn/tumult.plugin.zsh
         fi
 
         zgen load /usr/local/opt/fzf/shell/key-bindings.zsh
