@@ -367,6 +367,9 @@ Plug 'editorconfig/editorconfig-vim'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
 let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 
+" Deals with annoying swap files messages doing what users would commonly do
+Plug 'gioele/vim-autoswap'
+
 call plug#end()
 
 " Backups
