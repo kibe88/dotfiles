@@ -40,6 +40,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load ${HOME}/dotfiles/shell-extensions/fzf
         zgen load zsh-users/zsh-completions src
         zgen load jreese/zsh-titles
+        zgen load unixorn/autoupdate-zgen
 
         zgen save
     fi
