@@ -1,8 +1,8 @@
 let mapleader = ","
 let maplocalleader = "\\"
-let s:dotvim = $HOME . "/.vim/"
-let s:dotfiles = $HOME . "/dotfiles"
-let s:repovimrc = s:dotfiles . "/vimrc"
+let g:dotvim = $HOME . "/.vim/"
+let g:dotfiles = $HOME . "/dotfiles"
+let g:repovimrc = g:dotfiles . "/vimrc"
 set nocompatible " Turn off vi compat
 
 " Turns filetype plugins on
@@ -344,7 +344,7 @@ let g:startify_skiplist = [
   \ ]
 
 let g:startify_bookmarks=[
- \ {'v': s:repovimrc },
+ \ {'v': g:repovimrc },
  \ {'a': '~/Projects/estante/amsterdam'},
  \ {'m': '~/projects/pessoal/agenda-api'}
  \ ]
@@ -379,10 +379,10 @@ let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 call plug#end()
 
 " Backups
-exec 'set backupdir='.s:dotvim.'/tmp/backup//'
+exec 'set backupdir='.g:dotvim.'/tmp/backup//'
 
 " Swap into its own dir
-exec 'set directory='.s:dotvim.'/tmp/swap//'
+exec 'set directory='.g:dotvim.'/tmp/swap//'
 set backup
 set noswapfile
 
@@ -401,7 +401,7 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Undo files
-exec 'set undodir='.s:dotvim.'/tmp/undo//'
+exec 'set undodir='.g:dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
@@ -480,8 +480,8 @@ set incsearch " do incremental searching
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
-  " Sources vim conf when editing ~/dotfiles/vimrc as well (~/.vimrc is just a symlink to s:repovimrc)
-  autocmd BufWritePost s:repovimrc source $MYVIMRC
+  " Sources vim conf when editing ~/dotfiles/vimrc as well (~/.vimrc is just a symlink to g:repovimrc)
+  autocmd BufWritePost $g:dotvim source $g:dotvim
 augroup END
 
 " Easy tab navigation
@@ -497,7 +497,7 @@ nnoremap <Leader>sv <C-w>v<C-w>l
 nnoremap <Leader>sh <C-w>s<C-w>j
 
 " Quickly edit config files
-nnoremap <Leader>ev <C-w>s<C-w>j:e s:repovimrc<CR>
+nnoremap <Leader>ev <C-w>s<C-w>j:e "${g:repovimrc}"<CR>
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<CR>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<CR>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
