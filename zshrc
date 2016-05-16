@@ -1,10 +1,3 @@
-[ -r ~/.functions ] && [ -f ~/.functions ] && source ~/.functions
-
-for file in ~/.{exports,path,aliases}; do
-    [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
-
 export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc $HOME/.zshrc)
 # start zgen
 if [ -f ~/.zgen/zgen.zsh ]; then
@@ -30,6 +23,11 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen prezto python
         zgen prezto node
         zgen prezto history
+
+        zgen load ${HOME}/.functions
+        zgen load ${HOME}/.exports
+        zgen load ${HOME}/.path
+        zgen load ${HOME}/.aliases
 
         if is_osx; then
           zgen load ${HOME}/.osx
