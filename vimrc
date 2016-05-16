@@ -324,12 +324,13 @@ Plug 'vim-scripts/matchit.zip'
 
 " Better startup screen
 Plug 'mhinz/vim-startify'
-" Use startify buffer for opening ctrlp files
-augroup change_startify_buffer
+augroup startify_buffer_settings
+  " Use startify buffer for opening ctrlp files
   autocmd FileType startify setlocal buftype=
+  " Use startify buffer for opening files from NerdTree
+  autocmd User Startified AirlineRefresh
 augroup END
-" Use startify buffer for opening files from NerdTree
-autocmd User Startified AirlineRefresh
+
 nmap <Leader>st :Startify<CR>
 let g:startify_list_order = [
       \ ['   Bookmarks '], 'bookmarks',
