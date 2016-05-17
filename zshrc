@@ -40,10 +40,10 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load zsh-users/zsh-completions src
         zgen load jreese/zsh-titles
         zgen load unixorn/autoupdate-zgen
-        zgen load mrowa44/emojify
         zgen load supercrabtree/k
         zgen load rupa/z
         zgen load andrewferrier/fzf-z
+        zgen load b4b4r07/emoji-cli
 
         zgen save
     fi
