@@ -43,7 +43,7 @@ if [ -f ~/.zgen/zgen.zsh ]; then
         zgen load mrowa44/emojify
         zgen load supercrabtree/k
         zgen load rupa/z
-        zgen load andrewferrier/fzf-z
+        zgen load kibe88/fzf-z . feature/prefer-fzfcmd-over-fzf
 
         zgen save
     fi
