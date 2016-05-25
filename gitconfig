@@ -54,6 +54,7 @@
     unpublish = "!git push origin :$(git branch-name)" # Delete the remote version of the current branch
     unstage = reset HEAD # Unstage any files that have been added to the staging area
     update = "!git pull origin $(git branch-name)" # Pull the current branch from the remote
+    log = ! git log --oneline --color | emojify | less
 
 [core]
 	excludesfile = ~/.gitignore
