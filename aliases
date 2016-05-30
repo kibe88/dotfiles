@@ -30,5 +30,7 @@ alias tmuxks='tmux kill-session -t'
 
 alias extract='unarchive'
 
+alias k='k --no-vcs --human'
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
