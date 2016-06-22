@@ -2,82 +2,83 @@
   templatedir = ~/.git_template
 
 [user]
-	name = Renato Rufino
-	email = renators@gmail.com
+  name = Renato Rufino
+  email = renators@gmail.com
 
 [color]
-	diff = auto
-	branch = auto
-	status = auto
-	interactive = auto
+  diff = auto
+  branch = auto
+  status = auto
+  interactive = auto
 
 # See:
 #   http://shallowsky.com/blog/programming/gitcolors.html
 #   http://scie.nti.st/2007/5/2/colors-in-git
 #
 [color "diff"]
-	commit = blue reverse
-	old = red bold
-	new = green bold
+  commit = blue reverse
+  old = red bold
+  new = green bold
 
 # Não sei porque mas não consigo utilizar --pretty=graph nos apelidos abaixo.
 [pretty]
-	graph = format:%Cblue%h%d%Creset%20%s
+  graph = --prety=format:%Cblue%h%d%Creset%20%s
 
 [alias]
-	ci = commit
-	br = branch
-	co = checkout
-    cb = checkout -b
-	lp = log -p
-	ll = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s
-	la = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s --all
-	ls = ls-files
-	df = diff --color --color-words --abbrev
-    st = status -s
-	sm = !git submodule # Add git submodule
-	smi = !git submodule update --init --recursive # AD
-	up = !git pull && git smi
-    bn = branch-name
+  ci = commit
+  br = branch
+  co = checkout
+  cb = checkout -b
+  lp = log -p
+  ll = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s
+  la = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s --all
+  ls = ls-files
+  df = diff --color --color-words --abbrev
+  st = status -s
+  sm = !git submodule # Add git submodule
+  smi = !git submodule update --init --recursive # AD
+  up = !git pull && git smi
+  bn = branch-name
 
     # Additional commands
-	ctags = !.git/hooks/ctags
-    amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
-    this = !git init && git add . && git commit -m \"initial commit\"
- 	pick = cherry-pick
-	pop = stash pop
+  ctags = !.git/hooks/ctags
+  amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  this = !git init && git add . && git commit -m \"initial commit\"
+  pick = cherry-pick
+  pop = stash pop
+  tagme = !git tag $(date +"%Y_%m_%d_%H_%M_%S")
 
     # Borrowed from: https://gist.github.com/robmiller/6018582
-    branch-name = "!git rev-parse --abbrev-ref HEAD" # Get the current branch name
-    current-branch = branch-name
-    publish = "!git push -u origin $(git branch-name)" # Push the current branch to the remote "origin", and set it to track # the upstream branch
-    unpublish = "!git push origin :$(git branch-name)" # Delete the remote version of the current branch
-    unstage = reset HEAD # Unstage any files that have been added to the staging area
-    update = "!git pull origin $(git branch-name)" # Pull the current branch from the remote
-    log = ! git log --oneline --color | emojify | less
+  branch-name = "!git rev-parse --abbrev-ref HEAD" # Get the current branch name
+  current-branch = branch-name
+  publish = "!git push -u origin $(git branch-name)" # Push the current branch to the remote "origin", and set it to track # the upstream branch
+  unpublish = "!git push origin :$(git branch-name)" # Delete the remote version of the current branch
+  unstage = reset HEAD # Unstage any files that have been added to the staging area
+  update = "!git pull origin $(git branch-name)" # Pull the current branch from the remote
+  log = ! git log --oneline --color | emojify | less
 
 [core]
-	excludesfile = ~/.gitignore
-	editor = vim
+  excludesfile = ~/.gitignore
+  editor = vim
 
 [push]
-	default = simple
+  default = simple
 
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
 
 # force github over ssh
 [url "git@github.com:"]
-    insteadOf = "https://github.com/"
+  insteadOf = "https://github.com/"
