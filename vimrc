@@ -190,6 +190,9 @@ au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
+" better json syntax highlighting
+Plug 'elzr/vim-json'
+
 " Creates non existent dirs automatically
 Plug 'pbrisbin/vim-mkdir'
 
