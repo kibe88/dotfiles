@@ -369,6 +369,30 @@ let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 " Deals with annoying swap files messages doing what users would commonly do
 Plug 'gioele/vim-autoswap'
 
+" distraction free writing
+Plug 'junegunn/goyo.vim'
+nmap <Leader>f :Goyo<CR>
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+endfunction
+
+augroup goyo_settings
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
+
 call plug#end()
 
 " Backups
