@@ -108,6 +108,7 @@ Plug 'myint/syntastic-extras'
 let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
