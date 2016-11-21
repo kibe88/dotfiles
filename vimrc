@@ -50,6 +50,11 @@ inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
                     \<c-r>=CleverTab#Complete('stop')<CR>
 inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
 
+" adds completion of words in additional tmux-panes
+Plug 'wellle/tmux-complete.vim'
+" disables complete trigger since we're using neocomplete integration
+let g:tmuxcomplete#trigger = ''
+
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<CR>
