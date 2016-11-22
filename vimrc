@@ -166,7 +166,7 @@ Plug 'scrooloose/nerdcommenter'
 " Ruby on Rails integration
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user' " create your own textobj (dependency for many plugins)
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
@@ -370,6 +370,51 @@ let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 
 " Deals with annoying swap files messages doing what users would commonly do
 Plug 'gioele/vim-autoswap'
+
+" vim as a writting tool
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-textobj-quote' " adds support for curly quotes
+Plug 'reedes/vim-textobj-sentence' " improves native sentence text object and motion
+Plug 'junegunn/limelight.vim' " highlights current paragraph
+nmap <Leader>l <Plug>(Limelight)
+xmap <Leader>l <Plug>(Limelight)
+let g:limelight_default_coefficient = 0.7
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+function! Prose()
+  call pencil#init()
+  call textobj#quote#init()
+  call textobj#sentence#init()
+  :Limelight
+
+  " manual reformatting shortcuts
+  nnoremap <buffer> <silent> Q gqap
+  xnoremap <buffer> <silent> Q gq
+  nnoremap <buffer> <silent> <leader>Q vapJgqap
+
+  " force top correction on most recent misspelling
+  nnoremap <buffer> <c-s> [s1z=<c-o>
+  inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+  " replace common punctuation
+  iabbrev <buffer> -- –
+  iabbrev <buffer> --- —
+  iabbrev <buffer> << «
+  iabbrev <buffer> >> »
+
+  " open most folds
+  setlocal foldlevel=6
+endfunction
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,text call Prose()
+augroup END
 
 call plug#end()
 
