@@ -374,7 +374,6 @@ let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 " Deals with annoying swap files messages doing what users would commonly do
 Plug 'gioele/vim-autoswap'
 
-<<<<<<< HEAD
 " vim as a writting tool
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-textobj-quote' " adds support for curly quotes
