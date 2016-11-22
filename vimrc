@@ -50,13 +50,18 @@ inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
                     \<c-r>=CleverTab#Complete('stop')<CR>
 inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
 
+" adds completion of words in additional tmux-panes
+Plug 'wellle/tmux-complete.vim'
+" disables complete trigger since we're using neocomplete integration
+let g:tmuxcomplete#trigger = ''
+
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gmv :Gmove<CR>
 nnoremap <Leader>gb :GBrowse<CR>
-nnoremap <Leader>gcam :Git commit --ammend --reuse-message=HEAD<CR>
+nnoremap <Leader>gcam :Git amend<CR>
 " Global git search for word under the cursor (with highlight) (taken from vimified)
 nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
 " Same in visual mode
@@ -108,6 +113,7 @@ Plug 'myint/syntastic-extras'
 let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
@@ -189,6 +195,9 @@ au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandt
 au BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+" better json syntax highlighting
+Plug 'elzr/vim-json'
 
 " Creates non existent dirs automatically
 Plug 'pbrisbin/vim-mkdir'
@@ -283,12 +292,6 @@ let g:easytags_cmd='/usr/local/bin/ctags'
 let g:easytags_auto_highlight=0
 let g:easytags_async=1
 
-" ctag tag navigation through ctrlp (in case of one match acts like ide goto)
-Plug 'ivalkeen/vim-ctrlp-tjump'
-nnoremap gf :CtrlPtjump<CR>
-vnoremap gf :CtrlPtjumpVisual<CR>
-let g:ctrlp_tjump_only_silent = 1
-
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
 let javascript_enable_domhtmlcss = 1
@@ -371,6 +374,7 @@ let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
 " Deals with annoying swap files messages doing what users would commonly do
 Plug 'gioele/vim-autoswap'
 
+<<<<<<< HEAD
 " vim as a writting tool
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-textobj-quote' " adds support for curly quotes
@@ -414,6 +418,30 @@ endfunction
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd,text call Prose()
+augroup END
+
+" distraction free writing
+Plug 'junegunn/goyo.vim'
+nmap <Leader>f :Goyo<CR>
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+endfunction
+
+augroup goyo_settings
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
 call plug#end()
