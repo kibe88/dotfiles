@@ -17,435 +17,435 @@ endif
 
 " Begin plugin config (Any plugin related settings are below its install command)
 call plug#begin('~/.vim/plugged')
-
-" Easy plugin installation
-map <Leader>i :PlugInstall<CR>
-
-" Configures all tab related plugins
-Plug 'Shougo/neocomplete'
-" This makes sure we use neocomplete completefunc instead of the one in rails.vim
-let g:neocomplete#force_overwrite_completefunc = 1
-
-Plug 'Shougo/neosnippet'
-Plug 'honza/vim-snippets' " Snippets collection
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
-
-Plug 'mattn/emmet-vim' " Zencode html output
-" Enable emmet just for html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
-
-" Tab awesomeness providing tab chains
-Plug 'neitanod/vim-clevertab'
-" Neosnippet tab chain (default is ultisnippets)
-inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
-                    \<c-r>=CleverTab#Complete('tab')<CR>
-                    \<c-r>=CleverTab#Complete('neosnippet')<CR>
-                    \<c-r>=CleverTab#Complete('keyword')<CR>
-                    \<c-r>=CleverTab#Complete('neocomplete')<CR>
-                    \<c-r>=CleverTab#Complete('omni')<CR>
-                    \<c-r>=CleverTab#Complete('stop')<CR>
-inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
-
-" adds completion of words in additional tmux-panes
-Plug 'wellle/tmux-complete.vim'
-" disables complete trigger since we're using neocomplete integration
-let g:tmuxcomplete#trigger = ''
-
-" Git wrapper
-Plug 'tpope/vim-fugitive'
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gmv :Gmove<CR>
-nnoremap <Leader>gb :GBrowse<CR>
-nnoremap <Leader>gcam :Git amend<CR>
-" Global git search for word under the cursor (with highlight) (taken from vimified)
-nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
-" Same in visual mode
-vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
-
-Plug 'junegunn/vim-easy-align'
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
-nmap <Leader>ea <Plug>(EasyAlign)
-
-Plug 'tpope/vim-endwise' "autoclose ruby code with end
-Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
-Plug 'tpope/vim-unimpaired'
-
-" All about surroundings i.e you can change 'a' to [a] using cs'[
-Plug 'tpope/vim-surround'
-" From: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
-" Use v or # to get a variable interpolation (inside of a string)}
-" ysiw#   Wrap the token under the cursor in #{}
-" v...s#  Wrap the selection in #{}
-let g:surround_113 = "#{\r}"   " v
-let g:surround_35  = "#{\r}"   " #
-
-" Select text in an ERb file with visual mode and then press s- or s=
-" Or yss- to do entire line.
-let g:surround_45 = "<% \r %>"    " -
-let g:surround_61 = "<%= \r %>"   " ="
-
-" Statusbar
-Plug 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-
-" Syntax checker
-Plug 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_style_warning_symbol = "⚠"
-" Additional checkers
-Plug 'myint/syntastic-extras'
-let g:syntastic_yaml_checkers = ['pyyaml']
-let g:syntastic_javascript_checkers = ['json_tool']
-let g:syntastic_make_checkers = ['gnumake']
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-
-" Colorscheme
-Plug 'morhetz/gruvbox'
-set background=dark
-silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
-
-" Auto change vim dir based on the 'project' root directory (defaults to vcs)
-Plug 'airblade/vim-rooter'
-let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
-let g:rooter_silent_chdir=1 " Don't echo dir after opening a file
-
-" Filetree sidebar
-Plug 'scrooloose/nerdtree'
-set guioptions-=r
-set guioptions-=L
-let g:NERDTreeWinSize=28
-let g:NERDTreeChDirMode=2
-map <Leader>s :NERDTreeToggle<CR>
-" Autocloses nerdtree (and therefore vim) if it's the only buffer left
-function! s:CloseNERDTreeIfOnlyBufferLeft()
-  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-    q
-  endif
-endfunction
-augroup autoclose_nerdtree
-  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
-augroup END
-
-" Maps nerdtree open selection in new buffer like ctrlp
-let g:NERDTreeMapOpenSplit='<C-x>'
-
-" TMUX integration
-" See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
-let g:VimuxOrientation="h"
-let g:VimuxHeight = "45"
-" Opens up clean terminal pane in tmux using vimux (hi is an alias for clear)
-nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
-
-" Tmux + Vim + Rspec integration
-Plug 'skalnik/vim-vroom'
-let g:vroom_use_vimux = 1
-" Reset vrom mappings
-let g:vroom_map_keys = 0
-" Override default vroom mappings
-nnoremap <Leader>rc :VroomRunTestFile<CR>
-nnoremap <Leader>rn :VroomRunNearestTest<CR>
-nnoremap <Leader>rl :VroomRunLastTest<CR>
-
-" Ruby bundler integration
-Plug 'tpope/vim-bundler'
-nnoremap <Leader>b :Bundle<CR>
-nnoremap <Leader>be :Bopen<CR>
-
-" easily comment code
-Plug 'scrooloose/nerdcommenter'
-
-" Ruby on Rails integration
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'kana/vim-textobj-user' " create your own textobj (dependency for many plugins)
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
-Plug 'tpope/vim-rbenv'
-
-autocmd FileType ruby,eruby,yaml,less set tw=100 ai sw=2 sts=2 et
-autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-
-" Html formatting
-Plug 'tpope/vim-haml'
-Plug 'juvenn/mustache.vim'
-Plug 'tpope/vim-markdown'
-Plug 'digitaltoad/vim-jade'
-Plug 'slim-template/vim-slim'
-
-au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
-
-let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
-
-" better json syntax highlighting
-Plug 'elzr/vim-json'
-
-" Creates non existent dirs automatically
-Plug 'pbrisbin/vim-mkdir'
-
-" Fuzzy file search (using fzf)
-Plug 'junegunn/fzf.vim'
-nmap <silent><C-t> :FZF<CR>
-nmap <Leader>ct :BTags<CR>
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-nnoremap <Leader>a :Ag<space>
-function! SearchWordWithAg()
-  execute 'Ag' expand(<cword>)
-endfunction
-function! SearchForUsagesOfTheCurrentFile()
-  execute 'Ag' expand("%:t:r")
-endfunction
-nnoremap <Leader>aw :call SearchWordWithAg()<CR>
-" Search for usages of the current file
-nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
-
-" Easy buffer management through a single list
-Plug 'troydm/easybuffer.vim'
-nmap <Leader>bt :EasyBufferToggle<CR>
-
-" Sublime text like multiple selection and edition
-Plug 'terryma/vim-multiple-cursors'
-" Code below prevents conflict with NeoComplete
-" See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-
-" Only show cursorline in the current window and in normal mode.
-augroup cline
-  au!
-  au WinLeave * set nocursorline
-  au WinEnter * set cursorline
-  au InsertEnter * set nocursorline
-  au InsertLeave * set cursorline
-augroup END
-
-" Indentation guidelines
-Plug 'Yggdroot/indentLine'
-set list lcs=tab:\|\
-let g:indentLine_char = '∙'
-" other useful characters
-"let g:indentLine_char = '∙▹¦'
-
-" Adds gutter with git diff info
-Plug 'airblade/vim-gitgutter'
-
-" Adds new text object representing lines of code at the same indent level (python, haml)
-Plug 'michaeljsmith/vim-indent-object'
-
-" Window buffer to take simple notes in the current vim session
-Plug 'mtth/scratch.vim'
-let g:scratch_horizontal = 0 " Set scratch to open vertically
-let g:scratch_top = 0 " When scratch is set to open vertically top means _left
-let g:scratch_height = 45 " % of the screen
-" Scratch needs this to autohide window when leaving insert mode
-set hidden
-" Set keys to my liking (<Leader>gs is already used by fugitive)
-let g:scratch_no_mappings = 1
-nmap <Leader>n <plug>(scratch-insert-reuse)
-nmap <Leader>N <plug>(scratch-insert-clear)
-xmap <Leader>n <plug>(scratch-selection-reuse)
-xmap <Leader>N <plug>(scratch-selection-clear)
-
-" Vim dash integration (it searchs the current selected word in dash)
-Plug 'rizzatti/dash.vim'
-nmap <silent> <Leader>dw <Plug>DashSearch
-map <Leader>ds :Dash<Space>
-
-" Rename the current buffer
-Plug 'danro/rename.vim'
-map <Leader>mv :Rename<Space>
-
-Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
-" Writes to first ctag file vim resolves which means .git/tags when fugitive is installed
-let g:easytags_dynamic_files=1
-let g:easytags_cmd='/usr/local/bin/ctags'
-let g:easytags_auto_highlight=0
-let g:easytags_async=1
-
-" ReactJS syntax highlighting (depends on vim javascript)
-Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
-let javascript_enable_domhtmlcss = 1
-
-" Vim motion plugin that jumps to any location specified by two characters
-Plug 'justinmk/vim-sneak'
-let g:sneak#streak = 1
-
-" Automatic closing off quotes, brackets and such
-Plug 'Raimondi/delimitMate'
-
-" Configures whitespace behavior
-Plug 'ntpeters/vim-better-whitespace'
-let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
-map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
-map <silent><Leader>tw :ToggleWhitespace<CR>
-let g:better_whitespace_enabled = 0
-
-" Remove whitespace only from edited lines
-Plug 'thirtythreeforty/lessspace.vim'
-
-" Installs the most recent version of match it
-Plug 'vim-scripts/matchit.zip'
-
-" Better startup screen
-Plug 'mhinz/vim-startify'
-augroup startify_buffer_settings
-  " Use startify buffer for opening ctrlp files
-  autocmd FileType startify setlocal buftype=
-  " Use startify buffer for opening files from NerdTree
-  autocmd User Startified AirlineRefresh
-augroup END
-
-nmap <Leader>st :Startify<CR>
-let g:startify_list_order = [
-      \ ['   Bookmarks '], 'bookmarks',
-      \ ['   MRU '],       'files' ,
-      \ ['   MRU DIR '],   'dir',
-      \ ['   Sessions '],  'sessions',
-      \ ]
-
-let g:startify_skiplist = [
-  \ 'COMMIT_EDITMSG',
-  \ 'bundle/.*/doc',
-  \ ]
-
-let g:startify_bookmarks=[
- \ {'v': g:repovimrc },
- \ {'a': '~/Projects/estante/amsterdam'},
- \ {'m': '~/projects/pessoal/agenda-api'}
- \ ]
-let g:startify_change_to_dir=0 " there's a plugin taking care of autoch to current file dir
-let g:startify_change_to_vcs_root=0 " there's a plugin taking care of autoch to git root dir
-let g:startify_enable_special=0
-let g:startify_files_number=8
-let g:startify_session_autoload=1
-let g:startify_session_delete_buffers=1
-let g:startify_session_persistence=1
-
-function! s:center_header(lines) abort
-  let longest_line   = max(map(copy(a:lines), 'len(v:val)'))
-  let centered_lines = map(copy(a:lines), 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
-  return centered_lines
-endfunction
-
-let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'), '\n'))
-
-" Git repo viewer (like gitk)
-Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
-map <Leader>gv :Gitv<CR>
-
-" Perl support
-Plug 'vim-perl/vim-perl'
-
-" Add coding style settings per project (using editorconfig)
-Plug 'editorconfig/editorconfig-vim'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
-let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
-
-" Deals with annoying swap files messages doing what users would commonly do
-Plug 'gioele/vim-autoswap'
-
-" vim as a writting tool
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-textobj-quote' " adds support for curly quotes
-Plug 'reedes/vim-textobj-sentence' " improves native sentence text object and motion
-Plug 'junegunn/limelight.vim' " highlights current paragraph
-nmap <Leader>l <Plug>(Limelight)
-xmap <Leader>l <Plug>(Limelight)
-let g:limelight_default_coefficient = 0.7
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
-function! Prose()
-  call pencil#init()
-  call textobj#quote#init()
-  call textobj#sentence#init()
-  :Limelight
-
-  " manual reformatting shortcuts
-  nnoremap <buffer> <silent> Q gqap
-  xnoremap <buffer> <silent> Q gq
-  nnoremap <buffer> <silent> <leader>Q vapJgqap
-
-  " force top correction on most recent misspelling
-  nnoremap <buffer> <c-s> [s1z=<c-o>
-  inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
-
-  " replace common punctuation
-  iabbrev <buffer> -- –
-  iabbrev <buffer> --- —
-  iabbrev <buffer> << «
-  iabbrev <buffer> >> »
-
-  " open most folds
-  setlocal foldlevel=6
-endfunction
-
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd,text call Prose()
-augroup END
-
-" distraction free writing
-Plug 'junegunn/goyo.vim'
-nmap <Leader>f :Goyo<CR>
-function! s:goyo_enter()
-  silent !tmux set status off
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  set showmode
-  set showcmd
-  set scrolloff=5
-endfunction
-
-augroup goyo_settings
-  autocmd! User GoyoEnter nested call <SID>goyo_enter()
-  autocmd! User GoyoLeave nested call <SID>goyo_leave()
-augroup END
+  " Easy plugin installation
+  map <Leader>i :PlugInstall<CR>
+
+  " Configures all tab related plugins
+  Plug 'Shougo/neocomplete'
+  " This makes sure we use neocomplete completefunc instead of the one in rails.vim
+  let g:neocomplete#force_overwrite_completefunc = 1
+
+  Plug 'Shougo/neosnippet'
+  Plug 'honza/vim-snippets' " Snippets collection
+  " Enable snipMate compatibility feature.
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
+  let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+
+  Plug 'mattn/emmet-vim' " Zencode html output
+  " Enable emmet just for html/css
+  let g:user_emmet_install_global = 0
+  autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
+
+  " Tab awesomeness providing tab chains
+  Plug 'neitanod/vim-clevertab'
+  " Neosnippet tab chain (default is ultisnippets)
+  inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
+                      \<c-r>=CleverTab#Complete('tab')<CR>
+                      \<c-r>=CleverTab#Complete('neosnippet')<CR>
+                      \<c-r>=CleverTab#Complete('keyword')<CR>
+                      \<c-r>=CleverTab#Complete('neocomplete')<CR>
+                      \<c-r>=CleverTab#Complete('omni')<CR>
+                      \<c-r>=CleverTab#Complete('stop')<CR>
+  inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
+
+  " adds completion of words in additional tmux-panes
+  Plug 'wellle/tmux-complete.vim'
+  " disables complete trigger since we're using neocomplete integration
+  let g:tmuxcomplete#trigger = ''
+
+  " Git wrapper
+  Plug 'tpope/vim-fugitive'
+  nnoremap <Leader>gs :Gstatus<CR>
+  nnoremap <Leader>gc :Gcommit<CR>
+  nnoremap <Leader>gmv :Gmove<CR>
+  nnoremap <Leader>gb :GBrowse<CR>
+  nnoremap <Leader>gcam :Git amend<CR>
+  " Global git search for word under the cursor (with highlight) (taken from vimified)
+  nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
+  " Same in visual mode
+  vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+
+  Plug 'junegunn/vim-easy-align'
+  " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
+  nmap <Leader>ea <Plug>(EasyAlign)
+
+  Plug 'tpope/vim-endwise' "autoclose ruby code with end
+  Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
+  Plug 'tpope/vim-unimpaired'
+
+  " All about surroundings i.e you can change 'a' to [a] using cs'[
+  Plug 'tpope/vim-surround'
+  " From: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
+  " Use v or # to get a variable interpolation (inside of a string)}
+  " ysiw#   Wrap the token under the cursor in #{}
+  " v...s#  Wrap the selection in #{}
+  let g:surround_113 = "#{\r}"   " v
+  let g:surround_35  = "#{\r}"   " #
+
+  " Select text in an ERb file with visual mode and then press s- or s=
+  " Or yss- to do entire line.
+  let g:surround_45 = "<% \r %>"    " -
+  let g:surround_61 = "<%= \r %>"   " ="
+
+  " Statusbar
+  Plug 'bling/vim-airline'
+  let g:airline_powerline_fonts = 1
+
+  " Syntax checker
+  Plug 'scrooloose/syntastic'
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 0
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_warning_symbol = "⚠"
+  let g:syntastic_style_error_symbol = "✗"
+  let g:syntastic_style_warning_symbol = "⚠"
+  " Additional checkers
+  Plug 'myint/syntastic-extras'
+  let g:syntastic_yaml_checkers = ['pyyaml']
+  let g:syntastic_javascript_checkers = ['json_tool']
+  let g:syntastic_make_checkers = ['gnumake']
+  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
+  " Colorscheme
+  Plug 'morhetz/gruvbox'
+
+  " Auto change vim dir based on the 'project' root directory (defaults to vcs)
+  Plug 'airblade/vim-rooter'
+  let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
+  let g:rooter_silent_chdir=1 " Don't echo dir after opening a file
+
+  " Filetree sidebar
+  Plug 'scrooloose/nerdtree'
+  set guioptions-=r
+  set guioptions-=L
+  let g:NERDTreeWinSize=28
+  let g:NERDTreeChDirMode=2
+  map <Leader>s :NERDTreeToggle<CR>
+  " Autocloses nerdtree (and therefore vim) if it's the only buffer left
+  function! s:CloseNERDTreeIfOnlyBufferLeft()
+    if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+      q
+    endif
+  endfunction
+  augroup autoclose_nerdtree
+    autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
+  augroup END
+
+  " Maps nerdtree open selection in new buffer like ctrlp
+  let g:NERDTreeMapOpenSplit='<C-x>'
+
+  " TMUX integration
+  " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'benmills/vimux'
+  let g:VimuxOrientation="h"
+  let g:VimuxHeight = "45"
+  " Opens up clean terminal pane in tmux using vimux (hi is an alias for clear)
+  nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
+
+  " Tmux + Vim + Rspec integration
+  Plug 'skalnik/vim-vroom'
+  let g:vroom_use_vimux = 1
+  " Reset vrom mappings
+  let g:vroom_map_keys = 0
+  " Override default vroom mappings
+  nnoremap <Leader>rc :VroomRunTestFile<CR>
+  nnoremap <Leader>rn :VroomRunNearestTest<CR>
+  nnoremap <Leader>rl :VroomRunLastTest<CR>
+
+  " Ruby bundler integration
+  Plug 'tpope/vim-bundler'
+  nnoremap <Leader>b :Bundle<CR>
+  nnoremap <Leader>be :Bopen<CR>
+
+  " easily comment code
+  Plug 'scrooloose/nerdcommenter'
+
+  " Ruby on Rails integration
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'kana/vim-textobj-user' " create your own textobj (dependency for many plugins)
+  Plug 'nelstrom/vim-textobj-rubyblock'
+  Plug 'ecomba/vim-ruby-refactoring'
+  Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
+  Plug 'tpope/vim-rbenv'
+
+  autocmd FileType ruby,eruby,yaml,less set tw=100 ai sw=2 sts=2 et
+  autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+  " Html formatting
+  Plug 'tpope/vim-haml'
+  Plug 'juvenn/mustache.vim'
+  Plug 'tpope/vim-markdown'
+  Plug 'digitaltoad/vim-jade'
+  Plug 'slim-template/vim-slim'
+
+  au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+  au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+  au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+  au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
+
+  let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+  " better json syntax highlighting
+  Plug 'elzr/vim-json'
+
+  " Creates non existent dirs automatically
+  Plug 'pbrisbin/vim-mkdir'
+
+  " Fuzzy file search (using fzf)
+  Plug 'junegunn/fzf.vim'
+  nmap <silent><C-t> :FZF<CR>
+  nmap <Leader>ct :BTags<CR>
+  " [Buffers] Jump to the existing window if possible
+  let g:fzf_buffers_jump = 1
+  nnoremap <Leader>a :Ag<space>
+  function! SearchWordWithAg()
+    execute 'Ag' expand(<cword>)
+  endfunction
+  function! SearchForUsagesOfTheCurrentFile()
+    execute 'Ag' expand("%:t:r")
+  endfunction
+  nnoremap <Leader>aw :call SearchWordWithAg()<CR>
+  " Search for usages of the current file
+  nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
+
+  " Easy buffer management through a single list
+  Plug 'troydm/easybuffer.vim'
+  nmap <Leader>bt :EasyBufferToggle<CR>
+
+  " Sublime text like multiple selection and edition
+  Plug 'terryma/vim-multiple-cursors'
+  " Code below prevents conflict with NeoComplete
+  " See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
+  " Called once right before you start selecting multiple cursors
+  function! Multiple_cursors_before()
+    if exists(':NeoCompleteLock')==2
+      exe 'NeoCompleteLock'
+    endif
+  endfunction
+  " Called once only when the multiple selection is canceled (default <Esc>)
+  function! Multiple_cursors_after()
+    if exists(':NeoCompleteUnlock')==2
+      exe 'NeoCompleteUnlock'
+    endif
+  endfunction
+
+  " Only show cursorline in the current window and in normal mode.
+  augroup cline
+    au!
+    au WinLeave * set nocursorline
+    au WinEnter * set cursorline
+    au InsertEnter * set nocursorline
+    au InsertLeave * set cursorline
+  augroup END
+
+  " Indentation guidelines
+  Plug 'Yggdroot/indentLine'
+  set list lcs=tab:\|\
+  let g:indentLine_char = '∙'
+  " other useful characters
+  "let g:indentLine_char = '∙▹¦'
+
+  " Adds gutter with git diff info
+  Plug 'airblade/vim-gitgutter'
+
+  " Adds new text object representing lines of code at the same indent level (python, haml)
+  Plug 'michaeljsmith/vim-indent-object'
+
+  " Window buffer to take simple notes in the current vim session
+  Plug 'mtth/scratch.vim'
+  let g:scratch_horizontal = 0 " Set scratch to open vertically
+  let g:scratch_top = 0 " When scratch is set to open vertically top means _left
+  let g:scratch_height = 45 " % of the screen
+  " Scratch needs this to autohide window when leaving insert mode
+  set hidden
+  " Set keys to my liking (<Leader>gs is already used by fugitive)
+  let g:scratch_no_mappings = 1
+  nmap <Leader>n <plug>(scratch-insert-reuse)
+  nmap <Leader>N <plug>(scratch-insert-clear)
+  xmap <Leader>n <plug>(scratch-selection-reuse)
+  xmap <Leader>N <plug>(scratch-selection-clear)
+
+  " Vim dash integration (it searchs the current selected word in dash)
+  Plug 'rizzatti/dash.vim'
+  nmap <silent> <Leader>dw <Plug>DashSearch
+  map <Leader>ds :Dash<Space>
+
+  " Rename the current buffer
+  Plug 'danro/rename.vim'
+  map <Leader>mv :Rename<Space>
+
+  Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
+  " Writes to first ctag file vim resolves which means .git/tags when fugitive is installed
+  let g:easytags_dynamic_files=1
+  let g:easytags_cmd='/usr/local/bin/ctags'
+  let g:easytags_auto_highlight=0
+  let g:easytags_async=1
+
+  " ReactJS syntax highlighting (depends on vim javascript)
+  Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
+  let javascript_enable_domhtmlcss = 1
+
+  " Vim motion plugin that jumps to any location specified by two characters
+  Plug 'justinmk/vim-sneak'
+  let g:sneak#streak = 1
+
+  " Automatic closing off quotes, brackets and such
+  Plug 'Raimondi/delimitMate'
+
+  " Configures whitespace behavior
+  Plug 'ntpeters/vim-better-whitespace'
+  let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
+  map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
+  map <silent><Leader>tw :ToggleWhitespace<CR>
+  let g:better_whitespace_enabled = 0
+
+  " Remove whitespace only from edited lines
+  Plug 'thirtythreeforty/lessspace.vim'
+
+  " Installs the most recent version of match it
+  Plug 'vim-scripts/matchit.zip'
+
+  " Better startup screen
+  Plug 'mhinz/vim-startify'
+  augroup startify_buffer_settings
+    " Use startify buffer for opening ctrlp files
+    autocmd FileType startify setlocal buftype=
+    " Use startify buffer for opening files from NerdTree
+    autocmd User Startified AirlineRefresh
+  augroup END
+
+  nmap <Leader>st :Startify<CR>
+  let g:startify_list_order = [
+        \ ['   Bookmarks '], 'bookmarks',
+        \ ['   MRU '],       'files' ,
+        \ ['   MRU DIR '],   'dir',
+        \ ['   Sessions '],  'sessions',
+        \ ]
+
+  let g:startify_skiplist = [
+    \ 'COMMIT_EDITMSG',
+    \ 'bundle/.*/doc',
+    \ ]
+
+  let g:startify_bookmarks=[
+   \ {'v': g:repovimrc },
+   \ {'a': '~/Projects/estante/amsterdam'},
+   \ {'m': '~/projects/pessoal/agenda-api'}
+   \ ]
+  let g:startify_change_to_dir=0 " there's a plugin taking care of autoch to current file dir
+  let g:startify_change_to_vcs_root=0 " there's a plugin taking care of autoch to git root dir
+  let g:startify_enable_special=0
+  let g:startify_files_number=8
+  let g:startify_session_autoload=1
+  let g:startify_session_delete_buffers=1
+  let g:startify_session_persistence=1
+
+  function! s:center_header(lines) abort
+    let longest_line   = max(map(copy(a:lines), 'len(v:val)'))
+    let centered_lines = map(copy(a:lines), 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+    return centered_lines
+  endfunction
+
+  let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'), '\n'))
+
+  " Git repo viewer (like gitk)
+  Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+  map <Leader>gv :Gitv<CR>
+
+  " Perl support
+  Plug 'vim-perl/vim-perl'
+
+  " Add coding style settings per project (using editorconfig)
+  Plug 'editorconfig/editorconfig-vim'
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
+  let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
+
+  " Deals with annoying swap files messages doing what users would commonly do
+  Plug 'gioele/vim-autoswap'
+
+  " vim as a writting tool
+  Plug 'reedes/vim-pencil'
+  Plug 'reedes/vim-textobj-quote' " adds support for curly quotes
+  Plug 'reedes/vim-textobj-sentence' " improves native sentence text object and motion
+  Plug 'junegunn/limelight.vim' " highlights current paragraph
+  nmap <Leader>l <Plug>(Limelight)
+  xmap <Leader>l <Plug>(Limelight)
+  let g:limelight_default_coefficient = 0.7
+  " Color name (:help cterm-colors) or ANSI code
+  let g:limelight_conceal_ctermfg = 'gray'
+  let g:limelight_conceal_ctermfg = 240
+  " Color name (:help gui-colors) or RGB color
+  let g:limelight_conceal_guifg = 'DarkGray'
+  let g:limelight_conceal_guifg = '#777777'
+
+  function! Prose()
+    call pencil#init()
+    call textobj#quote#init()
+    call textobj#sentence#init()
+    :Limelight
+
+    " manual reformatting shortcuts
+    nnoremap <buffer> <silent> Q gqap
+    xnoremap <buffer> <silent> Q gq
+    nnoremap <buffer> <silent> <leader>Q vapJgqap
+
+    " force top correction on most recent misspelling
+    nnoremap <buffer> <c-s> [s1z=<c-o>
+    inoremap <buffer> <c-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
+    " replace common punctuation
+    iabbrev <buffer> -- –
+    iabbrev <buffer> --- —
+    iabbrev <buffer> << «
+    iabbrev <buffer> >> »
+
+    " open most folds
+    setlocal foldlevel=6
+  endfunction
+
+  augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,text call Prose()
+  augroup END
+
+  " distraction free writing
+  Plug 'junegunn/goyo.vim'
+  nmap <Leader>f :Goyo<CR>
+  function! s:goyo_enter()
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+  endfunction
+
+  function! s:goyo_leave()
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+    set showmode
+    set showcmd
+    set scrolloff=5
+  endfunction
+
+  augroup goyo_settings
+    autocmd! User GoyoEnter nested call <SID>goyo_enter()
+    autocmd! User GoyoLeave nested call <SID>goyo_leave()
+  augroup END
 
 call plug#end()
+
+set background=dark
+silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
