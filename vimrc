@@ -24,7 +24,7 @@ map <Leader>i :PlugInstall<CR>
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
 " This makes sure we use neocomplete completefunc instead of the one in rails.vim
- let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#force_overwrite_completefunc = 1
 
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " Snippets collection
@@ -71,8 +71,8 @@ Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
 nmap <Leader>ea <Plug>(EasyAlign)
 
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise' "autoclose ruby code with end
+Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
 Plug 'tpope/vim-unimpaired'
 
 " All about surroundings i.e you can change 'a' to [a] using cs'[
@@ -117,6 +117,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
+set background=dark
+silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
 
 " Auto change vim dir based on the 'project' root directory (defaults to vcs)
 Plug 'airblade/vim-rooter'
@@ -132,9 +134,9 @@ let g:NERDTreeChDirMode=2
 map <Leader>s :NERDTreeToggle<CR>
 " Autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
-if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-  q
-endif
+  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+    q
+  endif
 endfunction
 augroup autoclose_nerdtree
   autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
@@ -167,6 +169,7 @@ Plug 'tpope/vim-bundler'
 nnoremap <Leader>b :Bundle<CR>
 nnoremap <Leader>be :Bopen<CR>
 
+" easily comment code
 Plug 'scrooloose/nerdcommenter'
 
 " Ruby on Rails integration
@@ -486,13 +489,8 @@ nnoremap g, g,zz
 " Open a Quickfix window for the last search.
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" colorscheme
-set background=dark
-" set it silently cause the colorscheme may not exist yet
-silent! colorscheme gruvbox
-
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
 
 " Indentation
