@@ -300,7 +300,7 @@ call plug#begin('~/.vim/plugged')
   let g:sneak#streak = 1
 
   " Automatic closing off quotes, brackets and such
-  Plug 'Raimondi/delimitMate'
+  Plug 'jiangmiao/auto-pairs'
 
   " Configures whitespace behavior
   Plug 'ntpeters/vim-better-whitespace'
@@ -444,6 +444,7 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+" starts vanilla vim configuration
 set background=dark
 silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
 
