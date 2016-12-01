@@ -52,5 +52,3 @@ if [ -f ~/.zgen/zgen.zsh ]; then
     # the file is sourced again (reloading til i fix it cleanly)
     source ~/.zgen/zgen.zsh
 fi
-
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
