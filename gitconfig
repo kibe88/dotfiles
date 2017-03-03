@@ -20,7 +20,6 @@
   old = red bold
   new = green bold
 
-# Não sei porque mas não consigo utilizar --pretty=graph nos apelidos abaixo.
 [pretty]
   graph = --prety=format:%Cblue%h%d%Creset%20%s
 
@@ -30,8 +29,8 @@
   co = checkout
   cb = checkout -b
   lp = log -p
-  ll = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s
-  la = log --graph --pretty=format:%Cblue%h%d%Creset%x20%s --all
+  ll = log --graph --pretty=graph
+  la = log --graph --all --pretty=graph
   ls = ls-files
   df = diff --color --color-words --abbrev
   st = status -s

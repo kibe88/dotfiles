@@ -31,5 +31,8 @@ export TERM='screen-256color'
 # Project DIR
 export PROJECT_DIR="$HOME/Projects"
 
+# do not load global  packages for python virtualenvs
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--no-site-packages"
+
 # Include local exports that you don't want exposed online
 [[ -f ~/.exports.local ]] && source ~/.exports.local
