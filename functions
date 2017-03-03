@@ -14,5 +14,20 @@ commandExists() {
 
 is_osx () { [[ $OSTYPE == darwin* ]]; }
 
+# tmux
+() {
+  tmh() {
+    tmux split-window -h "exec $*"
+  }
+
+  tmv() {
+    tmux split-window -v "exec $*"
+  }
+
+  tmssh() {
+    tmux new-window -n $@ "exec ssh $@"
+  }
+}
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.functions.local ]] && source ~/.functions.local
