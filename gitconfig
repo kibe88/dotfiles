@@ -46,6 +46,7 @@
   pick = cherry-pick
   pop = stash pop
   tagme = !git tag $(date +"%Y_%m_%d_%H_%M_%S")
+  url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'
 
     # Borrowed from: https://gist.github.com/robmiller/6018582
   branch-name = "!git rev-parse --abbrev-ref HEAD" # Get the current branch name
