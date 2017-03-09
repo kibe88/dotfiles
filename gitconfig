@@ -38,6 +38,7 @@
   smi = !git submodule update --init --recursive # AD
   up = !git pull && git smi
   bn = branch-name
+  undo = reset --soft HEAD^
 
     # Additional commands
   ctags = !.git/hooks/ctags
