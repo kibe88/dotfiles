@@ -118,6 +118,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
+Plug 'junegunn/seoul256.vim'
 
 " Auto change vim dir based on the 'project' root directory (defaults to vcs)
 Plug 'airblade/vim-rooter'
@@ -446,7 +448,7 @@ nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " colorscheme
 set background=dark
 " set it silently cause the colorscheme may not exist yet
-silent! colorscheme gruvbox
+silent! colorscheme seoul256
 
 " Make it obvious where 80 characters is
 set textwidth=80
