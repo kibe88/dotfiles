@@ -404,6 +404,11 @@ augroup goyo_settings
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
+" shows up rails i18n in locate or quickfix window
+Plug 'airblade/vim-localorie'
+nnoremap <silent> <leader>lt :call localorie#translate()<CR>
+nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
+
 call plug#end()
 
 " Backups
