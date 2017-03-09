@@ -61,6 +61,7 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gmv :Gmove<CR>
 nnoremap <Leader>gb :GBrowse<CR>
+nnoremap <Leader>gbl :. Gbrowse<CR>
 nnoremap <Leader>gcam :Git amend<CR>
 " Global git search for word under the cursor (with highlight) (taken from vimified)
 nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
