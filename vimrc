@@ -287,8 +287,8 @@ Plug 'rizzatti/dash.vim'
 nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
-" Rename the current buffer
-Plug 'danro/rename.vim'
+" Useful terminal commands
+Plug 'tpope/vim-eunuch'
 map <Leader>mv :Rename<Space>
 
 Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
