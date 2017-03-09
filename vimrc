@@ -261,6 +261,9 @@ let g:indentLine_char = '∙'
 
 " Adds gutter with git diff info
 Plug 'airblade/vim-gitgutter'
+" trade accuracy for speed and updates signs on save
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " Adds new text object representing lines of code at the same indent level (python, haml)
 Plug 'michaeljsmith/vim-indent-object'
