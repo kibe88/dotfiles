@@ -614,6 +614,9 @@ nnoremap <Leader>ws :w!!<CR>
 noremap <Leader>m :set invnumber<CR>
 inoremap <Leader>m <C-O>:set invnumber<CR>
 
+" go back to last opened file
+nnoremap gb :e #<CR>
+
 " Enables fzf in vim
 set rtp+=/usr/local/opt/fzf
 
