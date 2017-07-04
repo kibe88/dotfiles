@@ -4,7 +4,7 @@ fi
 
 # start zgen
 source ~/.zgen/zgen.zsh
-export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc $HOME/.zshrc)
+ZGEN_RESET_ON_CHANGE=("${DOTFILES_DIR}//zshrc" "${HOME}/.zshrc" "${HOME}/.zshrc.zgen")
 
 if ! zgen saved; then
 
