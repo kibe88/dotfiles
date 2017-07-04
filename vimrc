@@ -24,7 +24,7 @@ map <Leader>i :PlugInstall<CR>
 " Configures all tab related plugins
 Plug 'Shougo/neocomplete'
 " This makes sure we use neocomplete completefunc instead of the one in rails.vim
- let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#force_overwrite_completefunc = 1
 
 Plug 'Shougo/neosnippet'
 Plug 'honza/vim-snippets' " Snippets collection
@@ -72,8 +72,8 @@ Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
 nmap <Leader>ea <Plug>(EasyAlign)
 
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise' "autoclose ruby code with end
+Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
 Plug 'tpope/vim-unimpaired'
 
 " All about surroundings i.e you can change 'a' to [a] using cs'[
@@ -135,9 +135,9 @@ let g:NERDTreeChDirMode=2
 map <Leader>s :NERDTreeToggle<CR>
 " Autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
-if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-  q
-endif
+  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+    q
+  endif
 endfunction
 augroup autoclose_nerdtree
   autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
@@ -170,6 +170,7 @@ Plug 'tpope/vim-bundler'
 nnoremap <Leader>b :Bundle<CR>
 nnoremap <Leader>be :Bopen<CR>
 
+" easily comment code
 Plug 'scrooloose/nerdcommenter'
 
 " Ruby on Rails integration
@@ -195,9 +196,8 @@ au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expan
 au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
-au BufNewFile,BufReadPost *.md set filetype=markdown
 
-let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 
 " better json syntax highlighting
 Plug 'elzr/vim-json'
@@ -307,7 +307,7 @@ Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
 
 " Automatic closing off quotes, brackets and such
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 
 " Configures whitespace behavior
 Plug 'ntpeters/vim-better-whitespace'
@@ -411,6 +411,12 @@ nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 
 call plug#end()
 
+" starts vanilla vim configuration
+
+" Colorscheme
+set background=dark
+silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
+
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
 
@@ -453,13 +459,8 @@ nnoremap g, g,zz
 " Open a Quickfix window for the last search.
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" colorscheme
-set background=dark
-" set it silently cause the colorscheme may not exist yet
-silent! colorscheme seoul256
-
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
 
 " Indentation
