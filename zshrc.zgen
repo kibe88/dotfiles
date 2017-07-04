@@ -27,19 +27,10 @@ if ! zgen saved; then
         zgen prezto node
         zgen prezto history
 
-        zgen load ${HOME}/.functions
-        zgen load ${HOME}/.exports
-        zgen load ${HOME}/.path
-        zgen load ${HOME}/.aliases
-
         if is_osx; then
-          zgen load ${HOME}/.osx
           zgen load unixorn/tumult.plugin.zsh
         fi
 
-        zgen load /usr/local/opt/fzf/shell/key-bindings.zsh
-        zgen load /usr/local/opt/fzf/shell/completion.zsh
-        zgen load ${HOME}/dotfiles/shell-extensions/fzf
         zgen load zsh-users/zsh-completions src
         zgen load jreese/zsh-titles
         zgen load unixorn/autoupdate-zgen
