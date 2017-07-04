@@ -299,7 +299,7 @@ let g:easytags_auto_highlight=0
 let g:easytags_async=1
 
 " ReactJS syntax highlighting (depends on vim javascript)
-Plug 'mxw/vim-jsx' | Plug 'vim-javascript'
+Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
 
 " Vim motion plugin that jumps to any location specified by two characters
