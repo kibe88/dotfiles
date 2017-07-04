@@ -1,8 +1,11 @@
-export ZGEN_RESET_ON_CHANGE=($HOME/dotfiles/zshrc $HOME/.zshrc)
-# start zgen
-if [ -f ~/.zgen/zgen.zsh ]; then
+if [ ! -f ~/zgen/zgen.zsh ]; then
+  git clone git@github.com:tarjoilija/zgen.git "${HOME}/.zgen"
+fi
 
-    source ~/.zgen/zgen.zsh
+# start zgen
+source ~/.zgen/zgen.zsh
+
+if ! zgen saved; then
 
     if ! zgen saved; then
         echo 'Creating zgen save'
