@@ -7,43 +7,40 @@ source ~/.zgen/zgen.zsh
 ZGEN_RESET_ON_CHANGE=("${DOTFILES_DIR}//zshrc" "${HOME}/.zshrc" "${HOME}/.zshrc.zgen")
 
 if ! zgen saved; then
+    echo 'Creating zgen save'
 
-    if ! zgen saved; then
-        echo 'Creating zgen save'
+    zgen prezto
+    zgen prezto tmux
+    zgen prezto git
+    zgen prezto command-not-found
+    zgen prezto syntax-highlighting
+    zgen prezto utility
+    zgen prezto completion
+    zgen prezto directory
+    zgen prezto homebrew
+    zgen prezto osx
+    zgen prezto archive
+    zgen prezto environment
+    zgen prezto ruby
+    zgen prezto python
+    zgen prezto node
+    zgen prezto history
 
-        zgen prezto
-        zgen prezto tmux
-        zgen prezto git
-        zgen prezto command-not-found
-        zgen prezto syntax-highlighting
-        zgen prezto utility
-        zgen prezto completion
-        zgen prezto directory
-        zgen prezto homebrew
-        zgen prezto osx
-        zgen prezto archive
-        zgen prezto environment
-        zgen prezto ruby
-        zgen prezto python
-        zgen prezto node
-        zgen prezto history
-
-        if is_osx; then
-          zgen load unixorn/tumult.plugin.zsh
-        fi
-
-        zgen load zsh-users/zsh-completions src
-        zgen load jreese/zsh-titles
-        zgen load unixorn/autoupdate-zgen
-        zgen load supercrabtree/k
-        zgen load rupa/z
-        zgen load kibe88/fzf-z . feature/prefer-fzfcmd-over-fzf
-        zgen load b4b4r07/emoji-cli
-
-        zgen save
+    if is_osx; then
+      zgen load unixorn/tumult.plugin.zsh
     fi
 
-    # Somehow fzf keybindings arent mapped after first restart, it only works if
-    # the file is sourced again (reloading til i fix it cleanly)
-    source ~/.zgen/zgen.zsh
+    zgen load zsh-users/zsh-completions src
+    zgen load jreese/zsh-titles
+    zgen load unixorn/autoupdate-zgen
+    zgen load supercrabtree/k
+    zgen load rupa/z
+    zgen load kibe88/fzf-z . feature/prefer-fzfcmd-over-fzf
+    zgen load b4b4r07/emoji-cli
+
+    zgen save
 fi
+
+# Somehow fzf keybindings arent mapped after first restart, it only works if
+# the file is sourced again (reloading til i fix it cleanly)
+source ~/.zgen/zgen.zsh
