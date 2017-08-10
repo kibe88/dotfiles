@@ -1,8 +1,6 @@
 # db related fils
 *.sqlite3
 *.sqlite
-db/schema.rb
-database.yml
 
 # common temp and log files
 log/*

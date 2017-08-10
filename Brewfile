@@ -1,58 +1,9 @@
-advancecomp
-bash-completion
-caskroom/cask/brew-cask
-homebrew/completions/brew-cask-completion
-cloog
-cowsay
-cscope
-ctags
-curl
-docker-compose
-ec2-ami-tools
-elasticsearch
-emacs
-faac
-ffmpeg
-fortune
-fzf
-gcc
-ghi
-gifsicle
-gist
-graphviz
-gtk+
-htop-osx
-hub
-imagemagick
-jhead
-jpegoptim
-homebrew/dupes/libiconv
-librsvg
-libvo-aacenc
-little-cms2
-memcached
-mysql
-node
-optipng
-ossp-uuid
-p7zip
-homebrew/php/php56
-pngcrush
-pngquant
-portaudio
-postgresql
-python
-python3
-rbenv
-thoughtbot/formulae/rcm
-reattach-to-user-namespace
-redis
-solr
-the_silver_searcher
-tmux
-tmux-mem-cpu-load
-unrar
-vim
-webp
-wget
-zsh
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "thoughtbot/formulae"
+brew "fzf"
+brew "hub"
+brew "thoughtbot/formulae/rcm"
+cask "franz"
+cask "spotify"

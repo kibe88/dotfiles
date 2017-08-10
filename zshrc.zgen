@@ -1,10 +1,11 @@
+# installs zgen when needed
 if [ ! -f ~/.zgen/zgen.zsh ]; then
   git clone git@github.com:tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
 # start zgen
+ZGEN_RESET_ON_CHANGE=("${DOTFILES_DIR}/zshrc" "${HOME}/.zshrc" "${HOME}/.zshrc.zgen")
 source ~/.zgen/zgen.zsh
-ZGEN_RESET_ON_CHANGE=("${DOTFILES_DIR}//zshrc" "${HOME}/.zshrc" "${HOME}/.zshrc.zgen")
 
 if ! zgen saved; then
     echo 'Creating zgen save'
@@ -41,6 +42,4 @@ if ! zgen saved; then
     zgen save
 fi
 
-# Somehow fzf keybindings arent mapped after first restart, it only works if
-# the file is sourced again (reloading til i fix it cleanly)
 source ~/.zgen/zgen.zsh

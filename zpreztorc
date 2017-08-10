@@ -7,7 +7,7 @@ zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
 zstyle ':prezto:module:tmux:auto-start' local 'yes'
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'cloud'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'

@@ -1,6 +1,6 @@
 # Set output colors
 export GREP_COLOR="4;33"
-export CLICOLOR="auto"
+export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Set default text editor
@@ -44,7 +44,7 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 # brew
 HOMEBREW_NO_AUTO_UPDATE=1
 
-export DOTFILES_DIR="#{HOME}/dotfiles"
+export DOTFILES_DIR="${HOME}/dotfiles"
 
 # Include local exports that you don't want exposed online
 [[ -f ~/.exports.local ]] && source ~/.exports.local

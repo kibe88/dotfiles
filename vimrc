@@ -120,6 +120,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'junegunn/seoul256.vim'
+let g:seoul256_background = 239
+
 
 " Auto change vim dir based on the 'project' root directory (defaults to vcs)
 Plug 'airblade/vim-rooter'
@@ -301,6 +303,7 @@ let g:easytags_async=1
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
+autocmd FileType javascript set tw=100 ai sw=2 sts=2 et
 
 " Vim motion plugin that jumps to any location specified by two characters
 Plug 'justinmk/vim-sneak'
@@ -415,7 +418,8 @@ call plug#end()
 
 " Colorscheme
 set background=dark
-silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
+silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
+let g:seoul256_background = 239
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
