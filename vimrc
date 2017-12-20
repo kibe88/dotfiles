@@ -68,6 +68,8 @@ nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R
 " Same in visual mode
 vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
+Plug 'tpope/vim-rhubarb'
+
 Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
 nmap <Leader>ea <Plug>(EasyAlign)
