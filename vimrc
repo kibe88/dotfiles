@@ -637,3 +637,6 @@ set rtp+=/usr/local/opt/fzf
 " Per project vimrc files
 set exrc " Enable per project vimrc
 set secure " Run insecure commands (write, autocmd and shell) only if vimrc file is owned by the user
+
+" Opens current file using the default app for the mimetype
+:map <silent><Leader>o :!open %<CR>
