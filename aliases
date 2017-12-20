@@ -29,14 +29,6 @@ alias extract='unarchive'
 alias k='k --no-vcs --human'
 alias ka='k --all'
 
-# Short for docker-machine
-dkm () {
-  docker-machine $@
-}
-# Switch docker pointer to another host (dmenv my_remote_host)
-dkmenv () {
-  eval "$(docker-machine env $1)"
-}
 # Short for docker
 dk () {
   docker $@
@@ -45,15 +37,6 @@ dk () {
 dkcrun() {
   docker-compose run $@
 }
-
-dkm_is_running () {
-  docker-machine status default > /dev/null
-}
-# Always start by pointing to the local dev instance
-#if ! dkm_is_running; then
-    #dkm start
-#fi
-dkmenv default
 
 # Include local aliases that you don't want exposed online
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
