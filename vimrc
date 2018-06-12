@@ -643,3 +643,8 @@ set secure " Run insecure commands (write, autocmd and shell) only if vimrc file
 
 " Opens current file using the default app for the mimetype
 :map <silent><Leader>o :!open %<CR>
+
+" 24bit colors
+let &t_8f = "[38;2;%lu;%lu;%lum"
+let &t_8b = "[48;2;%lu;%lu;%lum"
+set termguicolors
