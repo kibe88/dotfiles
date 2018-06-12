@@ -58,6 +58,7 @@
   unstage = reset HEAD # Unstage any files that have been added to the staging area
   update = "!git pull origin $(git branch-name)" # Pull the current branch from the remote
   log = ! git log --oneline --color | emojify | less
+  cleanall = "clean -f */*.orig"
 
 [core]
   excludesfile = ~/.gitignore
