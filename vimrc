@@ -3,6 +3,7 @@ let maplocalleader = "\\"
 let g:dotvim = $HOME . "/.vim/"
 let g:dotfiles = $HOME . "/dotfiles"
 let g:repovimrc = g:dotfiles . "/vimrc"
+let $MYVIMRCFILES = g:repovimrc.','.$MYVIMRC
 set nocompatible " Turn off vi compat
 
 " Turns filetype plugins on
@@ -521,9 +522,8 @@ set incsearch " do incremental searching
 " Always reload vimrc after save
 augroup reload_vimrc
   autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
   " Sources vim conf when editing ~/dotfiles/vimrc as well (~/.vimrc is just a symlink to g:repovimrc)
-  autocmd BufWritePost $g:dotvim source $g:dotvim
+  autocmd BufWritePost $MYVIMRCFILES source %
 augroup END
 
 " Easy tab navigation
