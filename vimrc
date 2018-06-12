@@ -123,6 +123,8 @@ let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'arcticicestudio/nord-vim'
+
 let g:seoul256_background = 239
 
 
@@ -423,8 +425,9 @@ call plug#end()
 set background=dark
 "silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
 "let g:gruvbox_contrast_dark = 'soft'
-silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
-let g:seoul256_background = 239
+"silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
+"let g:seoul256_background = 239
+silent! colorscheme nord
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
