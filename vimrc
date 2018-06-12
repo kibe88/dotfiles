@@ -428,6 +428,7 @@ set background=dark
 "silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
 "let g:seoul256_background = 239
 silent! colorscheme nord
+let g:nord_comment_brightness = 8
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
