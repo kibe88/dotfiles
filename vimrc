@@ -152,6 +152,8 @@ augroup END
 
 " Maps nerdtree open selection in new buffer like ctrlp
 let g:NERDTreeMapOpenSplit='<C-x>'
+"ignore python cache files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " TMUX integration
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
@@ -416,6 +418,14 @@ augroup END
 Plug 'airblade/vim-localorie'
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
+
+" better python support
+Plug 'Vimjas/vim-python-pep8-indent' " identation
+Plug 'vim-python/python-syntax' " syntax highlighting
+let g:python_highlight_all = 1
+au BufNewFile,BufReadPost *.py setl shiftwidth=4 tabstop=4 softtabstop=4 tw=80 expandtab autoindent
+Plug 'tmhedberg/SimpylFold' " beter folding in python
+let g:SimpylFold_docstring_preview = 1
 
 call plug#end()
 
