@@ -14,7 +14,6 @@ if ! zgen saved; then
     zgen prezto tmux
     zgen prezto git
     zgen prezto command-not-found
-    zgen prezto syntax-highlighting
     zgen prezto utility
     zgen prezto completion
     zgen prezto directory
@@ -31,6 +30,7 @@ if ! zgen saved; then
       zgen load unixorn/tumult.plugin.zsh
     fi
 
+    zgen load zdharma/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions src
     zgen load jreese/zsh-titles
     zgen load unixorn/autoupdate-zgen
