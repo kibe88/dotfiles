@@ -38,6 +38,7 @@ if ! zgen saved; then
     zgen load rupa/z
     zgen load kibe88/fzf-z . feature/prefer-fzfcmd-over-fzf
     zgen load b4b4r07/emoji-cli
+    zgen load paulmelnikow/zsh-startup-timer # depends on psutil (pip install psutil)
 
     zgen save
 fi
