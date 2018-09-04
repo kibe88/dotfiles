@@ -397,6 +397,10 @@ Plug 'airblade/vim-localorie'
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 
+" better php support
+Plug 'StanAngeloff/php.vim'
+Plug 'shawncplus/phpcomplete.vim'
+
 " better python support
 Plug 'Vimjas/vim-python-pep8-indent' " identation
 Plug 'vim-python/python-syntax' " syntax highlighting
