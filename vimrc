@@ -300,13 +300,6 @@ map <Leader>ds :Dash<Space>
 Plug 'tpope/vim-eunuch'
 map <Leader>mv :Rename<Space>
 
-Plug 'xolox/vim-easytags' | Plug 'xolox/vim-misc'
-" Writes to first ctag file vim resolves which means .git/tags when fugitive is installed
-let g:easytags_dynamic_files=1
-let g:easytags_cmd='/usr/local/bin/ctags'
-let g:easytags_auto_highlight=0
-let g:easytags_async=1
-
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
