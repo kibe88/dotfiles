@@ -37,6 +37,9 @@ if ! zgen saved; then
     zgen load sorin-ionescu/prezto modules/directory
     zgen load sorin-ionescu/prezto modules/history
 
+    # my stuff
+    zgen load kibe88/dotfiles shell-extensions/fzf
+
     zgen save
 fi
 
