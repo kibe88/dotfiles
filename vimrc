@@ -158,21 +158,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 " TMUX integration
 " See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
-let g:VimuxOrientation="h"
-let g:VimuxHeight = "45"
-" Opens up clean terminal pane in tmux using vimux (hi is an alias for clear)
-nnoremap <Leader>t :VimuxRunCommand("hi")<CR>
-
-" Tmux + Vim + Rspec integration
-Plug 'skalnik/vim-vroom'
-let g:vroom_use_vimux = 1
-" Reset vrom mappings
-let g:vroom_map_keys = 0
-" Override default vroom mappings
-nnoremap <Leader>rc :VroomRunTestFile<CR>
-nnoremap <Leader>rn :VroomRunNearestTest<CR>
-nnoremap <Leader>rl :VroomRunLastTest<CR>
 
 " Ruby bundler integration
 Plug 'tpope/vim-bundler'
