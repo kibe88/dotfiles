@@ -3,6 +3,10 @@ if [ ! -f ~/.zgen/zgen.zsh ]; then
   git clone git@github.com:tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
+
+# emacs like commands
+bindkey -e
+
 # start zgen
 ZGEN_RESET_ON_CHANGE=("${DOTFILES_DIR}/zshrc" "${HOME}/.zshrc" "${HOME}/.zshrc.zgen")
 source ~/.zgen/zgen.zsh
@@ -10,26 +14,12 @@ source ~/.zgen/zgen.zsh
 if ! zgen saved; then
     echo 'Creating zgen save'
 
-    zgen prezto
-    zgen prezto tmux
-    zgen prezto git
-    zgen prezto command-not-found
-    zgen prezto utility
-    zgen prezto completion
-    zgen prezto directory
-    zgen prezto homebrew
-    zgen prezto osx
-    zgen prezto archive
-    zgen prezto environment
-    zgen prezto ruby
-    zgen prezto python
-    zgen prezto node
-    zgen prezto history
-
     if is_osx; then
       zgen load unixorn/tumult.plugin.zsh
     fi
 
+    zgen load subnixr/minimal
+    zgen load akz92/clean
     zgen load zdharma/fast-syntax-highlighting
     zgen load zsh-users/zsh-completions src
     zgen load jreese/zsh-titles
@@ -41,7 +31,16 @@ if ! zgen saved; then
     zgen load paulmelnikow/zsh-startup-timer # depends on psutil (pip install psutil)
     zgen load wfxr/forgit
 
+    # loads some useful prezto modules that thankfully doesnt need prezto fully loaded
+    zgen load sorin-ionescu/prezto modules/tmux
+    zgen load sorin-ionescu/prezto modules/environment
+    zgen load sorin-ionescu/prezto modules/directory
+    zgen load sorin-ionescu/prezto modules/history
+
     zgen save
 fi
 
-source ~/.zgen/zgen.zsh
+#export MNML_RPROMPT=()
+#export MNML_PROMPT=('mnml_cwd 2 10' mnml_status mnml_keymap)
+export MNML_OK_COLOR=4
+export MNML_USER_CHAR='$'
