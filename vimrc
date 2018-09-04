@@ -188,10 +188,10 @@ Plug 'tpope/vim-rails'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'ecomba/vim-ruby-refactoring'
-Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds it blocks in rspec files as well)
+Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
 Plug 'tpope/vim-rbenv'
 
-autocmd FileType ruby,eruby,yaml,less set tw=100 ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml,less set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 expandtab autoindent
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " Html formatting
@@ -303,7 +303,7 @@ map <Leader>mv :Rename<Space>
 " ReactJS syntax highlighting (depends on vim javascript)
 Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
-autocmd FileType javascript set tw=100 ai sw=2 sts=2 et
+autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
 
 " Vim motion plugin that jumps to any location specified by two characters
 Plug 'justinmk/vim-sneak'
@@ -648,7 +648,10 @@ set secure " Run insecure commands (write, autocmd and shell) only if vimrc file
 " Opens current file using the default app for the mimetype
 :map <silent><Leader>o :!open %<CR>
 
+" 256color support
+set t_Co=256
 " 24bit colors
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
+
 set termguicolors
