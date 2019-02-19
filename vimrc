@@ -135,7 +135,10 @@ let g:rooter_silent_chdir=1 " Don't echo dir after opening a file
 
 " Filetree sidebar
 Plug 'scrooloose/nerdtree'
+" removes left and right sidebars from gui
 set guioptions-=r
+set guioptions-=R
+set guioptions-=l
 set guioptions-=L
 let g:NERDTreeWinSize=28
 let g:NERDTreeChDirMode=2
