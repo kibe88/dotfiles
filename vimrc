@@ -293,6 +293,9 @@ Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 let javascript_enable_domhtmlcss = 1
 autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
 
+" various javascript libraries syntax highlight
+Plug 'othree/javascript-libraries-syntax.vim'
+
 " Vim motion plugin that jumps to any location specified by two characters
 Plug 'justinmk/vim-sneak'
 let g:sneak#streak = 1
