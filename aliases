@@ -38,5 +38,18 @@ dkcrun() {
   docker-compose run $@
 }
 
+dce() {
+  docker-compose exec $@
+}
+
+dkc() {
+    docker-compose $@
+}
+
+alias dcup='docker-compose up'
+alias dcupd='docker-compose up -d'
+
+
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
