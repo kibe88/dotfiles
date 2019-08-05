@@ -253,7 +253,8 @@ augroup END
 " Indentation guidelines
 Plug 'Yggdroot/indentLine'
 set list lcs=tab:\|\
-let g:indentLine_char = '∙'
+let g:indentLine_char = '¦'
+let g:indentLine_showFirstIndentLevel = 1
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
 
@@ -421,13 +422,23 @@ call plug#end()
 " starts vanilla vim configuration
 
 " Colorscheme
-set background=dark
-"silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
+set background=light
+
+" gruvbox
 "let g:gruvbox_contrast_dark = 'soft'
-"silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
+"let g:gruvbox_contrast_light = 'soft'
+"silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
+
+"set termguicolors     " enable true colors support
+"let ayucolor="mirage" " for mirage version of theme
+"silent! colorscheme ayu
+" seoul256
 "let g:seoul256_background = 239
+"silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
+
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 silent! colorscheme nord
-let g:nord_comment_brightness = 8
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
