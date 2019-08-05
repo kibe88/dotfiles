@@ -19,91 +19,196 @@ endif
 " Begin plugin config (Any plugin related settings are below its install command)
 call plug#begin('~/.vim/plugged')
 
-" Easy plugin installation
-map <Leader>i :PlugInstall<CR>
-
 " Configures all tab related plugins
-Plug 'Shougo/neocomplete'
-" This makes sure we use neocomplete completefunc instead of the one in rails.vim
-let g:neocomplete#force_overwrite_completefunc = 1
+    Plug 'Shougo/neocomplete'
+    Plug 'Shougo/neosnippet'
+    Plug 'honza/vim-snippets' " Snippets collection
+    Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
 
-Plug 'Shougo/neosnippet'
-Plug 'honza/vim-snippets' " Snippets collection
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+    " Tab awesomeness providing tab chains
+    Plug 'neitanod/vim-clevertab'
 
-Plug 'mattn/emmet-vim' " Zencode html output
-" Enable emmet just for html/css
-let g:user_emmet_install_global = 0
-autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
+    " adds completion of words in additional tmux-panes
+    Plug 'wellle/tmux-complete.vim'
 
-" Tab awesomeness providing tab chains
-Plug 'neitanod/vim-clevertab'
-" Neosnippet tab chain (default is ultisnippets)
-inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
-                    \<c-r>=CleverTab#Complete('tab')<CR>
-                    \<c-r>=CleverTab#Complete('neosnippet')<CR>
-                    \<c-r>=CleverTab#Complete('keyword')<CR>
-                    \<c-r>=CleverTab#Complete('neocomplete')<CR>
-                    \<c-r>=CleverTab#Complete('omni')<CR>
-                    \<c-r>=CleverTab#Complete('stop')<CR>
-inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
+    " Git wrapper
+    Plug 'tpope/vim-fugitive'
 
-" adds completion of words in additional tmux-panes
-Plug 'wellle/tmux-complete.vim'
-" disables complete trigger since we're using neocomplete integration
-let g:tmuxcomplete#trigger = ''
+    " Integrates fugitive with github hub
+    Plug 'tpope/vim-rhubarb'
 
-" Git wrapper
-Plug 'tpope/vim-fugitive'
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gmv :Gmove<CR>
-nnoremap <Leader>gb :GBrowse<CR>
-nnoremap <Leader>gbl :. Gbrowse<CR>
-nnoremap <Leader>gcam :Git amend<CR>
-" Global git search for word under the cursor (with highlight) (taken from vimified)
-nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
-" Same in visual mode
-vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+    Plug 'junegunn/vim-easy-align'
+    " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
+    nmap <Leader>ea <Plug>(EasyAlign)
 
-" Integrates fugitive with github hub
-Plug 'tpope/vim-rhubarb'
+    Plug 'tpope/vim-endwise' "autoclose ruby code with end
+    Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
+    Plug 'tpope/vim-unimpaired'
 
-Plug 'junegunn/vim-easy-align'
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
-nmap <Leader>ea <Plug>(EasyAlign)
+    " All about surroundings i.e you can change 'a' to [a] using cs'[
+    Plug 'tpope/vim-surround'
 
-Plug 'tpope/vim-endwise' "autoclose ruby code with end
-Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
-Plug 'tpope/vim-unimpaired'
+    " Statusbar
+    Plug 'bling/vim-airline'
 
-" All about surroundings i.e you can change 'a' to [a] using cs'[
-Plug 'tpope/vim-surround'
-" From: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
-" Use v or # to get a variable interpolation (inside of a string)}
+    " Syntax checker
+    Plug 'scrooloose/syntastic'
+    " Additional checkers
+    Plug 'myint/syntastic-extras'
+
+    " Colorscheme
+    Plug 'morhetz/gruvbox'
+    Plug 'jacoborus/tender.vim'
+    Plug 'junegunn/seoul256.vim'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'ayu-theme/ayu-vim'
+
+    " filetree sidebar
+    Plug 'scrooloose/nerdtree'
+
+    " Auto change vim dir based on the 'project' root directory (defaults to vcs)
+    Plug 'airblade/vim-rooter'
+
+    " tmux integration
+    " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
+    Plug 'christoomey/vim-tmux-navigator'
+
+    " Ruby bundler integration
+    Plug 'tpope/vim-bundler'
+
+    " easily comment code
+    Plug 'scrooloose/nerdcommenter'
+
+    " Ruby on Rails integration
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'tpope/vim-rails'
+    Plug 'kana/vim-textobj-user'
+    Plug 'nelstrom/vim-textobj-rubyblock'
+    Plug 'ecomba/vim-ruby-refactoring'
+    Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
+    Plug 'tpope/vim-rbenv'
+
+    " Html formatting
+    Plug 'tpope/vim-haml'
+    Plug 'juvenn/mustache.vim'
+    Plug 'tpope/vim-markdown'
+    Plug 'digitaltoad/vim-jade'
+    Plug 'slim-template/vim-slim'
+
+    " better json syntax highlighting
+    Plug 'elzr/vim-json'
+
+    " Creates non existent dirs automatically
+    Plug 'pbrisbin/vim-mkdir'
+
+    " Fuzzy file search (using fzf)
+    Plug 'junegunn/fzf.vim'
+
+    " Easy buffer management through a single list
+    Plug 'troydm/easybuffer.vim'
+
+    " Sublime text like multiple selection and edition
+    Plug 'terryma/vim-multiple-cursors'
+
+    " Indentation guidelines
+    Plug 'Yggdroot/indentLine'
+
+    " Adds gutter with git diff info
+    Plug 'airblade/vim-gitgutter'
+
+    " Adds new text object representing lines of code at the same indent level (python, haml)
+    Plug 'michaeljsmith/vim-indent-object'
+
+    " Window buffer to take simple notes in the current vim session
+    Plug 'mtth/scratch.vim'
+
+    " Vim dash integration (it searchs the current selected word in dash)
+    Plug 'rizzatti/dash.vim'
+
+    " Useful terminal commands
+    Plug 'tpope/vim-eunuch'
+
+    " ReactJS syntax highlighting (depends on vim javascript)
+    Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+
+    " various javascript libraries syntax highlight
+    Plug 'othree/javascript-libraries-syntax.vim'
+
+    " Vim motion plugin that jumps to any location specified by two characters
+    Plug 'justinmk/vim-sneak'
+
+    " Automatic closing off quotes, brackets and such
+    Plug 'jiangmiao/auto-pairs'
+
+    " Configures whitespace behavior
+    Plug 'ntpeters/vim-better-whitespace'
+
+    " Remove whitespace only from edited lines
+    Plug 'thirtythreeforty/lessspace.vim'
+
+    " Installs the most recent version of match it
+    Plug 'vim-scripts/matchit.zip'
+
+    " Better startup screen
+    Plug 'mhinz/vim-startify'
+
+    " Git repo viewer (like gitk)
+    Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+
+    " Perl support
+    Plug 'vim-perl/vim-perl'
+
+    " Add coding style settings per project (using editorconfig)
+    Plug 'editorconfig/editorconfig-vim'
+
+    " Deals with annoying swap files messages doing what users would commonly do
+    Plug 'gioele/vim-autoswap'
+
+    " distraction free writing
+    Plug 'junegunn/goyo.vim'
+
+    " shows up rails i18n in locate or quickfix window
+    Plug 'airblade/vim-localorie'
+
+    " better python support
+    Plug 'Vimjas/vim-python-pep8-indent' " identation
+    Plug 'vim-python/python-syntax' " syntax highlighting
+    Plug 'tmhedberg/SimpylFold' " beter folding in python
+
+
+    " better php support
+    Plug 'StanAngeloff/php.vim'
+    Plug 'shawncplus/phpcomplete.vim'
+call plug#end()
+
+
+" VIM FUGITIVE
+map <Leader>gv :Gitv<CR>
+
+" VIM EDITOR CONFIG
+let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
+let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
+
+" VIM SURROUND
+" from: https://github.com/skwp/dotfiles/blob/master/vim/settings/surround.vim
+" use v or # to get a variable interpolation (inside of a string)}
 " ysiw#   Wrap the token under the cursor in #{}
 " v...s#  Wrap the selection in #{}
 let g:surround_113 = "#{\r}"   " v
 let g:surround_35  = "#{\r}"   " #
 
-" Select text in an ERb file with visual mode and then press s- or s=
-" Or yss- to do entire line.
+" select text in an ERb file with visual mode and then press s- or s=
+" or yss- to do entire line.
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " ="
 
-" Statusbar
-Plug 'bling/vim-airline'
+" VIM AIRLINE
 let g:airline_powerline_fonts = 1
 
-" Syntax checker
-Plug 'scrooloose/syntastic'
+" VIM SYNTASTIC
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
@@ -113,29 +218,17 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
-" Additional checkers
-Plug 'myint/syntastic-extras'
+" syntastitc extras
 let g:syntastic_yaml_checkers = ['pyyaml']
 let g:syntastic_javascript_checkers = ['json_tool']
 let g:syntastic_make_checkers = ['gnumake']
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" Colorscheme
-Plug 'morhetz/gruvbox'
-Plug 'jacoborus/tender.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'arcticicestudio/nord-vim'
-
-let g:seoul256_background = 239
-
-
-" Auto change vim dir based on the 'project' root directory (defaults to vcs)
-Plug 'airblade/vim-rooter'
+" VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
 let g:rooter_silent_chdir=1 " Don't echo dir after opening a file
 
-" Filetree sidebar
-Plug 'scrooloose/nerdtree'
+" VIM NERDTREE
 " removes left and right sidebars from gui
 set guioptions-=r
 set guioptions-=R
@@ -143,6 +236,8 @@ set guioptions-=l
 set guioptions-=L
 let g:NERDTreeWinSize=28
 let g:NERDTreeChDirMode=2
+" plugin is warning about this var. so we define it again even though the src seems to define it
+let g:NERDTreeNodeDelimiter="\x07"
 map <Leader>s :NERDTreeToggle<CR>
 " Autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
@@ -154,57 +249,16 @@ augroup autoclose_nerdtree
   autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
 augroup END
 
-" Maps nerdtree open selection in new buffer like ctrlp
+" maps nerdtree open selection in new buffer like ctrlp
 let g:NERDTreeMapOpenSplit='<C-x>'
 "ignore python cache files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-" TMUX integration
-" See http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
-Plug 'christoomey/vim-tmux-navigator'
-
-" Ruby bundler integration
-Plug 'tpope/vim-bundler'
+" VIM BUNDLER
 nnoremap <Leader>b :Bundle<CR>
 nnoremap <Leader>be :Bopen<CR>
 
-" easily comment code
-Plug 'scrooloose/nerdcommenter'
-
-" Ruby on Rails integration
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'ecomba/vim-ruby-refactoring'
-Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
-Plug 'tpope/vim-rbenv'
-
-autocmd FileType ruby,eruby,yaml,less set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 expandtab autoindent
-autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-
-" Html formatting
-Plug 'tpope/vim-haml'
-Plug 'juvenn/mustache.vim'
-Plug 'tpope/vim-markdown'
-Plug 'digitaltoad/vim-jade'
-Plug 'slim-template/vim-slim'
-
-au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
-
-let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
-
-" better json syntax highlighting
-Plug 'elzr/vim-json'
-
-" Creates non existent dirs automatically
-Plug 'pbrisbin/vim-mkdir'
-
-" Fuzzy file search (using fzf)
-Plug 'junegunn/fzf.vim'
+" FZF
 nmap <silent><C-t> :FZF<CR>
 nmap <Leader>ct :BTags<CR>
 " [Buffers] Jump to the existing window if possible
@@ -220,12 +274,10 @@ nnoremap <Leader>aw :call SearchWordWithAg()<CR>
 " Search for usages of the current file
 nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
 
-" Easy buffer management through a single list
-Plug 'troydm/easybuffer.vim'
+" easy buffer
 nmap <Leader>bt :EasyBufferToggle<CR>
 
-" Sublime text like multiple selection and edition
-Plug 'terryma/vim-multiple-cursors'
+" VIM MULTIPLE CURSORS
 " Code below prevents conflict with NeoComplete
 " See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
 " Called once right before you start selecting multiple cursors
@@ -250,25 +302,20 @@ augroup cline
   au InsertLeave * set cursorline
 augroup END
 
-" Indentation guidelines
-Plug 'Yggdroot/indentLine'
+" VIM INDENT
 set list lcs=tab:\|\
 let g:indentLine_char = '¦'
 let g:indentLine_showFirstIndentLevel = 1
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
 
-" Adds gutter with git diff info
-Plug 'airblade/vim-gitgutter'
+
+" vim git gutter
 " trade accuracy for speed and updates signs on save
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
-" Adds new text object representing lines of code at the same indent level (python, haml)
-Plug 'michaeljsmith/vim-indent-object'
-
-" Window buffer to take simple notes in the current vim session
-Plug 'mtth/scratch.vim'
+" vim scratch
 let g:scratch_horizontal = 0 " Set scratch to open vertically
 let g:scratch_top = 0 " When scratch is set to open vertically top means _left
 let g:scratch_height = 45 " % of the screen
@@ -281,45 +328,23 @@ nmap <Leader>N <plug>(scratch-insert-clear)
 xmap <Leader>n <plug>(scratch-selection-reuse)
 xmap <Leader>N <plug>(scratch-selection-clear)
 
-" Vim dash integration (it searchs the current selected word in dash)
-Plug 'rizzatti/dash.vim'
+" VIM DASH
 nmap <silent> <Leader>dw <Plug>DashSearch
 map <Leader>ds :Dash<Space>
 
-" Useful terminal commands
-Plug 'tpope/vim-eunuch'
+" VIM EUNUCH
 map <Leader>mv :Rename<Space>
 
-" ReactJS syntax highlighting (depends on vim javascript)
-Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
-let javascript_enable_domhtmlcss = 1
-autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
-
-" various javascript libraries syntax highlight
-Plug 'othree/javascript-libraries-syntax.vim'
-
-" Vim motion plugin that jumps to any location specified by two characters
-Plug 'justinmk/vim-sneak'
+" VIM SNEAK
 let g:sneak#streak = 1
 
-" Automatic closing off quotes, brackets and such
-Plug 'jiangmiao/auto-pairs'
-
-" Configures whitespace behavior
-Plug 'ntpeters/vim-better-whitespace'
+" VIM BETTER WHITESPACE
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
 map <silent><Leader>rw :StripWhitespace<CR> " mapping to remove all whitespace from current file
 map <silent><Leader>tw :ToggleWhitespace<CR>
 let g:better_whitespace_enabled = 0
 
-" Remove whitespace only from edited lines
-Plug 'thirtythreeforty/lessspace.vim'
-
-" Installs the most recent version of match it
-Plug 'vim-scripts/matchit.zip'
-
-" Better startup screen
-Plug 'mhinz/vim-startify'
+" VIM STARTIFY
 augroup startify_buffer_settings
   " Use startify buffer for opening ctrlp files
   autocmd FileType startify setlocal buftype=
@@ -360,24 +385,7 @@ function! s:center_header(lines) abort
 endfunction
 
 let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'), '\n'))
-
-" Git repo viewer (like gitk)
-Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
-map <Leader>gv :Gitv<CR>
-
-" Perl support
-Plug 'vim-perl/vim-perl'
-
-" Add coding style settings per project (using editorconfig)
-Plug 'editorconfig/editorconfig-vim'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
-let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
-
-" Deals with annoying swap files messages doing what users would commonly do
-Plug 'gioele/vim-autoswap'
-
-" distraction free writing
-Plug 'junegunn/goyo.vim'
+" VIM GOYO
 nmap <Leader>f :Goyo<CR>
 function! s:goyo_enter()
   silent !tmux set status off
@@ -400,28 +408,76 @@ augroup goyo_settings
   autocmd! User GoyoLeave nested call <SID>goyo_leave()
 augroup END
 
-" shows up rails i18n in locate or quickfix window
-Plug 'airblade/vim-localorie'
+" VIM LOCALORIE
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 
-" better php support
-Plug 'StanAngeloff/php.vim'
-Plug 'shawncplus/phpcomplete.vim'
+" RUBY AND RUBY ON RAILS
+autocmd FileType ruby,eruby,yaml,less set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 expandtab autoindent
+autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" better python support
-Plug 'Vimjas/vim-python-pep8-indent' " identation
-Plug 'vim-python/python-syntax' " syntax highlighting
+" REACT JS
+let javascript_enable_domhtmlcss = 1
+autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
+
+" HTML
+au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+au BufNewFile,BufReadPost *.tt setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab filetype=tt2html
+let g:markdown_fenced_languages = ['css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
+
+" PHP
+au BufNewFile,BufReadPost *.php setl shiftwidth=4 tabstop=4 softtabstop=4 tw=80 expandtab autoindent
+
+" PYTHON
 let g:python_highlight_all = 1
 au BufNewFile,BufReadPost *.py setl shiftwidth=4 tabstop=4 softtabstop=4 tw=80 expandtab autoindent
-Plug 'tmhedberg/SimpylFold' " beter folding in python
-let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 
-call plug#end()
+" VIM PLUG
+map <Leader>i :PlugInstall<CR>
 
-" starts vanilla vim configuration
+" VIM NEOCOMPLETE
+" This makes sure we use neocomplete completefunc instead of the one in rails.vim
+let g:neocomplete#force_overwrite_completefunc = 1
 
-" Colorscheme
+" VIM NEOSNIPPET
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
+
+" EMMET
+let g:user_emmet_install_global = 0
+autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
+
+" CLEVERTAB
+" Neosnippet tab chain (default is ultisnippets)
+inoremap <silent><TAB> <c-r>=CleverTab#Complete('start')<CR>
+                    \<c-r>=CleverTab#Complete('tab')<CR>
+                    \<c-r>=CleverTab#Complete('neosnippet')<CR>
+                    \<c-r>=CleverTab#Complete('keyword')<CR>
+                    \<c-r>=CleverTab#Complete('neocomplete')<CR>
+                    \<c-r>=CleverTab#Complete('omni')<CR>
+                    \<c-r>=CleverTab#Complete('stop')<CR>
+inoremap <silent><S-TAB> <c-r>=CleverTab#Complete('prev')<CR>
+
+" FUGITIVE
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gmv :Gmove<CR>
+nnoremap <Leader>gb :GBrowse<CR>
+nnoremap <Leader>gbl :. Gbrowse<CR>
+nnoremap <Leader>gcam :Git amend<CR>
+" Global git search for word under the cursor (with highlight) (taken from vimified)
+nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
+" Same in visual mode
+vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
+
+" STARTS VANILLA VIM CONFIGURATION
+
+" COLORSCHEME
 set background=light
 
 " gruvbox
@@ -436,6 +492,7 @@ set background=light
 "let g:seoul256_background = 239
 "silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
 
+" nord
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 silent! colorscheme nord
