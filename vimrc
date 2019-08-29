@@ -38,8 +38,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-rhubarb'
 
     Plug 'junegunn/vim-easy-align'
-    " Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
-    nmap <Leader>ea <Plug>(EasyAlign)
 
     Plug 'tpope/vim-endwise' "autoclose ruby code with end
     Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
@@ -604,6 +602,9 @@ nnoremap <Leader>tn :tabnext<CR>
 " Easy buffer navigation
 noremap <Leader>bp :bprevious<CR>
 noremap <Leader>bn :bnext<CR>
+
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
+nmap <Leader>ea <Plug>(EasyAlign)
 
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
 nnoremap <Leader>sv <C-w>v<C-w>l
