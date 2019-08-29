@@ -71,9 +71,6 @@ call plug#begin('~/.vim/plugged')
     " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
     Plug 'christoomey/vim-tmux-navigator'
 
-    " Ruby bundler integration
-    Plug 'tpope/vim-bundler'
-
     " easily comment code
     Plug 'scrooloose/nerdcommenter'
 
@@ -84,7 +81,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'nelstrom/vim-textobj-rubyblock'
     Plug 'ecomba/vim-ruby-refactoring'
     Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
-    Plug 'tpope/vim-rbenv'
 
     " Html formatting
     Plug 'tpope/vim-haml'
@@ -251,10 +247,6 @@ augroup END
 let g:NERDTreeMapOpenSplit='<C-x>'
 "ignore python cache files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
-
-" VIM BUNDLER
-nnoremap <Leader>b :Bundle<CR>
-nnoremap <Leader>be :Bopen<CR>
 
 " FZF
 nmap <silent><C-t> :FZF<CR>
