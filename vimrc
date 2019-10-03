@@ -117,10 +117,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-eunuch'
 
   " ReactJS syntax highlighting (depends on vim javascript)
-  Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+  Plug 'maxmellon/vim-jsx-pretty' | Plug 'pangloss/vim-javascript'
+
+  " html5 syntax highlighting
+  Plug 'othree/html5.vim'
+
+  " typescript syntax highlighting
+  Plug 'HerringtonDarkholme/yats.vim'
 
   " various javascript libraries syntax highlight
   Plug 'othree/javascript-libraries-syntax.vim'
+
+  " Syntax file for future ES features (esnext)
+  Plug 'othree/es.next.syntax.vim'
 
   " Automatic closing off quotes, brackets and such
   Plug 'jiangmiao/auto-pairs'
