@@ -50,9 +50,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'bling/vim-airline'
 
   " Syntax checker
-  Plug 'scrooloose/syntastic'
-  " Additional checkers
-  Plug 'myint/syntastic-extras'
+  Plug 'dense-analysis/ale'
 
   " Colorscheme
   Plug 'morhetz/gruvbox'
@@ -200,24 +198,34 @@ let g:surround_61 = "<%= \r %>"   " ="
 " VIM AIRLINE
 let g:airline_powerline_fonts = 1
 
-" VIM SYNTASTIC
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_style_warning_symbol = "⚠"
-" syntastitc extras
-let g:syntastic_yaml_checkers = ['pyyaml']
-let g:syntastic_javascript_checkers = ['json_tool']
-let g:syntastic_make_checkers = ['gnumake']
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" ALE
+let g:ale_sign_error = "✗"
+let g:ale_sign_warning = "⚠"
+let g:airline#extensions#ale#enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_linters = {
+\  'python': ['flake8', 'pylint'],
+\  'ruby': ['mri', 'rubocop'],
+\  'javascript': ['eslint'],
+\  'vue': ['eslint'],
+\  'yaml': ['yamllint'],
+\  'sass': ['stylelint']
+\}
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  'python': ['autopep8', 'yapf'],
+\  'ruby': ['rubocop'],
+\  'javascript': ['prettier', 'eslint'],
+\  'typescript': ['prettier', 'tslint'],
+\  'vue': ['eslint', 'vls'],
+\  'scss': ['prettier'],
+\  'sass': ['stylelint'],
+\  'html': ['prettier'],
+\  'reason': ['refmt'],
+\  'make': ['gnumake']
+\}
+nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
+nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
 
 " VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
