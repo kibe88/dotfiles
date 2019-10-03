@@ -20,159 +20,151 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Configures all tab related plugins
-    Plug 'Shougo/neocomplete'
-    Plug 'Shougo/neosnippet'
-    Plug 'honza/vim-snippets' " Snippets collection
-    Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
+  Plug 'Shougo/neocomplete'
+  Plug 'Shougo/neosnippet'
+  Plug 'honza/vim-snippets' " Snippets collection
+  Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
 
-    " Tab awesomeness providing tab chains
-    Plug 'neitanod/vim-clevertab'
+  " Tab awesomeness providing tab chains
+  Plug 'neitanod/vim-clevertab'
 
-    " adds completion of words in additional tmux-panes
-    Plug 'wellle/tmux-complete.vim'
+  " adds completion of words in additional tmux-panes
+  Plug 'wellle/tmux-complete.vim'
 
-    " Git wrapper
-    Plug 'tpope/vim-fugitive'
+  " Git wrapper
+  Plug 'tpope/vim-fugitive'
 
-    " Integrates fugitive with github hub
-    Plug 'tpope/vim-rhubarb'
+  " Integrates fugitive with github hub
+  Plug 'tpope/vim-rhubarb'
 
-    Plug 'junegunn/vim-easy-align'
+  Plug 'junegunn/vim-easy-align'
 
-    Plug 'tpope/vim-endwise' "autoclose ruby code with end
-    Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
-    Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-endwise' "autoclose ruby code with end
+  Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
+  Plug 'tpope/vim-unimpaired'
 
-    " All about surroundings i.e you can change 'a' to [a] using cs'[
-    Plug 'tpope/vim-surround'
+  " All about surroundings i.e you can change 'a' to [a] using cs'[
+  Plug 'tpope/vim-surround'
 
-    " Statusbar
-    Plug 'bling/vim-airline'
+  " Statusbar
+  Plug 'bling/vim-airline'
 
-    " Syntax checker
-    Plug 'scrooloose/syntastic'
-    " Additional checkers
-    Plug 'myint/syntastic-extras'
+  " Syntax checker
+  Plug 'scrooloose/syntastic'
+  " Additional checkers
+  Plug 'myint/syntastic-extras'
 
-    " Colorscheme
-    Plug 'morhetz/gruvbox'
-    Plug 'jacoborus/tender.vim'
-    Plug 'junegunn/seoul256.vim'
-    Plug 'arcticicestudio/nord-vim'
-    Plug 'ayu-theme/ayu-vim'
+  " Colorscheme
+  Plug 'morhetz/gruvbox'
+  Plug 'jacoborus/tender.vim'
+  Plug 'junegunn/seoul256.vim'
+  Plug 'arcticicestudio/nord-vim'
+  Plug 'ayu-theme/ayu-vim'
 
-    " filetree sidebar
-    Plug 'scrooloose/nerdtree'
+  " filetree sidebar
+  Plug 'scrooloose/nerdtree'
 
-    " Auto change vim dir based on the 'project' root directory (defaults to vcs)
-    Plug 'airblade/vim-rooter'
+  " Auto change vim dir based on the 'project' root directory (defaults to vcs)
+  Plug 'airblade/vim-rooter'
 
-    " tmux integration
-    " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
-    Plug 'christoomey/vim-tmux-navigator'
+  " tmux integration
+  " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
+  Plug 'christoomey/vim-tmux-navigator'
 
-    " easily comment code
-    Plug 'scrooloose/nerdcommenter'
+  " easily comment code
+  Plug 'scrooloose/nerdcommenter'
 
-    " Ruby on Rails integration
-    Plug 'vim-ruby/vim-ruby'
-    Plug 'tpope/vim-rails'
-    Plug 'kana/vim-textobj-user'
-    Plug 'nelstrom/vim-textobj-rubyblock'
-    Plug 'ecomba/vim-ruby-refactoring'
-    Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
+  " Ruby on Rails integration
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'tpope/vim-rails'
+  Plug 'kana/vim-textobj-user'
+  Plug 'nelstrom/vim-textobj-rubyblock'
+  Plug 'ecomba/vim-ruby-refactoring'
+  Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
 
-    " Html formatting
-    Plug 'tpope/vim-haml'
-    Plug 'juvenn/mustache.vim'
-    Plug 'tpope/vim-markdown'
-    Plug 'digitaltoad/vim-jade'
-    Plug 'slim-template/vim-slim'
+  " Html formatting
+  Plug 'tpope/vim-haml'
+  Plug 'mustache/vim-mustache-handlebars'
+  Plug 'tpope/vim-markdown'
+  Plug 'digitaltoad/vim-jade'
+  Plug 'slim-template/vim-slim'
 
-    " better json syntax highlighting
-    Plug 'elzr/vim-json'
+  " better json syntax highlighting
+  Plug 'elzr/vim-json'
 
-    " Creates non existent dirs automatically
-    Plug 'pbrisbin/vim-mkdir'
+  " Creates non existent dirs automatically
+  Plug 'pbrisbin/vim-mkdir'
 
-    " Fuzzy file search (using fzf)
-    Plug 'junegunn/fzf.vim'
+  " Fuzzy file search (using fzf)
+  Plug 'junegunn/fzf.vim'
 
-    " Easy buffer management through a single list
-    Plug 'troydm/easybuffer.vim'
+  " Sublime text like multiple selection and edition
+  Plug 'terryma/vim-multiple-cursors'
 
-    " Sublime text like multiple selection and edition
-    Plug 'terryma/vim-multiple-cursors'
+  " Indentation guidelines
+  Plug 'Yggdroot/indentLine'
 
-    " Indentation guidelines
-    Plug 'Yggdroot/indentLine'
+  " Adds gutter with git diff info
+  Plug 'airblade/vim-gitgutter'
 
-    " Adds gutter with git diff info
-    Plug 'airblade/vim-gitgutter'
+  " Adds new text object representing lines of code at the same indent level (python, haml)
+  Plug 'michaeljsmith/vim-indent-object'
 
-    " Adds new text object representing lines of code at the same indent level (python, haml)
-    Plug 'michaeljsmith/vim-indent-object'
+  " Vim dash integration (it searchs the current selected word in dash)
+  Plug 'rizzatti/dash.vim'
 
-    " Window buffer to take simple notes in the current vim session
-    Plug 'mtth/scratch.vim'
+  " Useful terminal commands
+  Plug 'tpope/vim-eunuch'
 
-    " Vim dash integration (it searchs the current selected word in dash)
-    Plug 'rizzatti/dash.vim'
+  " ReactJS syntax highlighting (depends on vim javascript)
+  Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
 
-    " Useful terminal commands
-    Plug 'tpope/vim-eunuch'
+  " various javascript libraries syntax highlight
+  Plug 'othree/javascript-libraries-syntax.vim'
 
-    " ReactJS syntax highlighting (depends on vim javascript)
-    Plug 'mxw/vim-jsx' | Plug 'pangloss/vim-javascript'
+  " Automatic closing off quotes, brackets and such
+  Plug 'jiangmiao/auto-pairs'
 
-    " various javascript libraries syntax highlight
-    Plug 'othree/javascript-libraries-syntax.vim'
+  " Configures whitespace behavior
+  Plug 'ntpeters/vim-better-whitespace'
 
-    " Vim motion plugin that jumps to any location specified by two characters
-    Plug 'justinmk/vim-sneak'
+  " Remove whitespace only from edited lines
+  Plug 'thirtythreeforty/lessspace.vim'
 
-    " Automatic closing off quotes, brackets and such
-    Plug 'jiangmiao/auto-pairs'
+  " Installs the most recent version of match it
+  Plug 'vim-scripts/matchit.zip'
 
-    " Configures whitespace behavior
-    Plug 'ntpeters/vim-better-whitespace'
+  " Better startup screen
+  Plug 'mhinz/vim-startify'
 
-    " Remove whitespace only from edited lines
-    Plug 'thirtythreeforty/lessspace.vim'
+  " Git repo viewer (like gitk)
+  Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 
-    " Installs the most recent version of match it
-    Plug 'vim-scripts/matchit.zip'
+  " Perl support
+  Plug 'vim-perl/vim-perl'
 
-    " Better startup screen
-    Plug 'mhinz/vim-startify'
+  " Add coding style settings per project (using editorconfig)
+  Plug 'editorconfig/editorconfig-vim'
 
-    " Git repo viewer (like gitk)
-    Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
+  " Deals with annoying swap files messages doing what users would commonly do
+  Plug 'gioele/vim-autoswap'
 
-    " Perl support
-    Plug 'vim-perl/vim-perl'
+  " distraction free writing
+  Plug 'junegunn/goyo.vim'
 
-    " Add coding style settings per project (using editorconfig)
-    Plug 'editorconfig/editorconfig-vim'
+  " shows up rails i18n in locate or quickfix window
+  Plug 'airblade/vim-localorie'
 
-    " Deals with annoying swap files messages doing what users would commonly do
-    Plug 'gioele/vim-autoswap'
-
-    " distraction free writing
-    Plug 'junegunn/goyo.vim'
-
-    " shows up rails i18n in locate or quickfix window
-    Plug 'airblade/vim-localorie'
-
-    " better python support
-    Plug 'Vimjas/vim-python-pep8-indent' " identation
-    Plug 'vim-python/python-syntax' " syntax highlighting
-    Plug 'tmhedberg/SimpylFold' " beter folding in python
+  " better python support
+  Plug 'Vimjas/vim-python-pep8-indent' " identation
+  Plug 'vim-python/python-syntax' " syntax highlighting
+  Plug 'tmhedberg/SimpylFold' " improves folding in python
 
 
-    " better php support
-    Plug 'StanAngeloff/php.vim'
-    Plug 'shawncplus/phpcomplete.vim'
+  " better php support
+  Plug 'StanAngeloff/php.vim'
+  Plug 'shawncplus/phpcomplete.vim'
+  Plug 'dsawardekar/wordpress.vim'
 call plug#end()
 
 
