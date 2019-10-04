@@ -34,6 +34,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'} " json
   Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'} " php
   Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'} " php
+  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " highlight
 
   " adds completion of words in additional tmux-panes
   Plug 'wellle/tmux-complete.vim'
