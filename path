@@ -37,5 +37,8 @@ if commandExists brew; then
   export VIRTUALENVWRAPPER_PYTHON=$(brew --prefix)/bin/python
 fi
 
+# ruby gems
+PATH="/usr/local/lib/ruby/gems/2.6.0/bin:${PATH}"
+
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
