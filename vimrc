@@ -276,25 +276,15 @@ nnoremap <Leader>aw :call SearchWordWithAg()<CR>
 " Search for usages of the current file
 nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
 
-" easy buffer
-nmap <Leader>bt :EasyBufferToggle<CR>
-
 " VIM MULTIPLE CURSORS
-" Code below prevents conflict with NeoComplete
-" See: https://github.com/terryma/vim-multiple-cursors#interactions-with-other-plugins
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
+nmap <expr> <silent> <C-d> <SID>select_current_word()
+function! s:select_current_word()
+  if !get(g:, 'coc_cursors_activated', 0)
+    return "\<Plug>(coc-cursors-word)"
   endif
-endfunction
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-
+  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
+endfunc
+"
 " Only show cursorline in the current window and in normal mode.
 augroup cline
   au!
