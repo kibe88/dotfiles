@@ -5,21 +5,6 @@ fi
 
 source ~/.zplug/init.zsh
 
-zplug "modules/tmux", from:prezto
-zplug "modules/git", from:prezto
-zplug "modules/command-not-found", from:prezto
-zplug "modules/syntax-highlighting", from:prezto
-zplug "modules/utility", from:prezto
-zplug "modules/completion", from:prezto
-zplug "modules/directory", from:prezto
-zplug "modules/homebrew", from:prezto
-zplug "modules/osx", from:prezto
-zplug "modules/archive", from:prezto
-zplug "modules/environment", from:prezto
-zplug "modules/ruby", from:prezto
-zplug "modules/python", from:prezto
-zplug "modules/history", from:prezto
-zplug "unixorn/tumult.plugin.zsh", if: "is_osx"
 zplug "zsh-users/zsh-completions"
 zplug "jreese/zsh-titles"
 zplug "supercrabtree/k"
