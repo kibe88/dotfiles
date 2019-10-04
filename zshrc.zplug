@@ -6,6 +6,7 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-completions"
+zplug "zdharma/fast-syntax-highlighting"
 zplug "jreese/zsh-titles"
 zplug "supercrabtree/k"
 zplug "rupa/z"
