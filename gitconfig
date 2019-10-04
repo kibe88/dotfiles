@@ -10,15 +10,19 @@
   branch = auto
   status = auto
   interactive = auto
+  ui = true
 
 # See:
 #   http://shallowsky.com/blog/programming/gitcolors.html
 #   http://scie.nti.st/2007/5/2/colors-in-git
 #
 [color "diff"]
-  commit = blue reverse
+  commit = yellow bold
   old = red bold
   new = green bold
+  meta = 11
+  frag = magenta bold
+  whitespace = red reverse
 
 [pretty]
   graph = --prety=format:%Cblue%h%d%Creset%20%s
@@ -63,6 +67,7 @@
 [core]
   excludesfile = ~/.gitignore
   editor = vim
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [push]
   default = simple
@@ -86,3 +91,9 @@
 [url "git@github.com:"]
   insteadOf = "https://github.com/"
   insteadOf = "git://github.com/"
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22

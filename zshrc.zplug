@@ -14,6 +14,7 @@ zplug "kibe88/fzf-z"
 zplug "b4b4r07/emoji-cli"
 zplug "paulmelnikow/zsh-startup-timer"
 zplug "wfxr/forgit"
+zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
 # let zplug manage itself
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 

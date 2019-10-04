@@ -29,6 +29,7 @@ if ! zgen saved; then
     zgen load kibe88/fzf-z . feature/prefer-fzfcmd-over-fzf
     zgen load b4b4r07/emoji-cli
     zgen load paulmelnikow/zsh-startup-timer # depends on psutil (pip install psutil)
+    zgen load zdharma/zsh-diff-so-fancy
     zgen load wfxr/forgit
 
     # loads some useful prezto modules that thankfully doesnt need prezto fully loaded
