@@ -98,7 +98,9 @@ call plug#begin('~/.vim/plugged')
   " better json syntax highlighting
   Plug 'elzr/vim-json'
 
-  " Creates non existent dirs automatically
+  " Jsonc syntax highlighting
+  Plug 'neoclide/jsonc.vim'
+
   Plug 'pbrisbin/vim-mkdir'
 
   " Fuzzy file search (using fzf)
