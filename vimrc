@@ -301,12 +301,6 @@ let g:indentLine_showFirstIndentLevel = 1
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
 
-
-" vim git gutter
-" trade accuracy for speed and updates signs on save
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-
 " vim scratch
 let g:scratch_horizontal = 0 " Set scratch to open vertically
 let g:scratch_top = 0 " When scratch is set to open vertically top means _left
