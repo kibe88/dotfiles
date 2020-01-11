@@ -177,8 +177,6 @@ call plug#begin('~/.vim/plugged')
 
   " better php support
   Plug 'StanAngeloff/php.vim'
-  Plug 'shawncplus/phpcomplete.vim'
-  Plug 'dsawardekar/wordpress.vim'
 call plug#end()
 
 
