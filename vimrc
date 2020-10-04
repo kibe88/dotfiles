@@ -801,4 +801,11 @@ set t_Co=256
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
 
+" Redraws panels easily
 set termguicolors
+nnoremap <silent> <Leader>= <C-w>=
+
+" Redraws panels on focus out and window resize
+augroup redraw_on_focus_out
+    autocmd FocusLost,VimResized * silent wincmd =
+augroup END
