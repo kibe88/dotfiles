@@ -47,7 +47,7 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'junegunn/vim-easy-align'
 
-  Plug 'tpope/vim-endwise' "autoclose ruby code with end
+  Plug 'tpope/vim-endwise', { 'for': 'ruby' } "autoclose ruby code with end
   Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
   Plug 'tpope/vim-unimpaired'
 
@@ -68,7 +68,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ayu-theme/ayu-vim'
 
   " filetree sidebar
-  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
   " Auto change vim dir based on the 'project' root directory (defaults to vcs)
   Plug 'airblade/vim-rooter'
@@ -81,25 +81,25 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
 
   " Ruby on Rails integration
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'tpope/vim-rails'
-  Plug 'kana/vim-textobj-user'
-  Plug 'nelstrom/vim-textobj-rubyblock'
-  Plug 'ecomba/vim-ruby-refactoring'
-  Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
+  Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+  Plug 'tpope/vim-rails', { 'for': 'ruby' }
+  Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
+  Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+  Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
+  Plug 'vim-utils/vim-ruby-fold', { 'for': 'ruby' } " Only folds methods (folds 'it' blocks in rspec files as well)
 
   " Html formatting
-  Plug 'tpope/vim-haml'
-  Plug 'mustache/vim-mustache-handlebars'
-  Plug 'tpope/vim-markdown'
-  Plug 'digitaltoad/vim-jade'
-  Plug 'slim-template/vim-slim'
+  Plug 'tpope/vim-haml', { 'for': 'html' }
+  Plug 'mustache/vim-mustache-handlebars', { 'for': 'html' }
+  Plug 'tpope/vim-markdown', { 'for': 'html' }
+  Plug 'digitaltoad/vim-jade', { 'for': 'html' }
+  Plug 'slim-template/vim-slim', { 'for': 'html' }
 
   " better json syntax highlighting
-  Plug 'elzr/vim-json'
+  Plug 'elzr/vim-json', { 'for': 'json' }
 
   " Jsonc syntax highlighting
-  Plug 'neoclide/jsonc.vim'
+  Plug 'neoclide/jsonc.vim', { 'for': ['json', 'jsonc'] }
 
   Plug 'pbrisbin/vim-mkdir'
 
@@ -155,7 +155,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 
   " Perl support
-  Plug 'vim-perl/vim-perl'
+  Plug 'vim-perl/vim-perl', { 'for': 'perl' }
 
   " Add coding style settings per project (using editorconfig)
   Plug 'editorconfig/editorconfig-vim'
@@ -164,19 +164,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'gioele/vim-autoswap'
 
   " distraction free writing
-  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/goyo.vim', { 'for': ['markdown', 'txt', 'text'] }
 
   " shows up rails i18n in locate or quickfix window
-  Plug 'airblade/vim-localorie'
+  Plug 'airblade/vim-localorie', { 'for': 'ruby' }
 
   " better python support
-  Plug 'Vimjas/vim-python-pep8-indent' " identation
-  Plug 'vim-python/python-syntax' " syntax highlighting
-  Plug 'tmhedberg/SimpylFold' " improves folding in python
+  Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' } " identation
+  Plug 'vim-python/python-syntax', { 'for': 'python' }  " syntax highlighting
+  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }  " improves folding in python
 
 
   " better php support
-  Plug 'StanAngeloff/php.vim'
+  Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 call plug#end()
 
 
