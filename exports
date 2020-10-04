@@ -4,7 +4,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Set default text editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Increase elastic search memory pool
 export ES_MIN_MEM=1024m
