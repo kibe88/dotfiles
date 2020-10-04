@@ -3,6 +3,7 @@ let maplocalleader = "\\"
 let g:dotvim = $HOME . "/.vim/"
 let g:dotfiles = $HOME . "/dotfiles"
 let g:repovimrc = g:dotfiles . "/vimrc"
+let $MYVIMRC = g:repovimrc
 let $MYVIMRCFILES = g:repovimrc.','.$MYVIMRC
 set nocompatible " Turn off vi compat
 
@@ -691,7 +692,7 @@ nnoremap <Leader>sv <C-w>v<C-w>l
 nnoremap <Leader>sh <C-w>s<C-w>j
 
 " Quickly edit config files
-nnoremap <Leader>ev <C-w>s<C-w>j:e "${g:repovimrc}"<CR>
+nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<CR>
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<CR>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<CR>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
