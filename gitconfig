@@ -63,6 +63,7 @@
   update = "!git pull origin $(git branch-name)" # Pull the current branch from the remote
   log = ! git log --oneline --color | emojify | less
   cleanall = "clean -f */*.orig"
+  add-untracked = "!git ls-files -o --exclude-standard | xargs git add"
 
 [core]
   excludesfile = ~/.gitignore
