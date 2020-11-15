@@ -611,7 +611,7 @@ nnoremap g, g,zz
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Make it obvious where 80 characters is
-set textwidth=100
+set textwidth=80
 set colorcolumn=+1
 
 " Indentation
@@ -688,7 +688,6 @@ nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<CR>
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<CR>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<CR>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
-
 
 " Vim config file configuration
 augroup ft_vim
