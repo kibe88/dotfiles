@@ -54,6 +54,10 @@ call plug#begin('~/.vim/plugged')
   " All about surroundings i.e you can change 'a' to [a] using cs'[
   Plug 'tpope/vim-surround'
 
+  " adds filetype icons for common vim plugins like nerdtree, vimfiler, and such
+  " using nerd patched fonts
+  Plug 'ryanoasis/vim-devicons'
+
   " Statusbar
   Plug 'bling/vim-airline'
 
