@@ -3,6 +3,7 @@ let maplocalleader = "\\"
 let g:dotvim = $HOME . "/.vim/"
 let g:dotfiles = $HOME . "/dotfiles"
 let g:repovimrc = g:dotfiles . "/vimrc"
+let $MYVIMRC = g:repovimrc
 let $MYVIMRCFILES = g:repovimrc.','.$MYVIMRC
 set nocompatible " Turn off vi compat
 
@@ -20,7 +21,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Configures all tab related plugins
-  Plug 'Shougo/neosnippet'
   Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
   " vscode like completion system
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -47,12 +47,16 @@ call plug#begin('~/.vim/plugged')
 
   Plug 'junegunn/vim-easy-align'
 
-  Plug 'tpope/vim-endwise' "autoclose ruby code with end
+  Plug 'tpope/vim-endwise', { 'for': 'ruby' } "autoclose ruby code with end
   Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
   Plug 'tpope/vim-unimpaired'
 
   " All about surroundings i.e you can change 'a' to [a] using cs'[
   Plug 'tpope/vim-surround'
+
+  " adds filetype icons for common vim plugins like nerdtree, vimfiler, and such
+  " using nerd patched fonts
+  Plug 'ryanoasis/vim-devicons'
 
   " Statusbar
   Plug 'bling/vim-airline'
@@ -68,7 +72,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ayu-theme/ayu-vim'
 
   " filetree sidebar
-  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
   " Auto change vim dir based on the 'project' root directory (defaults to vcs)
   Plug 'airblade/vim-rooter'
@@ -81,25 +85,25 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
 
   " Ruby on Rails integration
-  Plug 'vim-ruby/vim-ruby'
-  Plug 'tpope/vim-rails'
-  Plug 'kana/vim-textobj-user'
-  Plug 'nelstrom/vim-textobj-rubyblock'
-  Plug 'ecomba/vim-ruby-refactoring'
-  Plug 'vim-utils/vim-ruby-fold' " Only folds methods (folds 'it' blocks in rspec files as well)
+  Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+  Plug 'tpope/vim-rails', { 'for': 'ruby' }
+  Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
+  Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
+  Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
+  Plug 'vim-utils/vim-ruby-fold', { 'for': 'ruby' } " Only folds methods (folds 'it' blocks in rspec files as well)
 
   " Html formatting
-  Plug 'tpope/vim-haml'
-  Plug 'mustache/vim-mustache-handlebars'
-  Plug 'tpope/vim-markdown'
-  Plug 'digitaltoad/vim-jade'
-  Plug 'slim-template/vim-slim'
+  Plug 'tpope/vim-haml', { 'for': 'html' }
+  Plug 'mustache/vim-mustache-handlebars', { 'for': 'html' }
+  Plug 'tpope/vim-markdown', { 'for': 'html' }
+  Plug 'digitaltoad/vim-jade', { 'for': 'html' }
+  Plug 'slim-template/vim-slim', { 'for': 'html' }
 
   " better json syntax highlighting
-  Plug 'elzr/vim-json'
+  Plug 'elzr/vim-json', { 'for': 'json' }
 
   " Jsonc syntax highlighting
-  Plug 'neoclide/jsonc.vim'
+  Plug 'kevinoid/vim-jsonc', { 'for': ['json', 'jsonc'] }
 
   Plug 'pbrisbin/vim-mkdir'
 
@@ -155,7 +159,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'gregsexton/gitv' | Plug 'tpope/vim-fugitive'
 
   " Perl support
-  Plug 'vim-perl/vim-perl'
+  Plug 'vim-perl/vim-perl', { 'for': 'perl' }
 
   " Add coding style settings per project (using editorconfig)
   Plug 'editorconfig/editorconfig-vim'
@@ -164,19 +168,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'gioele/vim-autoswap'
 
   " distraction free writing
-  Plug 'junegunn/goyo.vim'
+  Plug 'junegunn/goyo.vim', { 'for': ['markdown', 'txt', 'text'] }
 
   " shows up rails i18n in locate or quickfix window
-  Plug 'airblade/vim-localorie'
+  Plug 'airblade/vim-localorie', { 'for': 'ruby' }
 
   " better python support
-  Plug 'Vimjas/vim-python-pep8-indent' " identation
-  Plug 'vim-python/python-syntax' " syntax highlighting
-  Plug 'tmhedberg/SimpylFold' " improves folding in python
+  Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' } " identation
+  Plug 'vim-python/python-syntax', { 'for': 'python' }  " syntax highlighting
+  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }  " improves folding in python
 
 
   " better php support
-  Plug 'StanAngeloff/php.vim'
+  Plug 'StanAngeloff/php.vim', { 'for': 'php' }
 call plug#end()
 
 
@@ -426,16 +430,6 @@ let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 " VIM PLUG
 map <Leader>i :PlugInstall<CR>
 
-" VIM NEOCOMPLETE
-" This makes sure we use neocomplete completefunc instead of the one in rails.vim
-let g:neocomplete#force_overwrite_completefunc = 1
-
-" VIM NEOSNIPPET
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
-
 " EMMET
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
@@ -450,7 +444,7 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 " always show signcolumns
-set signcolumn=yes
+set signcolumn=number
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -481,8 +475,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use U to show documentation in preview window
-nnoremap <silent> U :call <SID>show_documentation()<CR>
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -531,15 +533,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
-endfunction
-
-" Use C to open coc config
-call SetupCommandAbbrs('C', 'CocConfig')
 
 " FUGITIVE
 nnoremap <Leader>gs :Gstatus<CR>
@@ -618,7 +611,7 @@ nnoremap g, g,zz
 nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Make it obvious where 80 characters is
-set textwidth=100
+set textwidth=80
 set colorcolumn=+1
 
 " Indentation
@@ -691,11 +684,10 @@ nnoremap <Leader>sv <C-w>v<C-w>l
 nnoremap <Leader>sh <C-w>s<C-w>j
 
 " Quickly edit config files
-nnoremap <Leader>ev <C-w>s<C-w>j:e "${g:repovimrc}"<CR>
+nnoremap <Leader>ev <C-w>s<C-w>j:e $MYVIMRC<CR>
 nnoremap <Leader>eg <C-w>s<C-w>j:e ~/.gitconfig<CR>
 nnoremap <Leader>ep <C-w>s<C-w>j:e ~/.profile<CR>
 nnoremap <Leader>et <C-w>s<C-w>j:e ~/.tmux.conf<CR>
-
 
 " Vim config file configuration
 augroup ft_vim
@@ -800,4 +792,11 @@ set t_Co=256
 let &t_8f = "[38;2;%lu;%lu;%lum"
 let &t_8b = "[48;2;%lu;%lu;%lum"
 
+" Redraws panels easily
 set termguicolors
+nnoremap <silent> <Leader>= <C-w>=
+
+" Redraws panels on focus out and window resize
+augroup redraw_on_focus_out
+    autocmd FocusLost,VimResized * silent wincmd =
+augroup END
