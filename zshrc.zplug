@@ -21,6 +21,16 @@ zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
 
 zplug "~/dotfiles/shell-extensions/fzf", from:local, use:"fzf.sh"
 
+# prezto modules
+zplug "modules/tmux", from:prezto
+zplug "modules/environment", from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/editor", from:prezto
+
+# prezto modules config
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
 # let zplug manage itself
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
