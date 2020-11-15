@@ -103,7 +103,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'elzr/vim-json', { 'for': 'json' }
 
   " Jsonc syntax highlighting
-  Plug 'neoclide/jsonc.vim', { 'for': ['json', 'jsonc'] }
+  Plug 'kevinoid/vim-jsonc', { 'for': ['json', 'jsonc'] }
 
   Plug 'pbrisbin/vim-mkdir'
 
