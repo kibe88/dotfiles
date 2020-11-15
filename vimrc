@@ -21,7 +21,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Configures all tab related plugins
-  Plug 'Shougo/neosnippet'
   Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
   " vscode like completion system
   Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -426,16 +425,6 @@ let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 
 " VIM PLUG
 map <Leader>i :PlugInstall<CR>
-
-" VIM NEOCOMPLETE
-" This makes sure we use neocomplete completefunc instead of the one in rails.vim
-let g:neocomplete#force_overwrite_completefunc = 1
-
-" VIM NEOSNIPPET
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#disable_runtime_snippets={'_' : 1,} "disable default neosnippets
-let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets' "Prefer honza vim snippets
 
 " EMMET
 let g:user_emmet_install_global = 0
