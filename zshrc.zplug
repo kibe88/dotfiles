@@ -1,9 +1,12 @@
-if ! [[ -z $ZPLUG_HOME ]]; then
+if [ ! -f ~/.zplug/init.zsh ]; then
   export ZPLUG_HOME=~/.zplug
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
 source ~/.zplug/init.zsh
+
+# theme
+zplug "akz92/clean", as:theme
 
 zplug "zsh-users/zsh-completions"
 zplug "zdharma/fast-syntax-highlighting"
