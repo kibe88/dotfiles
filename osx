@@ -4,3 +4,7 @@ export CPPFLAGS=-Qunused-arguments
 
 # fix dir and file output colors in supercabtree/k
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# fzf brew installation
+source /usr/local/opt/fzf/shell/key-bindings.zsh
+source /usr/local/opt/fzf/shell/completion.zsh
