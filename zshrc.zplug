@@ -30,6 +30,7 @@ zplug "modules/editor", from:prezto
 
 # prezto modules config
 zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # let zplug manage itself
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
