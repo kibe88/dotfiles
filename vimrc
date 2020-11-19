@@ -248,8 +248,9 @@ set guioptions-=l
 set guioptions-=L
 let g:NERDTreeWinSize=28
 let g:NERDTreeChDirMode=2
-" plugin is warning about this var. so we define it again even though the src seems to define it
-let g:NERDTreeNodeDelimiter="\x07"
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 map <Leader>s :NERDTreeToggle<CR>
 " Autocloses nerdtree (and therefore vim) if it's the only buffer left
 function! s:CloseNERDTreeIfOnlyBufferLeft()
@@ -273,7 +274,7 @@ nmap <Leader>ct :BTags<CR>
 let g:fzf_buffers_jump = 1
 nnoremap <Leader>a :Ag<space>
 function! SearchWordWithAg()
-  execute 'Ag' expand(<cword>)
+  execute 'Ag' expand('<cword>')
 endfunction
 function! SearchForUsagesOfTheCurrentFile()
   execute 'Ag' expand("%:t:r")
