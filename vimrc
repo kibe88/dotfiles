@@ -307,7 +307,7 @@ augroup END
 
 " VIM INDENT
 set list lcs=tab:\|\
-let g:indentLine_char = '¦'
+let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
