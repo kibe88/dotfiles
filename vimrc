@@ -435,6 +435,9 @@ let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 " VIM PLUG
 map <Leader>i :PlugInstall<CR>
 
+" vim json
+let g:vim_json_syntax_conceal = 0 " disabled double quote conceal to keep my sanity. (dunno why its enabled by default)
+
 " EMMET
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
