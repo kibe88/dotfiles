@@ -182,6 +182,9 @@ call plug#begin('~/.vim/plugged')
 
   " better php support
   Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+
+  " since the w!! sudo trick doesnt work in nvim
+  Plug 'lambdalisue/suda.vim'
 call plug#end()
 
 
@@ -766,10 +769,10 @@ set confirm
 
 set guicursor+=n-v-c:blinkon0 " Disable cursor blinking in all modes
 
-" w!! to write a file as sudo
-" stolen from Steve Losh
-cmap w!! w !sudo tee % >/dev/null
-nnoremap <Leader>ws :w!!<CR>
+" suda write config
+cmap sw :SudaWrite
+nnoremap <Leader>ws :SudaWrite<CR>
+let g:suda_smart_edit=1
 
 " Toggle number gutter
 noremap <Leader>m :set invnumber<CR>
