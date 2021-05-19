@@ -1,6 +1,6 @@
 # Add `~/bin` to the `$PATH`
 PATH=$HOME/.bin:$PATH
-PATH=./bin:$PATH
+PATH=$HOME/bin:$PATH
 
 # Brewed path
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
