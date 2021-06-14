@@ -661,8 +661,8 @@ set backspace=2
 " Yank from current cursor position to end of line
 map Y y$
 " Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
-vnoremap <Leader>yo "*y
-nnoremap <Leader>po "*p
+vnoremap <Leader>yo "+y
+nnoremap <Leader>po "+p
 
 " Clear highlight after search
 noremap <silent><Leader><space> :nohls<CR>
