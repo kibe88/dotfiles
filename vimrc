@@ -94,11 +94,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-utils/vim-ruby-fold', { 'for': 'ruby' } " Only folds methods (folds 'it' blocks in rspec files as well)
 
   " Html formatting
-  Plug 'tpope/vim-haml', { 'for': 'html' }
-  Plug 'mustache/vim-mustache-handlebars', { 'for': 'html' }
   Plug 'tpope/vim-markdown', { 'for': 'html' }
-  Plug 'digitaltoad/vim-jade', { 'for': 'html' }
-  Plug 'slim-template/vim-slim', { 'for': 'html' }
 
   " better json syntax highlighting
   Plug 'elzr/vim-json', { 'for': 'json' }
@@ -122,9 +118,6 @@ call plug#begin('~/.vim/plugged')
 
   " Adds new text object representing lines of code at the same indent level (python, haml)
   Plug 'michaeljsmith/vim-indent-object'
-
-  " Vim dash integration (it searchs the current selected word in dash)
-  Plug 'rizzatti/dash.vim'
 
   " Useful terminal commands
   Plug 'tpope/vim-eunuch'
@@ -309,31 +302,12 @@ augroup END
 set list lcs=tab:\|\
 let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
+let g:indentLine_setColors = 0
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
 
-" vim scratch
-let g:scratch_horizontal = 0 " Set scratch to open vertically
-let g:scratch_top = 0 " When scratch is set to open vertically top means _left
-let g:scratch_height = 45 " % of the screen
-" Scratch needs this to autohide window when leaving insert mode
-set hidden
-" Set keys to my liking (<Leader>gs is already used by fugitive)
-let g:scratch_no_mappings = 1
-nmap <Leader>n <plug>(scratch-insert-reuse)
-nmap <Leader>N <plug>(scratch-insert-clear)
-xmap <Leader>n <plug>(scratch-selection-reuse)
-xmap <Leader>N <plug>(scratch-selection-clear)
-
-" VIM DASH
-nmap <silent> <Leader>dw <Plug>DashSearch
-map <Leader>ds :Dash<Space>
-
 " VIM EUNUCH
 map <Leader>mv :Rename<Space>
-
-" VIM SNEAK
-let g:sneak#streak = 1
 
 " VIM BETTER WHITESPACE
 let g:strip_whitespace_on_save = 0 " as most people don't remove their own...
