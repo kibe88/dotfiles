@@ -302,7 +302,6 @@ augroup END
 set list lcs=tab:\|\
 let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
-let g:indentLine_setColors = 0
 " other useful characters
 "let g:indentLine_char = '∙▹¦'
 
