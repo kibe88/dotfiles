@@ -354,7 +354,7 @@ function! s:center_header(lines) abort
   return centered_lines
 endfunction
 
-let g:startify_custom_header = s:center_header(split(system('fortune | cowthink'), '\n'))
+let g:startify_custom_header = s:center_header(split(system('cowsay vim'), '\n'))
 " VIM GOYO
 nmap <Leader>f :Goyo<CR>
 function! s:goyo_enter()
