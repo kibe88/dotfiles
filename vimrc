@@ -760,7 +760,7 @@ inoremap <Leader>m <C-O>:set invnumber<CR>
 nnoremap gb :e #<CR>
 
 " Enables fzf in vim
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/bin/fzf
 
 " Per project vimrc files
 set exrc " Enable per project vimrc
