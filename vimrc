@@ -782,3 +782,10 @@ nnoremap <silent> <Leader>= <C-w>=
 augroup redraw_on_focus_out
     autocmd FocusLost,VimResized * silent wincmd =
 augroup END
+
+" share data between neovim instances (registers etc) using shada
+augroup SHADA
+    autocmd!
+    autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
+                \ if exists(':rshada') | rshada | wshada | endif
+augroup END
