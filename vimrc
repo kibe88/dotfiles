@@ -779,7 +779,7 @@ let &t_8b = "[48;2;%lu;%lu;%lum"
 set termguicolors
 nnoremap <silent> <Leader>= <C-w>=
 
-" Redraws panels on focus out and window resize
+" Redraws panels on focus lost and window resize
 augroup redraw_on_focus_out
     autocmd FocusLost,VimResized * silent wincmd =
 augroup END
