@@ -22,23 +22,16 @@ call plug#begin('~/.vim/plugged')
 
 " Configures all tab related plugins
   Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
-  " vscode like completion system
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-  " Snippet solution for coc
-  Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'honza/vim-snippets' " Snippets collection
-  " Coc language servers
-  Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'} " ruby using solargraph
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} " javascript/typescript
-  Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'} " python
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'} " json
-  Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'} " php
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'} " php
-  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " highlight
-  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'} " highlight
 
-  " adds completion of words in additional tmux-panes
+  " vscode like completion system using LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+
+  " Adds tmux panels content as a completion source
   Plug 'wellle/tmux-complete.vim'
+
+  " lsp signature for methods
+  Plug 'ray-x/lsp_signature.nvim'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
@@ -428,68 +421,13 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=number
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-tab>'
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>aa <Plug>(coc-codeaction-selected)
 nmap <leader>aa <Plug>(coc-codeaction-selected)
 
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Use `:Format` to format current buffer
