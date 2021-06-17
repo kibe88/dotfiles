@@ -35,6 +35,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'wellle/tmux-complete.vim'
   " lsp signature for methods
   Plug 'ray-x/lsp_signature.nvim'
+  " adds VSCode-like pictograms to Neovim's built-in LSP
+  Plug 'onsails/lspkind-nvim'
 
   " Display LSP results using fzf (codeactions, goto defs, and such)
   Plug 'ojroques/nvim-lspfuzzy'
