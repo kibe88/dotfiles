@@ -36,6 +36,9 @@ call plug#begin('~/.vim/plugged')
   " lsp signature for methods
   Plug 'ray-x/lsp_signature.nvim'
 
+  " Display LSP results using fzf (codeactions, goto defs, and such)
+  Plug 'ojroques/nvim-lspfuzzy'
+
   " Git wrapper
   Plug 'tpope/vim-fugitive'
 

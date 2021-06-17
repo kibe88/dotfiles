@@ -1,5 +1,6 @@
 -- Language specific key mappings
 --require('keymappings')
+require('lang.fuzzy')
 
 local on_attach = function(client, bufnr)
 
