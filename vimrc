@@ -37,6 +37,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'ray-x/lsp_signature.nvim'
   " adds VSCode-like pictograms to Neovim's built-in LSP
   Plug 'onsails/lspkind-nvim'
+  " Smart current word highlight using lsp when available
+  Plug 'RRethy/vim-illuminate'
 
   " Display LSP results using fzf (codeactions, goto defs, and such)
   Plug 'ojroques/nvim-lspfuzzy'
