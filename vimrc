@@ -35,6 +35,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'wellle/tmux-complete.vim'
   " lsp signature for methods
   Plug 'ray-x/lsp_signature.nvim'
+  " lsp highlights for any colorscheme
+  Plug 'folke/lsp-colors.nvim'
   " adds VSCode-like pictograms to Neovim's built-in LSP
   Plug 'onsails/lspkind-nvim'
   " Smart current word highlight using lsp when available
