@@ -26,10 +26,13 @@ call plug#begin('~/.vim/plugged')
   " vscode like completion system using LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
-
+  " snippet completion (choose vsnip due to the vscode snippet syntax support,
+  " finally moving from snipmate)
+  Plug 'hrsh7th/vim-vsnip'
+  " Snippets collection
+  Plug 'rafamadriz/friendly-snippets'
   " Adds tmux panels content as a completion source
   Plug 'wellle/tmux-complete.vim'
-
   " lsp signature for methods
   Plug 'ray-x/lsp_signature.nvim'
 
@@ -418,9 +421,6 @@ set updatetime=300
 set shortmess+=c
 " always show signcolumns
 set signcolumn=number
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>aa <Plug>(coc-codeaction-selected)
