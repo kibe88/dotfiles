@@ -39,8 +39,6 @@ call plug#begin('~/.vim/plugged')
   " Integrates fugitive with github hub
   Plug 'tpope/vim-rhubarb'
 
-  Plug 'junegunn/vim-easy-align'
-
   Plug 'tpope/vim-endwise', { 'for': 'ruby' } "autoclose ruby code with end
   Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
   Plug 'tpope/vim-unimpaired'
