@@ -20,6 +20,14 @@ zplug "wfxr/forgit"
 zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
 
 zplug "~/dotfiles/shell-extensions/fzf", from:local, use:"fzf.sh"
+zplug "u1and0/fzf-extras",\
+    use:"fzf*",\
+    hook-load:"""
+        alias zz='zd -z $*'
+        alias gz='fzf-gitlog-widget'
+        alias gx='fzf-gitlog-multi-widget'
+    """
+
 
 # prezto modules
 zplug "modules/tmux", from:prezto
