@@ -22,31 +22,42 @@ call plug#begin('~/.vim/plugged')
 
 " Configures all tab related plugins
   Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
-  " vscode like completion system
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-  " Snippet solution for coc
-  Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-  Plug 'honza/vim-snippets' " Snippets collection
-  " Coc language servers
-  Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'} " ruby using solargraph
-  Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'} " javascript/typescript
-  Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'} " python
-  Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'} " json
-  Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'} " php
-  Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'} " php
-  Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " highlight
-  Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'} " highlight
 
-  " adds completion of words in additional tmux-panes
+  " vscode like completion system using LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+  " snippet completion (choose vsnip due to the vscode snippet syntax support,
+  " finally moving from snipmate)
+  Plug 'hrsh7th/vim-vsnip'
+  " Snippets collection
+  Plug 'rafamadriz/friendly-snippets'
+  " Adds tmux panels content as a completion source
   Plug 'wellle/tmux-complete.vim'
+  " lsp signature for methods
+  Plug 'ray-x/lsp_signature.nvim'
+  " lsp highlights for any colorscheme
+  Plug 'folke/lsp-colors.nvim'
+  " adds VSCode-like pictograms to Neovim's built-in LSP
+  Plug 'onsails/lspkind-nvim'
+  " Smart current word highlight using lsp when available
+  Plug 'RRethy/vim-illuminate'
+  " Display a bulb when code actions are available
+  Plug 'kosayoda/nvim-lightbulb'
+  " Treeviewer for lsp symbols
+  Plug 'simrat39/symbols-outline.nvim'
+  " Improve typescript lsp support
+  Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  Plug 'nvim-lua/plenary.nvim'
+
+  " Display LSP results using fzf (codeactions, goto defs, and such)
+  "Plug 'ojroques/nvim-lspfuzzy'
+  Plug 'gfanto/fzf-lsp.nvim'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
 
   " Integrates fugitive with github hub
   Plug 'tpope/vim-rhubarb'
-
-  Plug 'junegunn/vim-easy-align'
 
   Plug 'tpope/vim-endwise', { 'for': 'ruby' } "autoclose ruby code with end
   Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
@@ -61,9 +72,6 @@ call plug#begin('~/.vim/plugged')
 
   " Statusbar
   Plug 'bling/vim-airline'
-
-  " Syntax checker
-  Plug 'dense-analysis/ale'
 
   " Colorscheme
   Plug 'morhetz/gruvbox'
@@ -178,11 +186,10 @@ call plug#begin('~/.vim/plugged')
 
   " since the w!! sudo trick doesnt work in nvim
   Plug 'lambdalisue/suda.vim'
+
+  " Pretty tag/symbol/methods search
+  Plug 'liuchengxu/vista.vim'
 call plug#end()
-
-
-" VIM FUGITIVE
-map <Leader>gv :Gitv<CR>
 
 " VIM EDITOR CONFIG
 let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
@@ -203,35 +210,6 @@ let g:surround_61 = "<%= \r %>"   " ="
 
 " VIM AIRLINE
 let g:airline_powerline_fonts = 1
-
-" ALE
-let g:ale_sign_error = "✗"
-let g:ale_sign_warning = "⚠"
-let g:airline#extensions#ale#enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_linters = {
-\  'python': ['flake8', 'pylint'],
-\  'ruby': ['mri', 'rubocop'],
-\  'javascript': ['eslint'],
-\  'vue': ['eslint'],
-\  'yaml': ['yamllint'],
-\  'sass': ['stylelint']
-\}
-let g:ale_fixers = {
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'python': ['autopep8', 'yapf'],
-\  'ruby': ['rubocop'],
-\  'javascript': ['prettier', 'eslint'],
-\  'typescript': ['prettier', 'tslint'],
-\  'vue': ['eslint', 'vls'],
-\  'scss': ['prettier'],
-\  'sass': ['stylelint'],
-\  'html': ['prettier'],
-\  'reason': ['refmt'],
-\  'make': ['gnumake']
-\}
-nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
-nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
 
 " VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
@@ -416,7 +394,6 @@ let g:vim_json_syntax_conceal = 0 " disabled double quote conceal to keep my san
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
 
-" ALL TAB RELATED CONFIGURATION USING COC VIM
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
@@ -428,68 +405,10 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=number
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-tab>'
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>aa <Plug>(coc-codeaction-selected)
 nmap <leader>aa <Plug>(coc-codeaction-selected)
 
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Use `:Format` to format current buffer
@@ -578,9 +497,6 @@ exec 'set undodir='.g:dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
-
-" Keybind to source vimrc
-nnoremap <Leader>v :source $MYVIMRC<CR>
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
