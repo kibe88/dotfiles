@@ -186,6 +186,9 @@ call plug#begin('~/.vim/plugged')
 
   " since the w!! sudo trick doesnt work in nvim
   Plug 'lambdalisue/suda.vim'
+
+  " Pretty tag/symbol/methods search
+  Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 " VIM EDITOR CONFIG
@@ -494,9 +497,6 @@ exec 'set undodir='.g:dotvim.'/tmp/undo//'
 set undofile
 set undolevels=3000
 set undoreload=10000
-
-" Keybind to source vimrc
-nnoremap <Leader>v :source $MYVIMRC<CR>
 
 " Keep search matches in the middle of the window.
 nnoremap n nzzzv
