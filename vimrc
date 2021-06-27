@@ -41,9 +41,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'onsails/lspkind-nvim'
   " Smart current word highlight using lsp when available
   Plug 'RRethy/vim-illuminate'
+  " Display a bulb when code actions are available
+  Plug 'kosayoda/nvim-lightbulb'
+  " Treeviewer for lsp symbols
+  Plug 'simrat39/symbols-outline.nvim'
+  " Improve typescript lsp support
+  Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  Plug 'nvim-lua/plenary.nvim'
 
   " Display LSP results using fzf (codeactions, goto defs, and such)
-  Plug 'ojroques/nvim-lspfuzzy'
+  "Plug 'ojroques/nvim-lspfuzzy'
+  Plug 'gfanto/fzf-lsp.nvim'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
@@ -64,9 +72,6 @@ call plug#begin('~/.vim/plugged')
 
   " Statusbar
   Plug 'bling/vim-airline'
-
-  " Syntax checker
-  Plug 'dense-analysis/ale'
 
   " Colorscheme
   Plug 'morhetz/gruvbox'
@@ -183,10 +188,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'lambdalisue/suda.vim'
 call plug#end()
 
-
-" VIM FUGITIVE
-map <Leader>gv :Gitv<CR>
-
 " VIM EDITOR CONFIG
 let g:EditorConfig_exclude_patterns = ['fugitive://.*'] " Play nice with fugitive plugin
 let g:EditorConfig_core_mode = 'external_command' " Use system installed bin
@@ -206,35 +207,6 @@ let g:surround_61 = "<%= \r %>"   " ="
 
 " VIM AIRLINE
 let g:airline_powerline_fonts = 1
-
-" ALE
-let g:ale_sign_error = "✗"
-let g:ale_sign_warning = "⚠"
-let g:airline#extensions#ale#enabled = 1
-let g:ale_fix_on_save = 1
-let g:ale_linters = {
-\  'python': ['flake8', 'pylint'],
-\  'ruby': ['mri', 'rubocop'],
-\  'javascript': ['eslint'],
-\  'vue': ['eslint'],
-\  'yaml': ['yamllint'],
-\  'sass': ['stylelint']
-\}
-let g:ale_fixers = {
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'python': ['autopep8', 'yapf'],
-\  'ruby': ['rubocop'],
-\  'javascript': ['prettier', 'eslint'],
-\  'typescript': ['prettier', 'tslint'],
-\  'vue': ['eslint', 'vls'],
-\  'scss': ['prettier'],
-\  'sass': ['stylelint'],
-\  'html': ['prettier'],
-\  'reason': ['refmt'],
-\  'make': ['gnumake']
-\}
-nnoremap ]r :ALENextWrap<CR>     " move to the next ALE warning / error
-nnoremap [r :ALEPreviousWrap<CR> " move to the previous ALE warning / error
 
 " VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
@@ -419,7 +391,6 @@ let g:vim_json_syntax_conceal = 0 " disabled double quote conceal to keep my san
 let g:user_emmet_install_global = 0
 autocmd FileType html,eruby,css,tt,tt2,tt2html EmmetInstall
 
-" ALL TAB RELATED CONFIGURATION USING COC VIM
 " if hidden is not set, TextEdit might fail.
 set hidden
 " Better display for messages
