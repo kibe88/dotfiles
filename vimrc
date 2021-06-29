@@ -99,7 +99,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
   Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
   Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
-  Plug 'vim-utils/vim-ruby-fold', { 'for': 'ruby' } " Only folds methods (folds 'it' blocks in rspec files as well)
 
   " Html formatting
   Plug 'tpope/vim-markdown', { 'for': 'html' }
@@ -178,8 +177,6 @@ call plug#begin('~/.vim/plugged')
   " better python support
   Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' } " identation
   Plug 'vim-python/python-syntax', { 'for': 'python' }  " syntax highlighting
-  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }  " improves folding in python
-
 
   " better php support
   Plug 'StanAngeloff/php.vim', { 'for': 'php' }
@@ -189,6 +186,10 @@ call plug#begin('~/.vim/plugged')
 
   " Pretty tag/symbol/methods search
   Plug 'liuchengxu/vista.vim'
+
+  " Enable treesitter parser in vim
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
 " VIM EDITOR CONFIG
