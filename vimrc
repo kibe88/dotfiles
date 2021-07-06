@@ -43,8 +43,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'RRethy/vim-illuminate'
   " Display a bulb when code actions are available
   Plug 'kosayoda/nvim-lightbulb'
-  " Treeviewer for lsp symbols
-  Plug 'simrat39/symbols-outline.nvim'
   " Improve typescript lsp support
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
   Plug 'nvim-lua/plenary.nvim'
