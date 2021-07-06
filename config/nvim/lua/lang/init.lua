@@ -11,3 +11,4 @@ require("lang.diagnostics")
 -- languages
 require("lang.python")
 require("lang.javascript")
+require("lang.lua")
