@@ -29,7 +29,7 @@ local tsserver_config = {
         no_save_after_format = false,
         -- parentheses completion
         complete_parens = false,
-        signature_help_in_parens = true,
+        signature_help_in_parens = false,
         update_imports_on_move = true,
         require_confirmation_on_move = true,
         watch_dir = "./"
