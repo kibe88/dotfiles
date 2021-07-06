@@ -4,6 +4,9 @@ treesitter.setup {
     ensure_installed = 'maintained',
     highlight = {enable = true},
     indent = {enable = true},
+    matchup = {
+        enable = true,              -- mandatory, false will disable the whole extension
+    },
 }
 
 

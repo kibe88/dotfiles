@@ -150,8 +150,8 @@ call plug#begin('~/.vim/plugged')
   " Remove whitespace only from edited lines
   Plug 'thirtythreeforty/lessspace.vim'
 
-  " Installs the most recent version of match it
-  Plug 'vim-scripts/matchit.zip'
+  " Improve match support (with the spiritual sucessor to matchit)
+  Plug 'andymass/vim-matchup'
 
   " Better startup screen
   Plug 'mhinz/vim-startify'
