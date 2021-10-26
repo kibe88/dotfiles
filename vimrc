@@ -51,7 +51,6 @@ call plug#begin('~/.vim/plugged')
   " Pretty diagnostic list
   Plug 'folke/trouble.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
-  "Plug 'ojroques/nvim-lspfuzzy'
   Plug 'gfanto/fzf-lsp.nvim'
 
   " Git wrapper
