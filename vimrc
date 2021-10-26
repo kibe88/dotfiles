@@ -145,7 +145,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/javascript-libraries-syntax.vim'
 
   " Automatic closing off quotes, brackets and such
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
 
   " Configures whitespace behavior
   Plug 'ntpeters/vim-better-whitespace'
