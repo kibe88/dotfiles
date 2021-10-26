@@ -70,9 +70,11 @@ call plug#begin('~/.vim/plugged')
   " adds filetype icons for common vim plugins like nerdtree, vimfiler, and such
   " using nerd patched fonts
   Plug 'ryanoasis/vim-devicons'
+  " lua plugins commonly use this one
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " Statusbar
-  Plug 'bling/vim-airline'
+  Plug 'hoob3rt/lualine.nvim'
 
   " Colorscheme
   Plug 'morhetz/gruvbox'
@@ -210,9 +212,6 @@ let g:surround_35  = "#{\r}"   " #
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " ="
 
-" VIM AIRLINE
-let g:airline_powerline_fonts = 1
-
 " VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
 let g:rooter_silent_chdir=1 " Don't echo dir after opening a file
@@ -295,13 +294,6 @@ map <silent><Leader>tw :ToggleWhitespace<CR>
 let g:better_whitespace_enabled = 0
 
 " VIM STARTIFY
-augroup startify_buffer_settings
-  " Use startify buffer for opening ctrlp files
-  autocmd FileType startify setlocal buftype=
-  " Use startify buffer for opening files from NerdTree
-  autocmd User Startified AirlineRefresh
-augroup END
-
 nmap <Leader>st :Startify<CR>
 let g:startify_list_order = [
       \ ['   Bookmarks '], 'bookmarks',
