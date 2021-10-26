@@ -46,7 +46,8 @@ call plug#begin('~/.vim/plugged')
   " Improve typescript lsp support
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
   Plug 'nvim-lua/plenary.nvim'
-
+  " Improve lsp floating window
+  Plug 'glepnir/lspsaga.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
   "Plug 'ojroques/nvim-lspfuzzy'
   Plug 'gfanto/fzf-lsp.nvim'
