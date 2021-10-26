@@ -10,6 +10,7 @@ require("lang.borders")
 require("lang.trouble")
 require("lang.diagnostics")
 require("lang.saga")
+require("lang.rename")
 
 -- languages
 require("lang.python")
