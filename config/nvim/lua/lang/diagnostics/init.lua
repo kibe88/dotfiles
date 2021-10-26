@@ -6,7 +6,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
         virtual_text = true,
         underline = true,
         signs = true,
-        update_in_insert = false
+        update_in_insert = true
     })
 
 -- Send diagnostics to quickfix list
@@ -31,19 +31,11 @@ do
     end
 end
 
-vim.fn.sign_define(
-  "LspDiagnosticsSignError",
-  { text = "", texthl = "LspDiagnosticsDefaultError" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignWarning",
-  { text = "", texthl = "LspDiagnosticsDefaultWarning" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignInformation",
-  { text = "", texthl = "LspDiagnosticsDefaultInformation" }
-)
-vim.fn.sign_define(
-  "LspDiagnosticsSignHint",
-  { text = "", texthl = "LspDiagnosticsDefaultHint" }
-)
+vim.fn.sign_define("LspDiagnosticsSignError",
+                   {text = "", texthl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignWarning",
+                   {text = "", texthl = "LspDiagnosticsDefaultWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation",
+                   {text = "", texthl = "LspDiagnosticsDefaultInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint",
+                   {text = "", texthl = "LspDiagnosticsDefaultHint"})
