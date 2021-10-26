@@ -48,6 +48,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   " Improve lsp floating window
   Plug 'glepnir/lspsaga.nvim'
+  " Pretty diagnostic list
+  Plug 'folke/trouble.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
   "Plug 'ojroques/nvim-lspfuzzy'
   Plug 'gfanto/fzf-lsp.nvim'

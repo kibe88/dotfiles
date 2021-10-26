@@ -7,6 +7,7 @@ require('lang.symbols_outline')
 require('lang.code_action')
 require('lang.snippets')
 require("lang.borders")
+require("lang.trouble")
 require("lang.diagnostics")
 require("lang.saga")
 
