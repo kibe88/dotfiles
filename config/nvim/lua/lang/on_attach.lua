@@ -1,6 +1,10 @@
 return function(client, bufnr)
 
-    require'lsp_signature'.on_attach()
+    require'lsp_signature'.on_attach({
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        floating_window = true,
+        handler_opts = {border = "single"}
+    })
     require'illuminate'.on_attach(client)
 
     local function buf_set_keymap(...)
