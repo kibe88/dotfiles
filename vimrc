@@ -92,9 +92,6 @@ call plug#begin('~/.vim/plugged')
   " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
   Plug 'christoomey/vim-tmux-navigator'
 
-  " easily comment code
-  Plug 'scrooloose/nerdcommenter'
-
   " Ruby on Rails integration
   Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
@@ -191,6 +188,15 @@ call plug#begin('~/.vim/plugged')
 
   " Enable treesitter parser in vim
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+
+  " Easily comment code
+  Plug 'tpope/vim-commentary'
+  " Context aware commentstring (like for jsx, tsx, svelte, php and tpl languages)
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  " Context aware text object using treesitter
+  Plug 'RRethy/nvim-treesitter-textsubjects'
 
   " Colorize/highlight strings with color values
   Plug 'norcalli/nvim-colorizer.lua'
