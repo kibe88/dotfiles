@@ -116,9 +116,6 @@ call plug#begin('~/.vim/plugged')
   " Sublime text like multiple selection and edition
   Plug 'terryma/vim-multiple-cursors'
 
-  " Indentation guidelines
-  Plug 'Yggdroot/indentLine'
-
   " Adds gutter with git diff info
   Plug 'airblade/vim-gitgutter'
 
@@ -194,6 +191,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   " Context aware commentstring (like for jsx, tsx, svelte, php and tpl languages)
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  " Adds indentation guides to empty lines
+  Plug 'lukas-reineke/indent-blankline.nvim'
 
   " Context aware text object using treesitter
   Plug 'RRethy/nvim-treesitter-textsubjects'
@@ -289,8 +289,6 @@ augroup END
 set list lcs=tab:\|\
 let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
-" other useful characters
-"let g:indentLine_char = '∙▹¦'
 
 " VIM EUNUCH
 map <Leader>mv :Rename<Space>
