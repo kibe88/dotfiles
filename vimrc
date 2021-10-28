@@ -192,6 +192,9 @@ call plug#begin('~/.vim/plugged')
   " Enable treesitter parser in vim
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  " Colorize/highlight strings with color values
+  Plug 'norcalli/nvim-colorizer.lua'
+
 call plug#end()
 
 " VIM EDITOR CONFIG
