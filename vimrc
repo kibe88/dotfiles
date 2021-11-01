@@ -201,6 +201,9 @@ call plug#begin('~/.vim/plugged')
   " Colorize/highlight strings with color values
   Plug 'norcalli/nvim-colorizer.lua'
 
+  Plug 'tjdevries/colorbuddy.nvim'
+  Plug 'maaslalani/nordbuddy'
+
   Plug 'folke/todo-comments.nvim'
 call plug#end()
 
@@ -450,26 +453,6 @@ nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R
 vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
 " STARTS VANILLA VIM CONFIGURATION
-
-" COLORSCHEME
-set background=light
-
-" gruvbox
-"let g:gruvbox_contrast_dark = 'soft'
-"let g:gruvbox_contrast_light = 'soft'
-"silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
-
-"set termguicolors     " enable true colors support
-"let ayucolor="mirage" " for mirage version of theme
-"silent! colorscheme ayu
-" seoul256
-"let g:seoul256_background = 239
-"silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
-
-" nord
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-silent! colorscheme nord
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
