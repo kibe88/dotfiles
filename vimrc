@@ -201,6 +201,7 @@ call plug#begin('~/.vim/plugged')
   " Colorize/highlight strings with color values
   Plug 'norcalli/nvim-colorizer.lua'
 
+  Plug 'folke/todo-comments.nvim'
 call plug#end()
 
 " VIM EDITOR CONFIG
