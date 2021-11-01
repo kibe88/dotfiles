@@ -114,7 +114,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
 
   " Sublime text like multiple selection and edition
-  Plug 'terryma/vim-multiple-cursors'
+  Plug 'mg979/vim-visual-multi'
 
   " Adds gutter with git diff info
   Plug 'airblade/vim-gitgutter'
@@ -270,15 +270,6 @@ endfunction
 nnoremap <Leader>aw :call SearchWordWithAg()<CR>
 " Search for usages of the current file
 nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
-
-" VIM MULTIPLE CURSORS
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
 "
 " Only show cursorline in the current window and in normal mode.
 augroup cline
