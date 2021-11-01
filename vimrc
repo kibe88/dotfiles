@@ -83,7 +83,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ayu-theme/ayu-vim'
 
   " filetree sidebar
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'preservim/nerdtree'
 
   " Auto change vim dir based on the 'project' root directory (defaults to vcs)
   Plug 'airblade/vim-rooter'
