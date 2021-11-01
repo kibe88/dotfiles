@@ -205,6 +205,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'maaslalani/nordbuddy'
 
   Plug 'folke/todo-comments.nvim'
+
+  Plug 'rhysd/git-messenger.vim'
 call plug#end()
 
 " VIM EDITOR CONFIG
