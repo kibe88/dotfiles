@@ -52,6 +52,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'folke/trouble.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
   Plug 'gfanto/fzf-lsp.nvim'
+  " Improve java lsp support
+  Plug 'mfussenegger/nvim-jdtls'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
