@@ -609,7 +609,7 @@ set confirm
 set guicursor+=n-v-c:blinkon0 " Disable cursor blinking in all modes
 
 " suda write config
-cmap sw :SudaWrite
+cnoreabbrev ws :SudaWrite
 nnoremap <Leader>ws :SudaWrite<CR>
 let g:suda_smart_edit=1
 
