@@ -568,7 +568,7 @@ command! Q :q
 
 " folding options
 set foldlevelstart=0
-set foldmethod=syntax
+set nofoldenable
 
 " map default zz mapping to zm.
 nnoremap zm zz
