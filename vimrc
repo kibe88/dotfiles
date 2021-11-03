@@ -362,9 +362,9 @@ nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 autocmd FileType ruby,eruby,yaml,less set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 expandtab autoindent
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" REACT JS
+" JAVASCRIPT, TYPESCRIPT, REACT
 let javascript_enable_domhtmlcss = 1
-autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
+autocmd FileType javascript,typescript,typescriptreact,javascritreact set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
 
 " HTML
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
