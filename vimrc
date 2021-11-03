@@ -254,6 +254,7 @@ augroup END
 
 " maps nerdtree open selection in new buffer like ctrlp
 let g:NERDTreeMapOpenSplit='<C-x>'
+let g:NERDTreeMapOpenVSplit='<C-v>'
 "ignore python cache files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
