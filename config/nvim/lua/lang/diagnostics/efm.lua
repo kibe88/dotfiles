@@ -2,6 +2,7 @@ local prettier = require("lang/diagnostics/prettier")
 local eslint = require("lang/diagnostics/eslint")
 local autopep8 = require("lang/diagnostics/autopep8")
 local luafmt = require("lang/diagnostics/luafmt")
+local dart_formatter = require("lang/diagnostics/dart_formatter")
 local on_attach = require("lang/on_attach")
 local config = require('lang.config')
 
@@ -17,7 +18,8 @@ local languages = {
     scss = {prettier},
     css = {prettier},
     markdown = {prettier},
-    python = {autopep8}
+    python = {autopep8},
+    dart = {dart_formatter}
 }
 
 local efm_config = {
@@ -34,4 +36,4 @@ local efm_config = {
     end
 }
 
-config.lsp.efm.setup { config.merge(efm_config)}
+config.lsp.efm.setup(config.merge(efm_config))

@@ -1,4 +1,3 @@
-local default_on_attach = require('lang.on_attach')
 local config = require('lang.config')
 
 local tsserver_config = {
@@ -30,7 +29,7 @@ local tsserver_config = {
         no_save_after_format = false,
         -- parentheses completion
         complete_parens = false,
-        signature_help_in_parens = true,
+        signature_help_in_parens = false,
         update_imports_on_move = true,
         require_confirmation_on_move = true,
         watch_dir = "./"
@@ -38,7 +37,7 @@ local tsserver_config = {
 
     -- required to enable ESLint code actions and formatting
     ts_utils.setup_client(client)
-    default_on_attach(client, bufnr)
+    config.default_on_attach(client, bufnr)
 
     -- no default maps, so you may want to define some here
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", {silent = true})

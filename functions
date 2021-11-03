@@ -38,5 +38,17 @@ change_laptop_battery_charge_limit() {
   echo $1 | sudo tee /sys/class/power_supply/BAT0/charge_control_end_threshold
 }
 
+shacopy() {
+    shasum "$@" | awk '{ print $1 }' | tr -d '\n' | xsel --clipboard --input
+}
+
+sha256copy() {
+    shacopy -a 256 "$1"
+}
+
+sha512copy() {
+    shacopy -a 512 "$1"
+}
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.functions.local ]] && source ~/.functions.local

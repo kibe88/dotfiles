@@ -43,23 +43,23 @@ call plug#begin('~/.vim/plugged')
   Plug 'RRethy/vim-illuminate'
   " Display a bulb when code actions are available
   Plug 'kosayoda/nvim-lightbulb'
-  " Treeviewer for lsp symbols
-  Plug 'simrat39/symbols-outline.nvim'
   " Improve typescript lsp support
   Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
   Plug 'nvim-lua/plenary.nvim'
-
+  " Improve lsp floating window
+  Plug 'glepnir/lspsaga.nvim'
+  " Pretty diagnostic list
+  Plug 'folke/trouble.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
-  "Plug 'ojroques/nvim-lspfuzzy'
   Plug 'gfanto/fzf-lsp.nvim'
+  " Improve java lsp support
+  Plug 'mfussenegger/nvim-jdtls'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'
 
   " Integrates fugitive with github hub
   Plug 'tpope/vim-rhubarb'
-
-  Plug 'tpope/vim-endwise', { 'for': 'ruby' } "autoclose ruby code with end
   Plug 'tpope/vim-repeat' " repeat plugin maps with dot as well
   Plug 'tpope/vim-unimpaired'
 
@@ -69,9 +69,11 @@ call plug#begin('~/.vim/plugged')
   " adds filetype icons for common vim plugins like nerdtree, vimfiler, and such
   " using nerd patched fonts
   Plug 'ryanoasis/vim-devicons'
+  " lua plugins commonly use this one
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " Statusbar
-  Plug 'bling/vim-airline'
+  Plug 'hoob3rt/lualine.nvim'
 
   " Colorscheme
   Plug 'morhetz/gruvbox'
@@ -81,7 +83,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ayu-theme/ayu-vim'
 
   " filetree sidebar
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'preservim/nerdtree'
 
   " Auto change vim dir based on the 'project' root directory (defaults to vcs)
   Plug 'airblade/vim-rooter'
@@ -90,16 +92,12 @@ call plug#begin('~/.vim/plugged')
   " see http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
   Plug 'christoomey/vim-tmux-navigator'
 
-  " easily comment code
-  Plug 'scrooloose/nerdcommenter'
-
   " Ruby on Rails integration
   Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
   Plug 'tpope/vim-rails', { 'for': 'ruby' }
   Plug 'kana/vim-textobj-user', { 'for': 'ruby' }
   Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
   Plug 'ecomba/vim-ruby-refactoring', { 'for': 'ruby' }
-  Plug 'vim-utils/vim-ruby-fold', { 'for': 'ruby' } " Only folds methods (folds 'it' blocks in rspec files as well)
 
   " Html formatting
   Plug 'tpope/vim-markdown', { 'for': 'html' }
@@ -116,10 +114,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
 
   " Sublime text like multiple selection and edition
-  Plug 'terryma/vim-multiple-cursors'
-
-  " Indentation guidelines
-  Plug 'Yggdroot/indentLine'
+  Plug 'mg979/vim-visual-multi'
 
   " Adds gutter with git diff info
   Plug 'airblade/vim-gitgutter'
@@ -143,7 +138,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/javascript-libraries-syntax.vim'
 
   " Automatic closing off quotes, brackets and such
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
 
   " Configures whitespace behavior
   Plug 'ntpeters/vim-better-whitespace'
@@ -151,8 +146,8 @@ call plug#begin('~/.vim/plugged')
   " Remove whitespace only from edited lines
   Plug 'thirtythreeforty/lessspace.vim'
 
-  " Installs the most recent version of match it
-  Plug 'vim-scripts/matchit.zip'
+  " Improve match support (with the spiritual sucessor to matchit)
+  Plug 'andymass/vim-matchup'
 
   " Better startup screen
   Plug 'mhinz/vim-startify'
@@ -178,8 +173,6 @@ call plug#begin('~/.vim/plugged')
   " better python support
   Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' } " identation
   Plug 'vim-python/python-syntax', { 'for': 'python' }  " syntax highlighting
-  Plug 'tmhedberg/SimpylFold', { 'for': 'python' }  " improves folding in python
-
 
   " better php support
   Plug 'StanAngeloff/php.vim', { 'for': 'php' }
@@ -189,6 +182,31 @@ call plug#begin('~/.vim/plugged')
 
   " Pretty tag/symbol/methods search
   Plug 'liuchengxu/vista.vim'
+
+  " Enable treesitter parser in vim
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+
+  " Easily comment code
+  Plug 'tpope/vim-commentary'
+  " Context aware commentstring (like for jsx, tsx, svelte, php and tpl languages)
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  " Adds indentation guides to empty lines
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
+  " Context aware text object using treesitter
+  Plug 'RRethy/nvim-treesitter-textsubjects'
+
+  " Colorize/highlight strings with color values
+  Plug 'norcalli/nvim-colorizer.lua'
+
+  Plug 'tjdevries/colorbuddy.nvim'
+  Plug 'maaslalani/nordbuddy'
+
+  Plug 'folke/todo-comments.nvim'
+
+  Plug 'rhysd/git-messenger.vim'
 call plug#end()
 
 " VIM EDITOR CONFIG
@@ -207,9 +225,6 @@ let g:surround_35  = "#{\r}"   " #
 " or yss- to do entire line.
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " ="
-
-" VIM AIRLINE
-let g:airline_powerline_fonts = 1
 
 " VIM ROOTER
 let g:rooter_change_directory_for_non_project_files=1 " Behaves like autochdir for non project files
@@ -239,6 +254,7 @@ augroup END
 
 " maps nerdtree open selection in new buffer like ctrlp
 let g:NERDTreeMapOpenSplit='<C-x>'
+let g:NERDTreeMapOpenVSplit='<C-v>'
 "ignore python cache files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
@@ -257,15 +273,6 @@ endfunction
 nnoremap <Leader>aw :call SearchWordWithAg()<CR>
 " Search for usages of the current file
 nnoremap <Leader>acf :call SearchForUsagesOfTheCurrentFile()<CR>
-
-" VIM MULTIPLE CURSORS
-nmap <expr> <silent> <C-d> <SID>select_current_word()
-function! s:select_current_word()
-  if !get(g:, 'coc_cursors_activated', 0)
-    return "\<Plug>(coc-cursors-word)"
-  endif
-  return "*\<Plug>(coc-cursors-word):nohlsearch\<CR>"
-endfunc
 "
 " Only show cursorline in the current window and in normal mode.
 augroup cline
@@ -280,8 +287,6 @@ augroup END
 set list lcs=tab:\|\
 let g:indentLine_char = '┊'
 let g:indentLine_showFirstIndentLevel = 1
-" other useful characters
-"let g:indentLine_char = '∙▹¦'
 
 " VIM EUNUCH
 map <Leader>mv :Rename<Space>
@@ -293,13 +298,6 @@ map <silent><Leader>tw :ToggleWhitespace<CR>
 let g:better_whitespace_enabled = 0
 
 " VIM STARTIFY
-augroup startify_buffer_settings
-  " Use startify buffer for opening ctrlp files
-  autocmd FileType startify setlocal buftype=
-  " Use startify buffer for opening files from NerdTree
-  autocmd User Startified AirlineRefresh
-augroup END
-
 nmap <Leader>st :Startify<CR>
 let g:startify_list_order = [
       \ ['   Bookmarks '], 'bookmarks',
@@ -364,9 +362,9 @@ nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 autocmd FileType ruby,eruby,yaml,less set tw=100 shiftwidth=2 softtabstop=2 tabstop=2 expandtab autoindent
 autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" REACT JS
+" JAVASCRIPT, TYPESCRIPT, REACT
 let javascript_enable_domhtmlcss = 1
-autocmd FileType javascript set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
+autocmd FileType javascript,typescript,typescriptreact,javascritreact set tw=100 shiftwidth=2 softtabstop=2 expandtab autoindent
 
 " HTML
 au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
@@ -384,8 +382,8 @@ au BufNewFile,BufReadPost *.py setl shiftwidth=4 tabstop=4 softtabstop=4 tw=80 e
 let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 
 " VIM PLUG
-map <Leader>i :PlugInstall<CR>
-map <Leader>u :PlugUpdate<CR>
+map <Leader>pi :PlugInstall<CR>
+map <Leader>pu :PlugUpdate<CR>
 
 " vim json
 let g:vim_json_syntax_conceal = 0 " disabled double quote conceal to keep my sanity. (dunno why its enabled by default)
@@ -405,36 +403,6 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=number
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>aa <Plug>(coc-codeaction-selected)
-nmap <leader>aa <Plug>(coc-codeaction-selected)
-
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " FUGITIVE
 nnoremap <Leader>gst :Gstatus<CR>
 nnoremap <Leader>gci :Gcommit<CR>
@@ -449,26 +417,6 @@ nmap <Leader>gf :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R
 vmap <Leader>gf y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
 
 " STARTS VANILLA VIM CONFIGURATION
-
-" COLORSCHEME
-set background=light
-
-" gruvbox
-"let g:gruvbox_contrast_dark = 'soft'
-"let g:gruvbox_contrast_light = 'soft'
-"silent! colorscheme gruvbox " set it silently cause the colorscheme may not exist yet
-
-"set termguicolors     " enable true colors support
-"let ayucolor="mirage" " for mirage version of theme
-"silent! colorscheme ayu
-" seoul256
-"let g:seoul256_background = 239
-"silent! colorscheme seoul256 " set it silently cause the colorscheme may not exist yet
-
-" nord
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-silent! colorscheme nord
 
 " Backups
 exec 'set backupdir='.g:dotvim.'/tmp/backup//'
@@ -575,9 +523,6 @@ nnoremap <Leader>tn :tabnext<CR>
 noremap <Leader>bp :bprevious<CR>
 noremap <Leader>bn :bnext<CR>
 
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
-nmap <Leader>ea <Plug>(EasyAlign)
-
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
 nnoremap <Leader>sv <C-w>v<C-w>l
 nnoremap <Leader>sh <C-w>s<C-w>j
@@ -623,7 +568,7 @@ command! Q :q
 
 " folding options
 set foldlevelstart=0
-set foldmethod=syntax
+set nofoldenable
 
 " map default zz mapping to zm.
 nnoremap zm zz
@@ -664,7 +609,7 @@ set confirm
 set guicursor+=n-v-c:blinkon0 " Disable cursor blinking in all modes
 
 " suda write config
-cmap sw :SudaWrite
+cnoreabbrev ws :SudaWrite
 nnoremap <Leader>ws :SudaWrite<CR>
 let g:suda_smart_edit=1
 
