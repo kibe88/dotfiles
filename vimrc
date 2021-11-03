@@ -403,36 +403,6 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=number
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>aa <Plug>(coc-codeaction-selected)
-nmap <leader>aa <Plug>(coc-codeaction-selected)
-
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
 " FUGITIVE
 nnoremap <Leader>gst :Gstatus<CR>
 nnoremap <Leader>gci :Gcommit<CR>
@@ -552,9 +522,6 @@ nnoremap <Leader>tn :tabnext<CR>
 " Easy buffer navigation
 noremap <Leader>bp :bprevious<CR>
 noremap <Leader>bn :bnext<CR>
-
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>eaip)
-nmap <Leader>ea <Plug>(EasyAlign)
 
 " Splits ,sv and ,sh to open new splits (vertical and horizontal)
 nnoremap <Leader>sv <C-w>v<C-w>l
