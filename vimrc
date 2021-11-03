@@ -382,8 +382,8 @@ au BufNewFile,BufReadPost *.py setl shiftwidth=4 tabstop=4 softtabstop=4 tw=80 e
 let g:SimpylFold_docstring_preview = 1 " Python SimpylFold
 
 " VIM PLUG
-map <Leader>i :PlugInstall<CR>
-map <Leader>u :PlugUpdate<CR>
+map <Leader>pi :PlugInstall<CR>
+map <Leader>pu :PlugUpdate<CR>
 
 " vim json
 let g:vim_json_syntax_conceal = 0 " disabled double quote conceal to keep my sanity. (dunno why its enabled by default)
