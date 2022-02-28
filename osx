@@ -5,6 +5,15 @@ export CPPFLAGS=-Qunused-arguments
 # fix dir and file output colors in supercabtree/k
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+alias ls="exa"
+
+# android tools installed with brew
+export ANDROID_HOME="/usr/local/share/android-sdk"
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # fzf brew installation
 source /usr/local/opt/fzf/shell/key-bindings.zsh
 source /usr/local/opt/fzf/shell/completion.zsh
