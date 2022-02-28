@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'folke/trouble.nvim'
   " Display LSP results using fzf (codeactions, goto defs, and such)
   Plug 'gfanto/fzf-lsp.nvim'
+  Plug 'junegunn/fzf'
   " Improve java lsp support
   Plug 'mfussenegger/nvim-jdtls'
 
@@ -202,7 +203,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'norcalli/nvim-colorizer.lua'
 
   Plug 'tjdevries/colorbuddy.nvim'
-  Plug 'maaslalani/nordbuddy'
+  Plug 'andersevenrud/nordic.nvim'
 
   Plug 'folke/todo-comments.nvim'
 
@@ -651,3 +652,11 @@ augroup SHADA
     autocmd CursorHold,TextYankPost,FocusGained,FocusLost *
                 \ if exists(':rshada') | rshada | wshada | endif
 augroup END
+
+" enable alt a selection in nvim
+if has('nvim')
+  tnoremap <a-a> <esc>a
+  tnoremap <a-b> <esc>b
+  tnoremap <a-d> <esc>d
+  tnoremap <a-f> <esc>f
+endif

@@ -9,7 +9,7 @@ source ~/.zplug/init.zsh
 zplug "akz92/clean", as:theme
 
 zplug "zsh-users/zsh-completions"
-zplug "zdharma/fast-syntax-highlighting"
+zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "jreese/zsh-titles"
 zplug "supercrabtree/k"
 zplug "rupa/z", use:z.sh
@@ -17,7 +17,7 @@ zplug "andrewferrier/fzf-z", defer:2
 zplug "b4b4r07/emoji-cli"
 zplug "paulmelnikow/zsh-startup-timer"
 zplug "wfxr/forgit"
-zplug "zdharma/zsh-diff-so-fancy", as:command, use:bin/git-dsf
+zplug "so-fancy/diff-so-fancy", as:command, use:bin/git-dsf
 
 zplug "~/dotfiles/shell-extensions/fzf", from:local, use:"fzf.sh"
 zplug "u1and0/fzf-extras",\

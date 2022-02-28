@@ -3,7 +3,7 @@
 -- Credit: shadmansaleh, glepnir
 --
 local lualine = require 'lualine'
-local palette = require 'nordbuddy.palette'
+local palette = require 'nordic.palette'
 
 -- Color table for highlights
 local colors = {

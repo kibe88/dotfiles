@@ -1,4 +1,4 @@
-require("trouble").setup {use_lsp_diagnostic_signs = true}
+require("trouble").setup {use_diagnostic_signs = true}
 
 local keymap_opts = {silent = true, noremap = true}
 -- Lua
