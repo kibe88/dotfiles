@@ -15,5 +15,5 @@ require("lang.rename")
 -- languages
 require("lang.python")
 require("lang.javascript")
-require("lang.java")
 require("lang.lua")
+require("lang.php")
