@@ -1,3 +1,4 @@
+# auto install zplug
 if [ ! -f ~/.zplug/init.zsh ]; then
   export ZPLUG_HOME=~/.zplug
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
@@ -8,18 +9,19 @@ source ~/.zplug/init.zsh
 # theme
 zplug "akz92/clean", as:theme
 
-zplug "zsh-users/zsh-completions"
+# let zplug manage itself
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+zplug "clarketm/zsh-completions"
 zplug "zdharma-continuum/fast-syntax-highlighting"
-zplug "jreese/zsh-titles"
-zplug "supercrabtree/k"
-zplug "rupa/z", use:z.sh
-zplug "andrewferrier/fzf-z", defer:2
+zplug "mbenford/zsh-tmux-auto-title"
 zplug "b4b4r07/emoji-cli"
 zplug "paulmelnikow/zsh-startup-timer"
 zplug "wfxr/forgit"
 zplug "so-fancy/diff-so-fancy", as:command, use:bin/git-dsf
 
-zplug "~/dotfiles/shell-extensions/fzf", from:local, use:"fzf.sh"
+zplug "rupa/z", use:z.sh
+zplug "andrewferrier/fzf-z", defer:2
 zplug "u1and0/fzf-extras",\
     use:"fzf*",\
     hook-load:"""
@@ -27,24 +29,11 @@ zplug "u1and0/fzf-extras",\
         alias gz='fzf-gitlog-widget'
         alias gx='fzf-gitlog-multi-widget'
     """
+# load fzf config
+zplug "~/Projects/dotfiles/shell-extensions/fzf", from:local, use:"fzf.sh"
 
+zplug "laggardkernel/zsh-tmux"
+zplug "wazum/zsh-directory-dot-expansion"
 
-# prezto modules
-zplug "modules/tmux", from:prezto
-zplug "modules/environment", from:prezto
-zplug "modules/directory", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/editor", from:prezto
-
-# prezto modules config
-zstyle ':prezto:module:editor' dot-expansion 'yes'
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
-
-# let zplug manage itself
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-if ! zplug check; then
-    zplug install
-fi
-
+# Then, source plugins and add commands to $PATH
 zplug load
