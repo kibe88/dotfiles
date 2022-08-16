@@ -27,7 +27,7 @@ do
                 table.insert(qflist, d)
             end
         end
-        vim.lsp.util.set_qflist(qflist)
+        vim.diagnostic.setqflist(qflist)
     end
 end
 
