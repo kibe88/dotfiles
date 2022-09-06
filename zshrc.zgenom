@@ -1,0 +1,53 @@
+# auto install zgenom
+if [ ! -f "${HOME}/.zgenom/zgenom.zsh" ]; then
+  export ZPLUG_HOME=~/.zplug
+  git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+fi
+
+# load zgenom
+source "${HOME}/.zgenom/zgenom.zsh"
+
+# Check for plugin and zgenom updates every 7 days
+# This does not increase the startup time.
+zgenom autoupdate
+
+# if the init script doesn't exist
+if ! zgenom saved; then
+    echo "Creating a zgenom save"
+
+    # Add this if you experience issues with missing completions or errors mentioning compdef.
+    # zgenom compdef
+
+    zgenom load clarketm/zsh-completions
+    zgenom load zdharma-continuum/fast-syntax-highlighting
+    zgenom load mbenford/zsh-tmux-auto-title
+    zgenom load b4b4r07/emoji-cli
+    zgenom load paulmelnikow/zsh-startup-timer
+    zgenom load wfxr/forgit
+    zgenom load agkozak/zsh-z
+    zgenom load andrewferrier/fzf-z
+    zgenom load u1and0/fzf-extras
+#        hook-load:"""
+#            alias zz='zd -z $*'
+#            alias gz='fzf-gitlog-widget'
+#            alias gx='fzf-gitlog-multi-widget'
+#        """
+    # load fzf config
+    zgenom load ~/Projects/dotfiles/shell-extensions/fzf
+    zgenom load laggardkernel/zsh-tmux
+    zgenom load wazum/zsh-directory-dot-expansion
+    zgenom load zdharma/zsh-diff-so-fancy
+
+    # zsh theme
+    zgenom load akz92/clean clean
+
+    # add binaries
+    # zgenom bin tj/git-extras
+
+    # save all to init script
+    zgenom save
+
+    # Compile your zsh files
+    zgenom compile "$HOME/.zshrc"
+    zgenom compile $ZDOTDIR
+fi
