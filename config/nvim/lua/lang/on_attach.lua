@@ -14,7 +14,7 @@ return function(client, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
-
+    -- display popup with diagnostic information
     vim.api.nvim_create_autocmd("CursorHold", {
       buffer = bufnr,
       callback = function()
@@ -24,7 +24,7 @@ return function(client, bufnr)
           border = 'rounded',
           source = 'always',
           prefix = ' ',
-          scope = 'cursor',
+          scope = 'line',
         }
         vim.diagnostic.open_float(nil, opts)
       end
