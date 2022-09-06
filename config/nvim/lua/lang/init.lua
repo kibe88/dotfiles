@@ -13,6 +13,8 @@ require("lang.saga")
 require("lang.rename")
 
 -- languages
+require("lang.lsp_installer")
+require("lang.csharp")
 require("lang.python")
 require("lang.javascript")
 require("lang.lua")

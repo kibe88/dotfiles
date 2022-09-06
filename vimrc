@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattn/emmet-vim' " Zencode html output Enable emmet just for html/css
 
   " vscode like completion system using LSP
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
   " snippet completion (choose vsnip due to the vscode snippet syntax support,
