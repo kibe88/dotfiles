@@ -2,7 +2,6 @@
 --require('keymappings')
 require('lang.fuzzy')
 require('lang.kind')
-require('lang.lightbulb')
 require('lang.symbols_outline')
 require('lang.code_action')
 require('lang.snippets')
