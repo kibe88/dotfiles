@@ -10,9 +10,9 @@ require("lang.trouble")
 require("lang.diagnostics")
 require("lang.saga")
 require("lang.rename")
+require("lang.mason-lspconfig").setup()
 
 -- languages
-require("lang.lsp_installer")
 require("lang.csharp")
 require("lang.python")
 require("lang.javascript")
