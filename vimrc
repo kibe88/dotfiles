@@ -57,6 +57,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf'
   " Improve java lsp support
   Plug 'mfussenegger/nvim-jdtls'
+  " UI for nvim-lsp progress
+  Plug 'j-hui/fidget.nvim'
 
   " Git wrapper
   Plug 'tpope/vim-fugitive'

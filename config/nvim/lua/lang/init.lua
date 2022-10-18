@@ -11,6 +11,7 @@ require("lang.diagnostics")
 require("lang.saga")
 require("lang.rename")
 require("lang.mason-lspconfig").setup()
+require("lang.fidget").setup()
 
 -- languages
 require("lang.csharp")
