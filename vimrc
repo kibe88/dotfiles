@@ -90,6 +90,12 @@ call plug#begin('~/.vim/plugged')
   " filetree sidebar
   Plug 'preservim/nerdtree'
 
+  " modern filetree sidebar written in lua
+  Plug 'nvim-neo-tree/neo-tree.nvim'
+  Plug 'MunifTanjim/nui.nvim' " neo-tree requirement
+  " get where's the window opened from filename, from neotree...
+  Plug 's1n7ax/nvim-window-picker'
+
   " Auto change vim dir based on the 'project' root directory (defaults to vcs)
   Plug 'airblade/vim-rooter'
 
