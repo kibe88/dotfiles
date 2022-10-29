@@ -218,6 +218,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'folke/todo-comments.nvim'
 
   Plug 'rhysd/git-messenger.vim'
+
+  " debugger via dap protocol
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'rcarriga/nvim-dap-ui'
+  Plug 'theHamsta/nvim-dap-virtual-text' " shows current variables in virtual text
+
 call plug#end()
 
 " VIM EDITOR CONFIG
