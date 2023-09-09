@@ -31,4 +31,4 @@ local lua_lsp_config ={
     }
 }
 
-config.lsp.sumneko_lua.setup(config.merge(lua_lsp_config))
+config.lsp.lua_ls.setup(config.merge(lua_lsp_config))
