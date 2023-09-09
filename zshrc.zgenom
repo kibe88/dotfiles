@@ -22,7 +22,6 @@ if ! zgenom saved; then
     zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load mbenford/zsh-tmux-auto-title
     zgenom load b4b4r07/emoji-cli
-    zgenom load paulmelnikow/zsh-startup-timer
     zgenom load wfxr/forgit
     zgenom load agkozak/zsh-z
     zgenom load andrewferrier/fzf-z
@@ -49,5 +48,4 @@ if ! zgenom saved; then
 
     # Compile your zsh files
     zgenom compile "$HOME/.zshrc"
-    zgenom compile $ZDOTDIR
 fi
