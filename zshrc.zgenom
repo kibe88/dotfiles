@@ -32,7 +32,7 @@ if ! zgenom saved; then
 #            alias gx='fzf-gitlog-multi-widget'
 #        """
     # load fzf config
-    zgenom load ~/Projects/dotfiles/shell-extensions/fzf
+    zgenom load ~/Projects/me/dotfiles/shell-extensions/fzf
     zgenom load laggardkernel/zsh-tmux
     zgenom load wazum/zsh-directory-dot-expansion
     zgenom load zdharma/zsh-diff-so-fancy
