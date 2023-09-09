@@ -150,6 +150,8 @@ call plug#begin('~/.vim/plugged')
 
   " Automatic closing off quotes, brackets and such
   Plug 'windwp/nvim-autopairs'
+  " ruby, lua, nvim-autopairs support
+  Plug 'RRethy/nvim-treesitter-endwise'
 
   " Configures whitespace behavior
   Plug 'ntpeters/vim-better-whitespace'
