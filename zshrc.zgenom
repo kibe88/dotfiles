@@ -35,7 +35,7 @@ if ! zgenom saved; then
     zgenom load ~/Projects/me/dotfiles/shell-extensions/fzf
     zgenom load laggardkernel/zsh-tmux
     zgenom load wazum/zsh-directory-dot-expansion
-    zgenom load zdharma/zsh-diff-so-fancy
+    zgenom load z-shell/zsh-diff-so-fancy
 
     # zsh theme
     zgenom load akz92/clean clean
