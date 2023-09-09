@@ -1,31 +1,20 @@
 local saga = require 'lspsaga'
+local keymap = vim.keymap.set
 
--- add your config value here
--- default value
 local saga_config = {
-    diagnostic_header = { '', '','', ''},
-    code_action_icon = ' ',
-    code_action_lightbulb = {
-        enable = true,
-        enable_in_insert = true,
-        cache_code_action = true,
-        sign = true,
-        sign_priority = 10,
-        virtual_text = true,
-        update_time = 150,
-    },
-    max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
-    finder_action_keys = {
-        open = 'o',
-        vsplit = 's',
-        split = 'i',
-        quit = 'q',
-        scroll_down = '<C-f>',
-        scroll_up = '<C-b>' -- quit can be a table
-    },
-    code_action_keys = {quit = 'q', exec = '<CR>'},
-    -- "single" "double" "round" "plus"
-    border_style = "single",
+  symbol_in_winbar = {
+    -- disable winbar
+    enable = false,
+    separator = " ",
+    ignore_patterns={},
+    hide_keyword = true,
+    show_file = true,
+    folder_level = 2,
+    respect_root = false,
+    color_mode = true,
+  },
 }
 
-saga.init_lsp_saga(saga_config)
+saga.setup(saga_config)
+
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>")
