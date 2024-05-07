@@ -26,12 +26,6 @@ if ! zgenom saved; then
     zgenom load agkozak/zsh-z
     zgenom load andrewferrier/fzf-z
     zgenom load u1and0/fzf-extras
-#        hook-load:"""
-#            alias zz='zd -z $*'
-#            alias gz='fzf-gitlog-widget'
-#            alias gx='fzf-gitlog-multi-widget'
-#        """
-    # load fzf config
     zgenom load ~/Projects/dotfiles/shell-extensions/fzf
     zgenom load laggardkernel/zsh-tmux
     zgenom load wazum/zsh-directory-dot-expansion
