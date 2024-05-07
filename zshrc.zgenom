@@ -27,6 +27,7 @@ if ! zgenom saved; then
     zgenom load andrewferrier/fzf-z
     zgenom load u1and0/fzf-extras
     zgenom load ~/Projects/dotfiles/shell-extensions/fzf
+    zgenom load ~/Projects/dotfiles/shell-extensions/history
     zgenom load laggardkernel/zsh-tmux
     zgenom load wazum/zsh-directory-dot-expansion
     zgenom load zdharma/zsh-diff-so-fancy
