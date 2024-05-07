@@ -13,4 +13,5 @@ npairs.setup({
     -- }
 })
 
-require("plugins.endwise")
+-- support for languages that closes brackets with end (lua, ruby)
+require("plugins.endwise").setup()

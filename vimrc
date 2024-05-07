@@ -28,6 +28,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
+
+  " neovim winbar
+  Plug 'utilyre/barbecue.nvim'
+  Plug 'SmiteshP/nvim-navic'
+
   " snippet completion (choose vsnip due to the vscode snippet syntax support,
   " finally moving from snipmate)
   Plug 'hrsh7th/vim-vsnip'
@@ -151,6 +156,8 @@ call plug#begin('~/.vim/plugged')
 
   " Automatic closing off quotes, brackets and such
   Plug 'windwp/nvim-autopairs'
+  " ruby, lua, nvim-autopairs support
+  Plug 'RRethy/nvim-treesitter-endwise'
 
   " Configures whitespace behavior
   Plug 'ntpeters/vim-better-whitespace'
