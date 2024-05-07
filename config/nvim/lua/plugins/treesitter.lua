@@ -50,21 +50,24 @@ treesitter.setup {
     matchup = {
         enable = true -- mandatory, false will disable the whole extension
     },
-    -- context aware (for languages that can embbed templates) commentstring
-    -- (to use with vim-commentary and such)
-    context_commentstring = {
-        enable = true,
-        config = {
-            -- configuration for jsx and tsx
-            javascript = {
-                __default = '// %s',
-                jsx_element = '{/* %s */}',
-                jsx_fragment = '{/* %s */}',
-                jsx_attribute = '// %s',
-                comment = '// %s'
-            }
-        }
+}
+
+-- context aware (for languages that can embbed templates) commentstring
+-- (to use with vim-commentary and such)
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+  languages = {
+    typescript = '// %s',
+    -- configuration for jsx and tsx
+    javascript = {
+        __default = '// %s',
+        jsx_element = '{/* %s */}',
+        jsx_fragment = '{/* %s */}',
+        jsx_attribute = '// %s',
+        comment = '// %s'
     }
+
+  },
 }
 
 vim.opt.foldmethod = 'expr'
