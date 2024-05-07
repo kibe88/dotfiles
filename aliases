@@ -65,5 +65,7 @@ alias kla='exala'
 
 alias docker_stop_all='docker stop $(docker ps -a -q)'
 
+alias google-chrome='google-chrome-stable'
+
 # Include local aliases that you don't want exposed online
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
