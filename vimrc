@@ -84,7 +84,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'jacoborus/tender.vim'
   Plug 'junegunn/seoul256.vim'
-  Plug 'arcticicestudio/nord-vim'
+  " Plug 'arcticicestudio/nord-vim'
+  Plug 'shaunsingh/nord.nvim'
   Plug 'ayu-theme/ayu-vim'
 
   " filetree sidebar

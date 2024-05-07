@@ -1,1 +1,0 @@
-/Users/kibe/Projects/dotfiles/shell-extensions/fzf/fzf.plugin.zsh/fzf.plugin.zsh
