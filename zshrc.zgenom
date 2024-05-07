@@ -17,12 +17,12 @@ if ! zgenom saved; then
     # Add this if you experience issues with missing completions or errors mentioning compdef.
     # zgenom compdef
 
+    zgenom load wfxr/forgit
     zgenom load clarketm/zsh-completions
     zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load mbenford/zsh-tmux-auto-title
     zgenom load b4b4r07/emoji-cli
     zgenom load paulmelnikow/zsh-startup-timer
-    zgenom load wfxr/forgit
     zgenom load agkozak/zsh-z
     zgenom load andrewferrier/fzf-z
     zgenom load u1and0/fzf-extras
