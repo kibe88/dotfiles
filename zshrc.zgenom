@@ -43,5 +43,4 @@ if ! zgenom saved; then
 
     # Compile your zsh files
     zgenom compile "$HOME/.zshrc"
-    zgenom compile $ZDOTDIR
 fi
