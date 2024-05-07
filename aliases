@@ -59,7 +59,9 @@ alias tmux_layout='tmux list-windows -F "#{window_active} #{window_layout}" | gr
 
 alias exa='exa --group-directories-first --icons'
 alias exo='exa --group-directories-first --icons --octal-permissions'
+alias exala='exa -la'
 alias k='exa'
+alias kla='exala'
 
 alias docker_stop_all='docker stop $(docker ps -a -q)'
 alias turnoff_lightbar='echo 0 | tee /sys/class/leds/qc71_laptop::lightbar/brightness'
