@@ -2,6 +2,7 @@ local prettier = require("lang/diagnostics/prettier")
 local eslint = require("lang/diagnostics/eslint")
 local autopep8 = require("lang/diagnostics/autopep8")
 local luafmt = require("lang/diagnostics/luafmt")
+local rubocop = require("lang/diagnostics/rubocop")
 local dart_formatter = require("lang/diagnostics/dart_formatter")
 local on_attach = require("lang/on_attach")
 local config = require('lang.config')
@@ -19,6 +20,7 @@ local languages = {
     css = {prettier},
     markdown = {prettier},
     python = {autopep8},
+    ruby = {rubocop},
     dart = {dart_formatter}
 }
 
