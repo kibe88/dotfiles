@@ -98,8 +98,8 @@ M.setup = function()
         ["<cr>"] = "open",
         ["<esc>"] = "revert_preview",
         ["P"] = { "toggle_preview", config = { use_float = true } },
-        ["S"] = "open_split",
-        ["s"] = "open_vsplit",
+        ["c-x"] = "open_split",
+        ["c-v"] = "open_vsplit",
         -- ["S"] = "split_with_window_picker",
         -- ["s"] = "vsplit_with_window_picker",
         ["t"] = "open_tabnew",
@@ -217,6 +217,7 @@ M.setup = function()
   })
 
   vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+  vim.keymap.set('n', '<Leader>s', '<cmd>Neotree toggle<cr>')
 end
 
 return M

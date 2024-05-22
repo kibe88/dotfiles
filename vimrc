@@ -93,9 +93,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'shaunsingh/nord.nvim'
   Plug 'ayu-theme/ayu-vim'
 
-  " filetree sidebar
-  Plug 'preservim/nerdtree'
-
   " modern filetree sidebar written in lua
   Plug 'nvim-neo-tree/neo-tree.nvim'
   Plug 'MunifTanjim/nui.nvim' " neo-tree requirement
@@ -261,27 +258,6 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
-let g:NERDTreeWinSize=28
-let g:NERDTreeChDirMode=2
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-map <Leader>s :NERDTreeToggle<CR>
-" Autocloses nerdtree (and therefore vim) if it's the only buffer left
-function! s:CloseNERDTreeIfOnlyBufferLeft()
-  if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-    q
-  endif
-endfunction
-augroup autoclose_nerdtree
-  autocmd bufenter * call s:CloseNERDTreeIfOnlyBufferLeft()
-augroup END
-
-" maps nerdtree open selection in new buffer like ctrlp
-let g:NERDTreeMapOpenSplit='<C-x>'
-let g:NERDTreeMapOpenVSplit='<C-v>'
-"ignore python cache files in NERDTree
-let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " FZF
 nmap <silent><C-t> :FZF<CR>

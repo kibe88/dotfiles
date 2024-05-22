@@ -47,7 +47,7 @@ local config = {
     options = {
         disabled_filetypes = {
             'NvimTree', 'dbui', 'packer', 'startify', 'fugitive',
-            'fugitiveblame'
+            'fugitiveblame', 'neo-tree'
         },
         -- Disable sections and component separators
         component_separators = "",
