@@ -223,6 +223,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'folke/todo-comments.nvim'
 
   Plug 'rhysd/git-messenger.vim'
+  Plug 'APZelos/blamer.nvim'
 
   " debugger via dap protocol
   Plug 'mfussenegger/nvim-dap'
