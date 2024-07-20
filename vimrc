@@ -230,6 +230,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'rcarriga/nvim-dap-ui'
   Plug 'theHamsta/nvim-dap-virtual-text' " shows current variables in virtual text
 
+  " copilot goodies
+  " try to lazyload this unless we move to lazy.nvim
+  Plug 'zbirenbaum/copilot.lua'
+  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
 call plug#end()
 
 " VIM EDITOR CONFIG
